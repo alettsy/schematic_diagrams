@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../core/parts/link_theme.dart';
 import '../models/link.dart';
 import '../models/node_resolver.dart';
-import '../rendering/link_renderer.dart';
+import '../rendering/linking/link_renderer.dart';
 
 class LinkWidget extends StatelessWidget {
   const LinkWidget({

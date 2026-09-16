@@ -33,6 +33,19 @@ class _HomePageState extends State<HomePage> {
     VoltageSensorNode(id: 'v1', position: Position(300, 300)),
     FlowSensorNode(id: 'f1', position: Position(100, 100)),
   ];
+
+  final links = [
+    Link(
+      id: 'example',
+      fromNodeId: 'f1',
+      toNodeId: 'v1',
+      fromPortId: 'bottom',
+      toPortId: 'top',
+      inFrom: LinkDirection.up,
+      outTo: LinkDirection.down
+    )
+  ];
+
   Timer? timer;
 
   @override
@@ -59,17 +72,7 @@ class _HomePageState extends State<HomePage> {
         child: SchematicDiagram(
           model: SchematicDiagramModel(
             nodes: nodes,
-            links: [
-              Link(
-                id: '1',
-                fromNodeId: 'v1',
-                fromPortId: '1',
-                inFrom: LinkDirection.up,
-                outTo: LinkDirection.left,
-                toNodeId: 'f1',
-                toPortId: '1',
-              ),
-            ],
+            links: links
           ),
         ),
       ),

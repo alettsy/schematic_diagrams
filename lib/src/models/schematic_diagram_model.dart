@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/rendering/link_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_renderer.dart';
 
 import '../core/parts/parts.dart';
-import '../rendering/standard_link_renderer.dart';
 import 'link.dart';
 import 'node.dart';
 import 'node_resolver.dart';

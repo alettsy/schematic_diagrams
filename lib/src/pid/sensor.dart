@@ -33,7 +33,7 @@ abstract class SensorNode extends Node
         position: Position(12, 7),
       ),
     ];
-    ports = [Port(id: '1', position: Position(5, 5))];
+    ports = [Port(id: 'top', position: Position(16, 0)), Port(id: 'bottom', position: Position(16, 32))];
   }
 
   final String prefix;

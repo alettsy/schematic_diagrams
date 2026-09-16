@@ -35,4 +35,24 @@ abstract class Node {
       size.height + gap,
     );
   }
+
+  double get maxX => position.x + size.width;
+
+  double get maxY => position.y + size.height;
+
+  bool isAbove(Node other, {double offset = 0.0}) {
+    return maxY + offset < other.position.y;
+  }
+
+  bool isBelow(Node other, {double offset = 0.0}) {
+    return other.maxY + offset < position.y;
+  }
+
+  bool isLeftOf(Node other, {double offset = 0.0}) {
+    return maxX + offset < other.position.x;
+  }
+
+  bool isRightOf(Node other, {double offset = 0.0}) {
+    return other.maxX + offset < position.x;
+  }
 }
