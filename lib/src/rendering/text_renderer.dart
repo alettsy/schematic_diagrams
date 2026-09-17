@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../core/parts/parts.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
 
 abstract class PaintedTextRenderer {
   const PaintedTextRenderer();
@@ -39,9 +38,13 @@ class StandardPaintedTextRenderer extends PaintedTextRenderer {
     final textPainter = TextPainter(
       text: textSpan,
       textDirection: TextDirection.ltr,
+      textAlign: textBlock.textAlign,
     );
 
-    textPainter.layout(minWidth: 0, maxWidth: textBlock.drawWidth);
+    textPainter.layout(
+      minWidth: textBlock.drawWidth,
+      maxWidth: textBlock.drawWidth,
+    );
 
     textPainter.paint(
       canvas,

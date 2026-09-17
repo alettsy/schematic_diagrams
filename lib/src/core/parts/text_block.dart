@@ -1,5 +1,6 @@
-import 'position.dart';
-import 'text_block_theme.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:schematic_diagrams/src/core/parts/position.dart';
+import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
 
 class TextBlock {
   TextBlock({
@@ -8,6 +9,7 @@ class TextBlock {
     this.position = const Position(0, 0),
     this.drawWidth = 100,
     this.themeOverride = const TextBlockTheme(),
+    this.textAlign = TextAlign.start,
   });
 
   final String? id;
@@ -15,6 +17,7 @@ class TextBlock {
   final Position position;
   final double drawWidth;
   final TextBlockTheme themeOverride;
+  final TextAlign textAlign;
 
   TextBlock copyWith({
     String? id,
@@ -22,6 +25,7 @@ class TextBlock {
     Position? position,
     double? drawWidth,
     TextBlockTheme? themeOverride,
+    TextAlign? textAlign,
   }) {
     return TextBlock(
       id: id ?? this.id,
@@ -29,6 +33,7 @@ class TextBlock {
       position: position ?? this.position,
       drawWidth: drawWidth ?? this.drawWidth,
       themeOverride: themeOverride ?? this.themeOverride,
+      textAlign: textAlign ?? this.textAlign,
     );
   }
 }
