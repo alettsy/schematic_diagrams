@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/lines/jump_line.dart';
+import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_path_strategy.dart';
 
-import '../../../core/parts/link_theme.dart';
 import '../../../models/link.dart';
 import '../../../models/node_resolver.dart';
 import '../link_renderer.dart';
 
 class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
-  const StandardLinkRenderer()
-    : super(pathStrategy: const StandardLinkPathStrategy());
+  StandardLinkRenderer() : super(pathStrategy: StandardLinkPathStrategy());
 
   @override
   void paint(
@@ -33,9 +34,25 @@ class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
     path.moveTo(lines.first.from.x, lines.first.from.y);
 
     for (final line in lines) {
-      // TODO: depending on type of line, draw differently
-      // If line missing, skip
-      path.lineTo(line.to.x, line.to.y);
+      if (line is JumpLine) {
+        Position curvePoint;
+
+        if (line.horizontal) {
+          curvePoint = Position(
+            (line.from.x + line.to.x) / 2,
+            line.from.y - line.overlapHeight,
+          );
+        } else {
+          curvePoint = Position(
+            line.from.x + line.overlapHeight,
+            (line.from.y + line.to.y) / 2,
+          );
+        }
+
+        path.quadraticBezierTo(curvePoint.x, curvePoint.y, line.to.x, line.to.y);
+      } else if (line is StraightLine) {
+        path.lineTo(line.to.x, line.to.y);
+      }
     }
 
     canvas.drawPath(path, paint);

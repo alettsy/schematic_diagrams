@@ -1,16 +1,16 @@
 import 'package:schematic_diagrams/src/core/parts/link_direction.dart';
-import 'package:schematic_diagrams/src/models/lines/line.dart';
+import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/models/link_details.dart';
 
 const double minDistanceFromNodes = 5;
 
 abstract class StandardLinkRouter {
-  List<Line> toTop(LinkDetails linkDetails);
-  List<Line> toBottom(LinkDetails linkDetails);
-  List<Line> toLeft(LinkDetails linkDetails);
-  List<Line> toRight(LinkDetails linkDetails);
+  List<StraightLine> toTop(LinkDetails linkDetails);
+  List<StraightLine> toBottom(LinkDetails linkDetails);
+  List<StraightLine> toLeft(LinkDetails linkDetails);
+  List<StraightLine> toRight(LinkDetails linkDetails);
 
-  List<Line> getLines(LinkDetails linkDetails) {
+  List<StraightLine> getLines(LinkDetails linkDetails) {
     switch (linkDetails.inFrom) {
       case LinkDirection.left:
         return toLeft(linkDetails);

@@ -32,8 +32,8 @@ class SchematicDiagramModel implements NodeResolver {
     this.canvasWidth = 2000,
     this.canPan = true,
     this.canZoom = true,
-    this.linkRenderer = const StandardLinkRenderer(),
-  });
+    LinkRenderer? linkRenderer
+  }) : linkRenderer = linkRenderer ?? StandardLinkRenderer();
 
   final List<Node> nodes;
   final List<Link> links;

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:schematic_diagrams/src/models/lines/line.dart';
 import 'package:schematic_diagrams/src/models/link_details.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/mixins/left_to_right.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/mixins/right_to_bottom.dart';
@@ -8,24 +7,26 @@ import 'package:schematic_diagrams/src/rendering/linking/standard/builders/mixin
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_path.dart';
 
+import '../../../../models/lines/straight_line.dart';
+
 class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToRight, RightToTop {
   @override
-  List<Line> toBottom(LinkDetails linkDetails) {
+  List<StraightLine> toBottom(LinkDetails linkDetails) {
     return rightToBottom(linkDetails).lines;
   }
 
   @override
-  List<Line> toLeft(LinkDetails linkDetails) {
+  List<StraightLine> toLeft(LinkDetails linkDetails) {
     return leftToRight(linkDetails.flip()).lines;
   }
 
   @override
-  List<Line> toTop(LinkDetails linkDetails) {
+  List<StraightLine> toTop(LinkDetails linkDetails) {
     return rightToTop(linkDetails).lines;
   }
 
   @override
-  List<Line> toRight(LinkDetails linkDetails) {
+  List<StraightLine> toRight(LinkDetails linkDetails) {
     var linkPath = StandardLinkPath(start: linkDetails.fromPortPosition);
 
     final isAboveFrom = linkDetails.toNode.isAbove(

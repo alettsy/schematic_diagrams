@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:schematic_diagrams/src/core/constants.dart';
 
 @immutable
 class Position {
@@ -19,5 +20,9 @@ class Position {
 
   Position operator /(double value) {
     return Position(x / value, y / value);
+  }
+
+  bool isNear(Position other) {
+    return (x - other.x).abs() < tolerance && (y - other.y).abs() < tolerance;
   }
 }
