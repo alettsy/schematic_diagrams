@@ -8,11 +8,16 @@ mixin LeftToBottom on StandardLinkRouter {
   StandardLinkPath leftToBottom(LinkDetails linkDetails) {
     var linkPath = StandardLinkPath(start: linkDetails.fromPortPosition);
 
-    final isLeftOfFrom = linkDetails.fromPortPosition.x > linkDetails.toPortPosition.x;
-    final isAboveFrom = linkDetails.fromPortPosition.y > linkDetails.toPortPosition.y;
+    final isLeftOfFrom =
+        linkDetails.fromPortPosition.x > linkDetails.toPortPosition.x;
+    final isAboveFrom =
+        linkDetails.fromPortPosition.y > linkDetails.toPortPosition.y;
 
     if (isLeftOfFrom && isAboveFrom) {
-      linkPath.addLineTo(linkDetails.toPortPosition.x, linkDetails.fromPortPosition.y);
+      linkPath.addLineTo(
+        linkDetails.toPortPosition.x,
+        linkDetails.fromPortPosition.y,
+      );
     } else if (isLeftOfFrom) {
       linkPath = _handleLeft(linkPath, linkDetails);
     } else if (isAboveFrom) {
@@ -21,13 +26,20 @@ mixin LeftToBottom on StandardLinkRouter {
       linkPath = _handleOtherPlacements(linkPath, linkDetails);
     }
 
-    linkPath.addLineTo(linkDetails.toPortPosition.x, linkDetails.toPortPosition.y);
+    linkPath.addLineTo(
+      linkDetails.toPortPosition.x,
+      linkDetails.toPortPosition.y,
+    );
     return linkPath;
   }
 
-  StandardLinkPath _handleLeft(StandardLinkPath linkPath, LinkDetails linkDetails) {
+  StandardLinkPath _handleLeft(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
     final toMaxY = linkDetails.toNode.maxY;
-    final midX = (linkDetails.toNode.maxX + linkDetails.fromNode.position.x) / 2;
+    final midX =
+        (linkDetails.toNode.maxX + linkDetails.fromNode.position.x) / 2;
 
     linkPath
       ..addLineTo(midX, linkDetails.fromPortPosition.y)
@@ -37,12 +49,16 @@ mixin LeftToBottom on StandardLinkRouter {
     return linkPath;
   }
 
-  StandardLinkPath _handleAbove(StandardLinkPath linkPath, LinkDetails linkDetails) {
-    final minX = min(linkDetails.fromPortPosition.x, linkDetails.toPortPosition.x);
+  StandardLinkPath _handleAbove(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
+    final minX = min(
+      linkDetails.fromPortPosition.x,
+      linkDetails.toPortPosition.x,
+    );
     final midY =
-        (linkDetails.fromNode.maxY +
-            linkDetails.toNode.position.y) /
-        2;
+        (linkDetails.fromNode.maxY + linkDetails.toNode.position.y) / 2;
 
     linkPath
       ..addLineTo(minX - minDistanceFromNodes, linkDetails.fromPortPosition.y)
@@ -52,7 +68,10 @@ mixin LeftToBottom on StandardLinkRouter {
     return linkPath;
   }
 
-  StandardLinkPath _handleOtherPlacements(StandardLinkPath linkPath, LinkDetails linkDetails) {
+  StandardLinkPath _handleOtherPlacements(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
     final toMaxY = linkDetails.toNode.maxY;
 
     linkPath

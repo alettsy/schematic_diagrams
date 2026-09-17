@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../core/mixins/mixins.dart';
-import '../core/parts/parts.dart';
-import '../models/node.dart';
-import '../rendering/painted_node_renderer.dart';
+import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/src/rendering/painted_node_renderer.dart';
 
 abstract class SensorNode extends Node
     with
@@ -16,24 +15,29 @@ abstract class SensorNode extends Node
   SensorNode({required this.prefix, required super.id, super.position})
     : super(
         renderer: CircularPaintedNodeRenderer<SensorNode>(),
-        themeOverride: NodeTheme(strokeWidth: 4),
-        size: Size(32, 32),
+        themeOverride: const NodeTheme(strokeWidth: 4),
+        size: const Size(32, 32),
       ) {
     textBlocks = [
       TextBlock(
         id: 'value',
         text: '0',
-        themeOverride: TextBlockTheme(color: Colors.purple),
-        position: Position(40, 7),
+        themeOverride: const TextBlockTheme(color: Colors.purple),
+        position: const Position(40, 7),
       ),
       TextBlock(
         id: 'prefix',
         text: prefix,
-        themeOverride: TextBlockTheme(color: Colors.lightGreen),
-        position: Position(12, 7),
+        themeOverride: const TextBlockTheme(color: Colors.lightGreen),
+        position: const Position(12, 7),
       ),
     ];
-    ports = [Port(id: 'top', position: Position(16, 0)), Port(id: 'bottom', position: Position(16, 32)), Port(id: 'left', position: Position(0, 16)), Port(id: 'right', position: Position(32, 16))];
+    ports = [
+      const Port(id: 'top', position: Position(16, 0)),
+      const Port(id: 'bottom', position: Position(16, 32)),
+      const Port(id: 'left', position: Position(0, 16)),
+      const Port(id: 'right', position: Position(32, 16)),
+    ];
   }
 
   final String prefix;

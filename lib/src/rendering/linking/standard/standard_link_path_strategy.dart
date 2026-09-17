@@ -196,10 +196,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
       }
 
       newLinkPath.add(
-        StraightLine(
-          from: lines.last.to,
-          to: Position(line.to.x, line.to.y),
-        ),
+        StraightLine(from: lines.last.to, to: Position(line.to.x, line.to.y)),
       );
       sectionManager.addLine(newLinkPath.last);
     }

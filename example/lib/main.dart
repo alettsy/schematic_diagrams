@@ -29,13 +29,16 @@ class NavigationOptions extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ElevatedButton(child: Text('Linking'), onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (context) => const LinkingPage(),
-              ),
-            );
-          },),
+          ElevatedButton(
+            child: Text('Linking'),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (context) => const LinkingPage(),
+                ),
+              );
+            },
+          ),
           ElevatedButton(
             child: Text('Overlapping'),
             onPressed: () {

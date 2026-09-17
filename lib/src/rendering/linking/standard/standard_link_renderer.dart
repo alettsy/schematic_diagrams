@@ -10,7 +10,10 @@ import '../../../models/node_resolver.dart';
 import '../link_renderer.dart';
 
 class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
-  StandardLinkRenderer({required SectionManager sectionManager}) : super(pathStrategy: StandardLinkPathStrategy(sectionManager: sectionManager));
+  StandardLinkRenderer({required SectionManager sectionManager})
+    : super(
+        pathStrategy: StandardLinkPathStrategy(sectionManager: sectionManager),
+      );
 
   @override
   void paint(
@@ -50,7 +53,12 @@ class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
           );
         }
 
-        path.quadraticBezierTo(curvePoint.x, curvePoint.y, line.to.x, line.to.y);
+        path.quadraticBezierTo(
+          curvePoint.x,
+          curvePoint.y,
+          line.to.x,
+          line.to.y,
+        );
       } else if (line is StraightLine) {
         path.lineTo(line.to.x, line.to.y);
       }

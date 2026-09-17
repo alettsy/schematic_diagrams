@@ -9,7 +9,8 @@ import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_
 
 import '../../../../models/lines/straight_line.dart';
 
-class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToRight, RightToTop {
+class StandardRightRouter extends StandardLinkRouter
+    with RightToBottom, LeftToRight, RightToTop {
   @override
   List<StraightLine> toBottom(LinkDetails linkDetails) {
     return rightToBottom(linkDetails).lines;
@@ -49,12 +50,18 @@ class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToR
       linkPath = _handleRight(linkPath, linkDetails);
     }
 
-    linkPath.addLineTo(linkDetails.toPortPosition.x, linkDetails.toPortPosition.y);
+    linkPath.addLineTo(
+      linkDetails.toPortPosition.x,
+      linkDetails.toPortPosition.y,
+    );
 
     return linkPath.lines;
   }
 
-  StandardLinkPath _handleAboveOrBelow(StandardLinkPath linkPath, LinkDetails linkDetails) {
+  StandardLinkPath _handleAboveOrBelow(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
     final toMaxX = linkDetails.toNode.maxX;
     final fromMaxX = linkDetails.fromNode.maxX;
     final drawOutX = max(
@@ -69,7 +76,10 @@ class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToR
     return linkPath;
   }
 
-  StandardLinkPath _handleLeft(StandardLinkPath linkPath, LinkDetails linkDetails) {
+  StandardLinkPath _handleLeft(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
     final toMaxX = linkDetails.toNode.maxX;
     final fromMaxY = linkDetails.fromNode.maxY;
 
@@ -89,7 +99,10 @@ class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToR
     return linkPath;
   }
 
-  StandardLinkPath _handleRight(StandardLinkPath linkPath, LinkDetails linkDetails) {
+  StandardLinkPath _handleRight(
+    StandardLinkPath linkPath,
+    LinkDetails linkDetails,
+  ) {
     final toMaxX = linkDetails.toNode.maxX;
     final toMaxY = linkDetails.toNode.maxY;
     final fromMaxX = linkDetails.fromNode.maxX;
@@ -98,10 +111,7 @@ class StandardRightRouter extends StandardLinkRouter with RightToBottom, LeftToR
     linkPath
       ..addLineTo(midX, linkDetails.fromPortPosition.y)
       ..addLineTo(midX, toMaxY + minDistanceFromNodes)
-      ..addLineTo(
-        toMaxX + minDistanceFromNodes,
-        toMaxY + minDistanceFromNodes,
-      )
+      ..addLineTo(toMaxX + minDistanceFromNodes, toMaxY + minDistanceFromNodes)
       ..addLineTo(toMaxX + minDistanceFromNodes, linkDetails.toPortPosition.y);
 
     return linkPath;

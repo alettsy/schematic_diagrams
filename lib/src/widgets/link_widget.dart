@@ -29,8 +29,12 @@ class LinkWidget extends StatelessWidget {
             builder: (context, child) => CustomPaint(
               painter: _PaintedLinkDelegate(
                 link: link,
-                onPaint: (canvas) =>
-                    renderer.paint(canvas, link, nodeResolver, defaultLinkTheme),
+                onPaint: (canvas) => renderer.paint(
+                  canvas,
+                  link,
+                  nodeResolver,
+                  defaultLinkTheme,
+                ),
               ),
             ),
           ),
@@ -43,7 +47,8 @@ class LinkWidget extends StatelessWidget {
         child: CustomPaint(
           painter: _PaintedLinkDelegate(
             link: link,
-            onPaint: (canvas) => renderer.paint(canvas, link, nodeResolver, defaultLinkTheme),
+            onPaint: (canvas) =>
+                renderer.paint(canvas, link, nodeResolver, defaultLinkTheme),
           ),
         ),
       ),

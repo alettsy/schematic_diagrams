@@ -9,9 +9,7 @@ class StandardLinkManager<T extends Link> implements LinkManager {
   StandardLinkManager() {
     sectionManager = StandardSectionManager();
 
-    renderer = StandardLinkRenderer<T>(
-      sectionManager: sectionManager,
-    );
+    renderer = StandardLinkRenderer<T>(sectionManager: sectionManager);
   }
 
   @override

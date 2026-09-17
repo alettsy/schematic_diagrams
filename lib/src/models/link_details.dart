@@ -2,7 +2,14 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 
 class LinkDetails {
-  LinkDetails({required this.outTo, required this.inFrom, required this.fromPortPosition, required this.toPortPosition, required this.fromNode, required this.toNode});
+  LinkDetails({
+    required this.outTo,
+    required this.inFrom,
+    required this.fromPortPosition,
+    required this.toPortPosition,
+    required this.fromNode,
+    required this.toNode,
+  });
 
   final LinkDirection outTo;
   final LinkDirection inFrom;
@@ -18,7 +25,7 @@ class LinkDetails {
       fromPortPosition: toPortPosition,
       toPortPosition: fromPortPosition,
       fromNode: toNode,
-      toNode: fromNode
+      toNode: fromNode,
     );
   }
 }
