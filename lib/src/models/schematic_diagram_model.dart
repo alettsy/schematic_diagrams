@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
-import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
 
 import '../core/parts/parts.dart';
+import '../rendering/linking/standard/standard_link_manager.dart';
 import 'link.dart';
 import 'node.dart';
 import 'node_resolver.dart';
@@ -32,12 +32,12 @@ class SchematicDiagramModel implements NodeResolver {
     this.canvasWidth = 2000,
     this.canPan = true,
     this.canZoom = true,
-    LinkRenderer? linkRenderer
-  }) : linkRenderer = linkRenderer ?? StandardLinkRenderer();
+    LinkManager? linkManager
+  }) : linkManager = linkManager ?? StandardLinkManager();
 
   final List<Node> nodes;
   final List<Link> links;
-  final LinkRenderer linkRenderer;
+  final LinkManager linkManager;
   final SchematicTheme schematicTheme;
   final NodeTheme defaultNodeTheme;
   final TextBlockTheme defaultTextBlockTheme;

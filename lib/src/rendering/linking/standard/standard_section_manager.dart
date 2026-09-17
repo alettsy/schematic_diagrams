@@ -1,38 +1,51 @@
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/lines/line.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
+import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 
 const sectionSize = 100.0;
 
-class StandardSectionManager {
+class StandardSectionManager implements SectionManager {
   StandardSectionManager();
 
   List<StandardSectionArea> sections = [];
 
+  @override
   void clear() {
     sections.clear();
   }
 
-  void addLine(StraightLine line) {
+  @override
+  void addLine(Line line) {
+    if (line is! StraightLine) return;
+
     final sectionAreas = getSectionAreasForLine(line);
     for (final section in sectionAreas) {
       section.addLine(line);
     }
   }
 
-  void removeLine(StraightLine line) {
+  @override
+  void removeLine(Line line) {
+    if (line is! StraightLine) return;
+
     final sectionAreas = getSectionAreasForLine(line);
     for (final section in sectionAreas) {
       section.removeLineById(line.id);
     }
   }
 
+  @override
   void removeLineById(String id) {
     for (final section in sections) {
       section.removeLineById(id);
     }
   }
 
-  List<Position> getAllIntersectionPoints(StraightLine line) {
+  @override
+  List<Position> getAllIntersectionPoints(Line line) {
+    if (line is! StraightLine) return <Position>[];
+
     final positions = <Position>{};
 
     for (final section in sections) {
@@ -42,10 +55,13 @@ class StandardSectionManager {
     return positions.toList();
   }
 
-  Set<StraightLine> getAllOverlappingLines(
-    StraightLine line, {
-    List<StraightLine> excludeLines = const [],
+  @override
+  Set<Line> getAllOverlappingLines(
+    Line line, {
+    List<Line> excludeLines = const [],
   }) {
+    if (line is! StraightLine) return {};
+
     final lines = <StraightLine>{};
 
     final sectionAreas = getSectionAreasForLine(line);
@@ -70,7 +86,6 @@ class StandardSectionManager {
   StandardSectionArea getOrAddSection(Position from, Position to) {
     try {
       final found = sections.firstWhere((s) => s.from == from && s.to == to);
-
       return found;
     } on StateError {
       final newSection = StandardSectionArea(from: from, to: to);
@@ -244,7 +259,7 @@ class StandardSectionArea {
     if (identical(this, other)) return true;
     if (other is! StandardSectionArea) return false;
 
-    return other.hashCode == hashCode;
+    return from == other.from && to == other.to;
   }
 
   @override

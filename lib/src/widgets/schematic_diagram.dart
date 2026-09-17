@@ -144,7 +144,7 @@ class _SchematicDiagramState extends State<SchematicDiagram> {
               child: Stack(
                 children: [
                   ...widget.model.links.map(
-                    (l) => widget.model.linkRenderer.build(
+                    (l) => widget.model.linkManager.renderer.build(
                       l,
                       widget.model,
                       widget.model.defaultLinkTheme,

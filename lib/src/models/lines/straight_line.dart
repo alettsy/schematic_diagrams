@@ -12,9 +12,9 @@ class StraightLine extends Line {
 
   bool get vertical => (from.x - to.x).abs() <= tolerance;
 
-  bool get leftToRight => vertical ? false : from.x < to.x;
+  bool get leftToRight => !vertical && from.x < to.x;
 
-  bool get topToBottom => horizontal ? false : from.y < to.y;
+  bool get topToBottom => !horizontal && from.y < to.y;
 
   bool overlapsWith(StraightLine line) {
     if (line.horizontal && horizontal) {
@@ -97,10 +97,6 @@ class StraightLine extends Line {
   }
 
   StraightLine copyWith({Position? to, Position? from}) {
-    return StraightLine(
-      to: to ?? this.to,
-      from: from ?? this.from,
-      id: id
-    );
+    return StraightLine(to: to ?? this.to, from: from ?? this.from, id: id);
   }
 }

@@ -25,4 +25,20 @@ class Position {
   bool isNear(Position other) {
     return (x - other.x).abs() < tolerance && (y - other.y).abs() < tolerance;
   }
+
+  @override
+  String toString() {
+    return '($x, $y)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return false;
+    if (other is! Position) return false;
+
+    return x == other.x && y == other.y;
+  }
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
 }

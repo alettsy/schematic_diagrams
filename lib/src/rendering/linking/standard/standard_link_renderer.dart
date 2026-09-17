@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/lines/jump_line.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
+import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_path_strategy.dart';
 
 import '../../../models/link.dart';
@@ -9,7 +10,7 @@ import '../../../models/node_resolver.dart';
 import '../link_renderer.dart';
 
 class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
-  StandardLinkRenderer() : super(pathStrategy: StandardLinkPathStrategy());
+  StandardLinkRenderer({required SectionManager sectionManager}) : super(pathStrategy: StandardLinkPathStrategy(sectionManager: sectionManager));
 
   @override
   void paint(

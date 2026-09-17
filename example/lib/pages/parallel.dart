@@ -14,6 +14,8 @@ class _ParallelPageState extends State<ParallelPage> {
     FlowSensorNode(id: 'f1', position: Position(100, 100)),
     FlowSensorNode(id: 'f2', position: Position(250, 150)),
     FlowSensorNode(id: 'f3', position: Position(350, 250)),
+    FlowSensorNode(id: 'f4', position: Position(50, 75)),
+    FlowSensorNode(id: 'f5', position: Position(150, 250)),
   ];
 
   final links = [
@@ -27,7 +29,7 @@ class _ParallelPageState extends State<ParallelPage> {
       outTo: LinkDirection.down,
     ),
     Link(
-      id: 'needs-adjustment',
+      id: 'needs-adjustment-1',
       fromNodeId: 'f2',
       toNodeId: 'f3',
       fromPortId: 'right',
@@ -35,13 +37,22 @@ class _ParallelPageState extends State<ParallelPage> {
       inFrom: LinkDirection.left,
       outTo: LinkDirection.right,
     ),
+    Link(
+      id: 'needs-adjustment-2',
+      fromNodeId: 'f4',
+      toNodeId: 'f5',
+      fromPortId: 'bottom',
+      toPortId: 'top',
+      inFrom: LinkDirection.up,
+      outTo: LinkDirection.down,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Overlapping'),
+        title: Text('Parallel Adjustments'),
         actions: [
           IconButton(
             icon: Icon(Icons.arrow_back),
