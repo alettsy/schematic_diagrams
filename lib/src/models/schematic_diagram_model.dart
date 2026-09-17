@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/link.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/src/models/node_resolver.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
-
-import '../core/parts/parts.dart';
-import '../rendering/linking/standard/standard_link_manager.dart';
-import 'link.dart';
-import 'node.dart';
-import 'node_resolver.dart';
+import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_manager.dart';
 
 class SchematicDiagramModel implements NodeResolver {
   SchematicDiagramModel({
@@ -15,12 +14,9 @@ class SchematicDiagramModel implements NodeResolver {
     this.defaultNodeTheme = const NodeTheme(
       fill: Colors.blue,
       stroke: Colors.black,
-      strokeWidth: 1,
+      strokeWidth: 2,
     ),
-    this.defaultTextBlockTheme = const TextBlockTheme(
-      color: Colors.black,
-      fontSize: 12,
-    ),
+    this.defaultTextBlockTheme = const TextBlockTheme(),
     this.defaultLinkTheme = const LinkTheme(
       stroke: Colors.black,
       strokeWidth: 2,
@@ -33,7 +29,21 @@ class SchematicDiagramModel implements NodeResolver {
     this.canPan = true,
     this.canZoom = true,
     LinkManager? linkManager,
-  }) : linkManager = linkManager ?? StandardLinkManager();
+  }) : linkManager = linkManager ?? StandardLinkManager() {
+    for (final node in nodes) {
+      if (_nodeIdRegistry.contains(node.id)) {
+        throw Exception('Duplicate node ID "${node.id}"');
+      }
+      _nodeIdRegistry.add(node.id);
+    }
+
+    for (final link in links) {
+      if (_linkIdRegistry.contains(link.id)) {
+        throw Exception('Duplicate node ID "${link.id}"');
+      }
+      _linkIdRegistry.add(link.id);
+    }
+  }
 
   final List<Node> nodes;
   final List<Link> links;
@@ -49,6 +59,9 @@ class SchematicDiagramModel implements NodeResolver {
   final double canvasHeight;
   final bool canZoom;
   final bool canPan;
+
+  final _nodeIdRegistry = <String>{};
+  final _linkIdRegistry = <String>{};
 
   @override
   Node? getNode(String nodeId) {
