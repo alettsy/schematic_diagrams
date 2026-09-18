@@ -1,8 +1,8 @@
 import 'package:schematic_diagrams/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/rendering/linking/link_path_strategy.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_bottom_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_left_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_right_router.dart';
@@ -91,7 +91,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
     while (shifts < maxShiftAttempts) {
       final secondLine = lines[1];
 
-      final overlappingLines = sectionManager.getAllOverlappingLines(
+      final overlappingLines = sectionManager.getAllCoincidingLines(
         secondLine,
         excludeLines: excludedLines,
       );

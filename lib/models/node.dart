@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
+import 'package:schematic_diagrams/rendering/node_renderer.dart';
 
 /// Base node that specifies the required properties for any node
 /// to exist in the diagram.
-/// 
+///
 /// How it looks is determined by the [renderer].
 abstract class Node {
   /// Default implementation.
@@ -58,25 +58,25 @@ abstract class Node {
     );
   }
 
-  /// Whether or not this node is above the [other] node, by at 
+  /// Whether or not this node is above the [other] node, by at
   /// least the [offset].
   bool isAbove(Node other, {double offset = 0.0}) {
     return maxY + offset < other.position.y;
   }
 
-  /// Whether or not this node is below the [other] node, by at 
+  /// Whether or not this node is below the [other] node, by at
   /// least the [offset].
   bool isBelow(Node other, {double offset = 0.0}) {
     return other.maxY + offset < position.y;
   }
 
-  /// Whether or not this node is left of the [other] node, by at 
+  /// Whether or not this node is left of the [other] node, by at
   /// least the [offset].
   bool isLeftOf(Node other, {double offset = 0.0}) {
     return maxX + offset < other.position.x;
   }
 
-  /// Whether or not this node is right of the [other] node, by at 
+  /// Whether or not this node is right of the [other] node, by at
   /// least the [offset].
   bool isRightOf(Node other, {double offset = 0.0}) {
     return other.maxX + offset < position.x;

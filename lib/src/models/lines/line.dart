@@ -1,13 +1,13 @@
 import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:uuid/v4.dart';
 
-/// Base line used for link routing. 
+/// Base line used for link routing.
 abstract class Line {
   /// Default implementation.
-  Line({String? id, required this.from, required this.to})
+  Line({required this.from, required this.to, String? id})
     : id = id ?? const UuidV4().generate();
 
-    /// The unique ID for this line.
+  /// The unique ID for this line.
   final String id;
 
   /// Where this line starts.

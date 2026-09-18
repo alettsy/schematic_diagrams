@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:schematic_diagrams/core/parts/link_theme.dart';
 import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/rendering/linking/link_renderer.dart';
 import 'package:schematic_diagrams/src/models/node_resolver.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
 
 /// Widget representation of a link.
 class LinkWidget extends StatelessWidget {

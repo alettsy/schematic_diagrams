@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/core/mixins/updatable.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/models/node.dart';
-import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
-import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
+import 'package:schematic_diagrams/rendering/node_renderer.dart';
+import 'package:schematic_diagrams/rendering/standard/standard_painted_text_renderer.dart';
+import 'package:schematic_diagrams/rendering/text_renderer.dart';
 
 /// Base renderer for nodes that uses [CustomPaint] to draw them.
 abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {

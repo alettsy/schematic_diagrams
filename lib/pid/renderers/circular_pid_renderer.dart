@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/models/node.dart';
-import 'package:schematic_diagrams/src/rendering/rendering.dart';
+import 'package:schematic_diagrams/rendering/rendering.dart';
 
 /// Circular renderer for the indicator/sensor nodes, such as
 /// the voltage indicator.

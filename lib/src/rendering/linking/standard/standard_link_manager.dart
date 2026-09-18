@@ -1,7 +1,7 @@
 import 'package:schematic_diagrams/models/link.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
-import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
+import 'package:schematic_diagrams/rendering/linking/link_manager.dart';
+import 'package:schematic_diagrams/rendering/linking/link_renderer.dart';
+import 'package:schematic_diagrams/rendering/linking/section_manager.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_renderer.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_section_manager.dart';
 

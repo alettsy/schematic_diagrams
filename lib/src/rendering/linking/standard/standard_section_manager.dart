@@ -1,12 +1,14 @@
 import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/rendering/linking/section_area.dart';
+import 'package:schematic_diagrams/rendering/linking/section_manager.dart';
 import 'package:schematic_diagrams/src/models/lines/line.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
-import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
-
-const sectionSize = 100.0;
+import 'package:schematic_diagrams/src/rendering/linking/standard/standard_section_area.dart';
 
 class StandardSectionManager implements SectionManager {
-  StandardSectionManager();
+  StandardSectionManager({this.sectionSize = 100.0});
+
+  final double sectionSize;
 
   List<StandardSectionArea> sections = [];
 
@@ -56,7 +58,7 @@ class StandardSectionManager implements SectionManager {
   }
 
   @override
-  Set<Line> getAllOverlappingLines(
+  Set<Line> getAllCoincidingLines(
     Line line, {
     List<Line> excludeLines = const [],
   }) {
@@ -66,7 +68,8 @@ class StandardSectionManager implements SectionManager {
 
     final sectionAreas = getSectionAreasForLine(line);
     for (final section in sectionAreas) {
-      lines.addAll(section.linesOverlapWith(line));
+      final coincidingLines = section.linesCoincideWith(line);
+      lines.addAll(coincidingLines as Set<StraightLine>);
     }
 
     final excludeIds = excludeLines.map((e) => e.id);
@@ -75,7 +78,10 @@ class StandardSectionManager implements SectionManager {
     return lines;
   }
 
-  List<StandardSectionArea> getSectionAreasForLine(StraightLine line) {
+  @override
+  List<SectionArea> getSectionAreasForLine(Line line) {
+    if (line is! StraightLine) return [];
+
     if (line.vertical) {
       return _getSectionAreasForVerticalLine(line);
     } else {
@@ -145,123 +151,4 @@ class StandardSectionManager implements SectionManager {
 
     return intersectingSections;
   }
-}
-
-class StandardSectionArea {
-  StandardSectionArea({required this.from, required this.to});
-
-  final Position from;
-  final Position to;
-  final List<StraightLine> lines = [];
-
-  void addLine(StraightLine line) {
-    final foundIndex = lines.indexWhere((l) => l.id == line.id);
-
-    if (foundIndex == -1) {
-      lines.add(line);
-    } else {
-      lines[foundIndex] = line;
-    }
-  }
-
-  void removeLineById(String id) {
-    lines.removeWhere((l) => l.id == id);
-  }
-
-  bool shouldContainLine(StraightLine line) {
-    var tMin = 0.0;
-    var tMax = 1.0;
-
-    final dx = line.to.x - line.from.x;
-    final dy = line.to.y - line.from.y;
-
-    for (var i = 0; i < 2; i++) {
-      double p;
-      double q;
-      if (i == 0) {
-        p = -dx;
-        q = line.from.x - from.x;
-      } else {
-        p = dx;
-        q = to.x - line.from.x;
-      }
-
-      if (p == 0 && q < 0) return false;
-
-      final r = q / p;
-      if (p < 0) {
-        if (r > tMax) return false;
-        if (r > tMin) tMin = r;
-      } else if (p > 0) {
-        if (r < tMin) return false;
-        if (r < tMax) tMax = r;
-      }
-    }
-
-    for (var i = 0; i < 2; i++) {
-      double p;
-      double q;
-      if (i == 0) {
-        p = -dy;
-        q = line.from.y - from.y;
-      } else {
-        p = dy;
-        q = to.y - line.from.y;
-      }
-
-      if (p == 0 && q < 0) return false;
-
-      final r = q / p;
-      if (p < 0) {
-        if (r > tMax) return false;
-        if (r > tMin) tMin = r;
-      } else if (p > 0) {
-        if (r < tMin) return false;
-        if (r < tMax) tMax = r;
-      }
-    }
-
-    return tMin <= tMax;
-  }
-
-  List<Position> lineIntersectsAt(StraightLine line) {
-    final intersectingPoints = <Position>[];
-
-    for (final l in lines) {
-      final intersection = l.getIntersectionWith(line);
-
-      if (intersection != null) {
-        intersectingPoints.add(intersection);
-      }
-    }
-
-    return intersectingPoints;
-  }
-
-  Set<StraightLine> linesOverlapWith(StraightLine line) {
-    final overlappingLines = <StraightLine>{};
-
-    for (final l in lines) {
-      if (l.id == line.id) {
-        continue;
-      }
-
-      if (l.isCoincidentWith(line)) {
-        overlappingLines.add(l);
-      }
-    }
-
-    return overlappingLines;
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! StandardSectionArea) return false;
-
-    return from == other.from && to == other.to;
-  }
-
-  @override
-  int get hashCode => Object.hash(from, to);
 }

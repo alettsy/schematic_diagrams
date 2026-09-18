@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/rendering/linking/link_renderer.dart';
+import 'package:schematic_diagrams/rendering/linking/section_manager.dart';
 import 'package:schematic_diagrams/src/models/lines/jump_line.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/models/node_resolver.dart';
-import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
-import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_path_strategy.dart';
 
 class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {

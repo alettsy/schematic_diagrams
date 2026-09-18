@@ -1,19 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:schematic_diagrams/core/parts/parts.dart';
-
-/// Renderer for all text-related parts of the diagram.
-abstract class PaintedTextRenderer {
-  /// Default implementation.
-  const PaintedTextRenderer();
-
-  /// Paint the [textBlock] to the [canvas] with the theme
-  /// [defaultTextBlockTheme].
-  void paint(
-    Canvas canvas,
-    TextBlock textBlock,
-    TextBlockTheme defaultTextBlockTheme,
-  );
-}
+import 'package:schematic_diagrams/rendering/text_renderer.dart';
 
 /// Standard text painter implementation.
 class StandardPaintedTextRenderer extends PaintedTextRenderer {
