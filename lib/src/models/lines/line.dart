@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:uuid/v4.dart';
 
 /// Base line used for link routing. 

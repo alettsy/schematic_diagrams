@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
+import 'package:schematic_diagrams/core/parts/position.dart';
 
 /// A place on a node where links can be connected to.
 @immutable

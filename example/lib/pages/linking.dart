@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/pid.dart';
 import 'package:schematic_diagrams/schematic_diagrams.dart';
 
 class LinkingPage extends StatefulWidget {

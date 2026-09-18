@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import 'package:schematic_diagrams/src/core/parts/node_theme.dart';
-import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/parts/node_theme.dart';
+import 'package:schematic_diagrams/core/parts/text_block_theme.dart';
+import 'package:schematic_diagrams/models/node.dart';
 import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
 /// Widget representation of a node.

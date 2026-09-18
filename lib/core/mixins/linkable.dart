@@ -1,6 +1,6 @@
-import 'package:schematic_diagrams/src/core/parts/port.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/parts/port.dart';
+import 'package:schematic_diagrams/core/parts/position.dart';
+import 'package:schematic_diagrams/models/node.dart';
 
 /// Allows nodes to be linked together via "ports".
 ///

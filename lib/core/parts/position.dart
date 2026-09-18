@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:schematic_diagrams/src/core/constants.dart';
+import 'package:schematic_diagrams/src/constants.dart';
 
 /// Representation of a Cartesian coordinate.
 @immutable

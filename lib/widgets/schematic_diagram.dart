@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/schematic_diagrams.dart';
+import 'package:schematic_diagrams/models/schematic_diagram_model.dart';
 
 /// The main schematic diagram widget.
 ///

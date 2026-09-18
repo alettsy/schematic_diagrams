@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
-import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
+import 'package:schematic_diagrams/core/parts/position.dart';
+import 'package:schematic_diagrams/core/parts/text_block_theme.dart';
 
 /// A block of text that a node can render as part of itself.
 class TextBlock {

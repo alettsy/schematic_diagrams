@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/link.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/models/node.dart';
 import 'package:schematic_diagrams/src/models/node_resolver.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_manager.dart';

@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:schematic_diagrams/src/core/constants.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
+import 'package:schematic_diagrams/core/parts/position.dart';
+import 'package:schematic_diagrams/src/constants.dart';
 import 'package:schematic_diagrams/src/models/lines/line.dart';
 
 /// A straight horizontal or vertical line.
-/// 
+///
 /// Used in the standard link router.
 class StraightLine extends Line {
   /// Default implementation.

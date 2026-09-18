@@ -1,5 +1,5 @@
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/models.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/node.dart';
 
 /// Internally used link details which provides all required references
 /// to calculate the route for the link.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/updatable.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/mixins/updatable.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/node.dart';
 import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/schematic_diagrams.dart';
+import 'package:schematic_diagrams/pid.dart';
 
 class ParallelPage extends StatefulWidget {
   const ParallelPage({super.key});

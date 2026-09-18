@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/node.dart';
 import 'package:schematic_diagrams/src/widgets/node_widget.dart';
 
 /// Base renderer for how to render nodes.

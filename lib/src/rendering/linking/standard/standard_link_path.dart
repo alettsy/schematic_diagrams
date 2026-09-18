@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/schematic_diagrams.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
 
 class StandardLinkPath {

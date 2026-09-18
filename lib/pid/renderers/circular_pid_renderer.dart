@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/models.dart';
+import 'package:schematic_diagrams/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/node.dart';
 import 'package:schematic_diagrams/src/rendering/rendering.dart';
 
 /// Circular renderer for the indicator/sensor nodes, such as

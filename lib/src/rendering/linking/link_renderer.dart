@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/src/models/node_resolver.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart';
-
-import '../../core/parts/link_theme.dart';
-import '../../models/link.dart';
-import '../../models/node_resolver.dart';
-import '../../widgets/link_widget.dart';
+import 'package:schematic_diagrams/src/widgets/link_widget.dart';
 
 abstract class LinkRenderer<T extends Link> {
   const LinkRenderer({required this.pathStrategy});

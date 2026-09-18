@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
-import 'package:schematic_diagrams/src/pid/renderers/circular_pid_renderer.dart';
+import 'package:schematic_diagrams/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/node.dart';
+import 'package:schematic_diagrams/pid/renderers/circular_pid_renderer.dart';
 
 /// Base indicator/sensor node, used for the creation of simple circular
 /// P&ID elements, such as a voltage indicator.

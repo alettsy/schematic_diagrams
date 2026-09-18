@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/src/core/parts/link_direction.dart';
+import 'package:schematic_diagrams/core/parts/link_direction.dart';
 import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/models/link_details.dart';
 

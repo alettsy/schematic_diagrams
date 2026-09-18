@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 
 /// A link between the port of one node to the port of
 /// another node, based on the node IDs and port IDs.

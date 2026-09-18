@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 
 /// Renderer for all text-related parts of the diagram.
 abstract class PaintedTextRenderer {

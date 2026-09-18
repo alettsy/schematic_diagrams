@@ -1,5 +1,5 @@
 
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/models/node.dart';
 
 /// Interface for specifying the ability to get a node from its
 /// ID.

@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:schematic_diagrams/src/core/mixins/updatable.dart';
-import 'package:schematic_diagrams/src/core/mixins/valuable.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/core/mixins/updatable.dart';
+import 'package:schematic_diagrams/core/mixins/valuable.dart';
+import 'package:schematic_diagrams/models/node.dart';
 
 /// Allows nodes to adapt their color to state.
 mixin StateToColorMappable<T> on Updatable, Valuable<T>, Node {

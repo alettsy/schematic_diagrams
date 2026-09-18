@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/lines/line.dart';
 
 abstract interface class SectionManager {

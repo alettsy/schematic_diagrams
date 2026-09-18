@@ -1,4 +1,4 @@
-import 'package:schematic_diagrams/src/core/constants.dart';
+import 'package:schematic_diagrams/src/constants.dart';
 import 'package:schematic_diagrams/src/models/lines/line.dart';
 
 /// A line that jumps over another.

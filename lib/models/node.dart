@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
 /// Base node that specifies the required properties for any node

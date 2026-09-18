@@ -1,15 +1,12 @@
-import 'package:schematic_diagrams/schematic_diagrams.dart';
-import 'package:schematic_diagrams/src/models/lines/jump_line.dart';
-import 'package:schematic_diagrams/src/models/lines/line.dart';
-import 'package:schematic_diagrams/src/models/lines/straight_line.dart';
-import 'package:schematic_diagrams/src/models/link_details.dart';
+import 'package:schematic_diagrams/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/core/parts/parts.dart';
+import 'package:schematic_diagrams/models/link.dart';
+import 'package:schematic_diagrams/src/models/models.dart';
+import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_bottom_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_left_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_right_router.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/builders/standard_top_router.dart';
-
-import '../../../models/node_resolver.dart';
-import '../link_path_strategy.dart';
 
 class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
   StandardLinkPathStrategy({
@@ -164,7 +161,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
   List<Line> _injectOverlapLines(List<StraightLine> lines) {
     var newLinkPath = <Line>[];
 
-    for (var line in lines) {
+    for (final line in lines) {
       final intersectionPoints = sectionManager.getAllIntersectionPoints(line)
         ..removeWhere((point) => point == line.to || point == line.from);
 
