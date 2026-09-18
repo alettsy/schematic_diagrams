@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/src/core/mixins/updatable.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
 
-import '../core/mixins/updatable.dart';
-import '../core/parts/parts.dart';
-import '../models/node.dart';
-import 'node_renderer.dart';
-import 'text_renderer.dart';
-
+/// Base renderer for nodes that uses [CustomPaint] to draw them.
 abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
-  final PaintedTextRenderer? textRenderer;
-
+  /// Default implementation.
   const PaintedNodeRenderer({
     this.textRenderer = const StandardPaintedTextRenderer(),
   });
 
+  /// Text renderer that uses [CustomPaint] to draw them.
+  final PaintedTextRenderer? textRenderer;
+
+  /// How to paint each [node] on the [canvas].
   void paint(
     Canvas canvas,
     T node,

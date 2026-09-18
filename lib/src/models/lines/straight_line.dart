@@ -1,22 +1,30 @@
 import 'dart:math';
 
 import 'package:schematic_diagrams/src/core/constants.dart';
+import 'package:schematic_diagrams/src/core/parts/position.dart';
 import 'package:schematic_diagrams/src/models/lines/line.dart';
 
-import '../../core/parts/parts.dart';
-
+/// A straight horizontal or vertical line.
+/// 
+/// Used in the standard link router.
 class StraightLine extends Line {
+  /// Default implementation.
   StraightLine({required super.from, required super.to, super.id});
 
+  /// Whether or not this line is moving horizontally.
   bool get horizontal => (from.y - to.y).abs() <= tolerance;
 
+  /// Whether or not this line is moving vertically.
   bool get vertical => (from.x - to.x).abs() <= tolerance;
 
+  /// Whether or not this line is moving from left to right.
   bool get leftToRight => !vertical && from.x < to.x;
 
+  /// Whether or not this line is moving from top to bottom.
   bool get topToBottom => !horizontal && from.y < to.y;
 
-  bool overlapsWith(StraightLine line) {
+  /// Whether or not this line is coincident with [line].
+  bool isCoincidentWith(StraightLine line) {
     if (line.horizontal && horizontal) {
       if ((line.from.y - from.y).abs() > tolerance) {
         return false;
@@ -46,7 +54,8 @@ class StraightLine extends Line {
     return false;
   }
 
-  Position? getIntersectionsWith(StraightLine other) {
+  /// The position where this line intersections with the [other] line, if any.
+  Position? getIntersectionWith(StraightLine other) {
     final x1 = from.x;
     final y1 = from.y;
     final x2 = to.x;
@@ -72,8 +81,8 @@ class StraightLine extends Line {
 
     final intersectionPoint = Position(intersectionX, intersectionY);
 
-    if (isPointOnSegment(intersectionPoint, this) &&
-        isPointOnSegment(intersectionPoint, other)) {
+    if (_isPointOnSegment(intersectionPoint, this) &&
+        _isPointOnSegment(intersectionPoint, other)) {
       if (fromOrToNearPosition(intersectionPoint) ||
           other.fromOrToNearPosition(intersectionPoint)) {
         return null;
@@ -85,17 +94,19 @@ class StraightLine extends Line {
     return null;
   }
 
-  bool isPointOnSegment(Position point, Line line) {
+  bool _isPointOnSegment(Position point, Line line) {
     return (point.x >= line.from.x && point.x <= line.to.x ||
             point.x >= line.to.x && point.x <= line.from.x) &&
         (point.y >= line.from.y && point.y <= line.to.y ||
             point.y >= line.to.y && point.y <= line.from.y);
   }
 
+  /// Flip this line, so the from and to are switched.
   StraightLine flip() {
     return StraightLine(from: to, to: from, id: id);
   }
 
+  /// Copy this line with new properties.
   StraightLine copyWith({Position? to, Position? from}) {
     return StraightLine(to: to ?? this.to, from: from ?? this.from, id: id);
   }

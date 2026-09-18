@@ -1,5 +1,8 @@
-import '../../models/node.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
 
+/// Allows nodes to update themselves, rather than
+/// remaing static.
 mixin Updatable on Node {
+  /// Describes how to update this node.
   void update();
 }

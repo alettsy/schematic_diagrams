@@ -227,8 +227,8 @@ class StandardSectionArea {
   List<Position> lineIntersectsAt(StraightLine line) {
     final intersectingPoints = <Position>[];
 
-    for (var l in lines) {
-      final intersection = l.getIntersectionsWith(line);
+    for (final l in lines) {
+      final intersection = l.getIntersectionWith(line);
 
       if (intersection != null) {
         intersectingPoints.add(intersection);
@@ -241,12 +241,12 @@ class StandardSectionArea {
   Set<StraightLine> linesOverlapWith(StraightLine line) {
     final overlappingLines = <StraightLine>{};
 
-    for (var l in lines) {
+    for (final l in lines) {
       if (l.id == line.id) {
         continue;
       }
 
-      if (l.overlapsWith(line)) {
+      if (l.isCoincidentWith(line)) {
         overlappingLines.add(l);
       }
     }

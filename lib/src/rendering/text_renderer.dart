@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 
+/// Renderer for all text-related parts of the diagram.
 abstract class PaintedTextRenderer {
+  /// Default implementation.
   const PaintedTextRenderer();
 
+  /// Paint the [textBlock] to the [canvas] with the theme
+  /// [defaultTextBlockTheme].
   void paint(
     Canvas canvas,
     TextBlock textBlock,
@@ -11,7 +15,9 @@ abstract class PaintedTextRenderer {
   );
 }
 
+/// Standard text painter implementation.
 class StandardPaintedTextRenderer extends PaintedTextRenderer {
+  /// Default implementation.
   const StandardPaintedTextRenderer();
 
   @override
@@ -35,20 +41,12 @@ class StandardPaintedTextRenderer extends PaintedTextRenderer {
       ),
     );
 
-    final textPainter = TextPainter(
-      text: textSpan,
-      textDirection: TextDirection.ltr,
-      textAlign: textBlock.textAlign,
-    );
-
-    textPainter.layout(
-      minWidth: textBlock.drawWidth,
-      maxWidth: textBlock.drawWidth,
-    );
-
-    textPainter.paint(
-      canvas,
-      Offset(textBlock.position.x, textBlock.position.y),
-    );
+    TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+        textAlign: textBlock.textAlign,
+      )
+      ..layout(minWidth: textBlock.drawWidth, maxWidth: textBlock.drawWidth)
+      ..paint(canvas, Offset(textBlock.position.x, textBlock.position.y));
   }
 }

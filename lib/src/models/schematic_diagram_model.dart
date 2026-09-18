@@ -6,7 +6,9 @@ import 'package:schematic_diagrams/src/models/node_resolver.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
 import 'package:schematic_diagrams/src/rendering/linking/standard/standard_link_manager.dart';
 
+/// The model of the schematic diagram.
 class SchematicDiagramModel implements NodeResolver {
+  /// Default implementation.
   SchematicDiagramModel({
     required this.nodes,
     this.links = const [],
@@ -45,19 +47,46 @@ class SchematicDiagramModel implements NodeResolver {
     }
   }
 
+  /// The nodes in the diagram.
   final List<Node> nodes;
+
+  /// The links between nodes in the diagram.
   final List<Link> links;
+
+  /// How the links are drawn and handled.
   final LinkManager linkManager;
+
+  /// The main theme of the diagram.
   final SchematicTheme schematicTheme;
+
+  /// The default theme for all nodes.
   final NodeTheme defaultNodeTheme;
+
+  /// The default theme for all text blocks.
   final TextBlockTheme defaultTextBlockTheme;
+
+  /// The default theme for all links.
   final LinkTheme defaultLinkTheme;
+
+  /// The maximum zoom a user can zoom in to.
   final double maxZoom;
+
+  /// The minimum zoom a user can zoom out to.
   final double minZoom;
+
+  /// How much each scroll should adjust the zoom by.
   final double scrollZoomStep;
+
+  /// The width of the diagram canvas.
   final double canvasWidth;
+
+  /// The height of the diagram canvas.
   final double canvasHeight;
+
+  /// Whether or not zooming is allowed.
   final bool canZoom;
+
+  /// Whether or not panning is allowed.
   final bool canPan;
 
   final _nodeIdRegistry = <String>{};
@@ -65,7 +94,6 @@ class SchematicDiagramModel implements NodeResolver {
 
   @override
   Node? getNode(String nodeId) {
-    // TODO: implement a more efficient solution for large diagrams
     for (final node in nodes) {
       if (node.id == nodeId) {
         return node;

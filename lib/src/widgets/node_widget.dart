@@ -1,11 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-import '../core/parts/node_theme.dart';
-import '../core/parts/text_block_theme.dart';
-import '../models/node.dart';
-import '../rendering/node_renderer.dart';
+import 'package:schematic_diagrams/src/core/parts/node_theme.dart';
+import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
+/// Widget representation of a node.
 class NodeWidget extends StatelessWidget {
+  /// Default implementation.
   const NodeWidget({
     required this.node,
     required this.renderer,
@@ -14,9 +16,17 @@ class NodeWidget extends StatelessWidget {
     super.key,
   });
 
+  /// The model representation of the node.
   final Node node;
+
+  /// How the node should be rendered to the diagram.
   final NodeRenderer renderer;
+
+  /// The default theme for the node.
   final NodeTheme defaultNodeTheme;
+
+  /// The default text block theme for all text blocks in the
+  /// node.
   final TextBlockTheme defaultTextTheme;
 
   @override

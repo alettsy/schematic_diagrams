@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// How the text block should look when painted on the screen.
 @immutable
 class TextBlockTheme {
+  /// Default implementation.
   const TextBlockTheme({
     this.color = Colors.black,
     this.fontSize = 12,
@@ -9,11 +11,19 @@ class TextBlockTheme {
     this.fontFamily,
   });
 
+  /// The color of the text.
   final Color? color;
+
+  /// The font family to use.
   final String? fontFamily;
+
+  /// The font size.
   final double? fontSize;
+
+  /// The font weight.
   final FontWeight? fontWeight;
 
+  /// Copy this text block theme with new properties.
   TextBlockTheme copyWith({
     Color? color,
     double? fontSize,

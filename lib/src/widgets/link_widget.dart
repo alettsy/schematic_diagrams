@@ -1,11 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:schematic_diagrams/src/core/parts/link_theme.dart';
+import 'package:schematic_diagrams/src/models/link.dart';
+import 'package:schematic_diagrams/src/models/node_resolver.dart';
+import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
 
-import '../core/parts/link_theme.dart';
-import '../models/link.dart';
-import '../models/node_resolver.dart';
-import '../rendering/linking/link_renderer.dart';
-
+/// Widget representation of a link.
 class LinkWidget extends StatelessWidget {
+  /// Default implementation.
   const LinkWidget({
     required this.link,
     required this.renderer,
@@ -14,9 +15,17 @@ class LinkWidget extends StatelessWidget {
     super.key,
   });
 
+  /// The model representation of the link.
   final Link link;
+
+  /// How the link should be rendered to the diagram.
   final LinkRenderer renderer;
+
+  /// Node resolver to allow links to reference nodes based on the provided,
+  /// necessary IDs.
   final NodeResolver nodeResolver;
+
+  /// The default theme for the link.
   final LinkTheme defaultLinkTheme;
 
   @override

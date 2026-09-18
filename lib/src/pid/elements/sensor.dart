@@ -14,6 +14,7 @@ abstract class SensorNode extends Node
         TextBlockable,
         Linkable,
         StateToColorMappable<double> {
+          /// Default implementation.
   SensorNode({
     required this.prefix,
     required super.id,
@@ -99,6 +100,7 @@ abstract class SensorNode extends Node
 /// P&ID standard implementation for a voltage indicator node, indicated
 /// by the tag "VI".
 class VoltageSensorNode extends SensorNode {
+  /// Default implementation.
   VoltageSensorNode({
     required super.id,
     super.position,
@@ -110,6 +112,7 @@ class VoltageSensorNode extends SensorNode {
 /// P&ID standard implementation for a flow indicator node, indicated
 /// by the tag "FI".
 class FlowSensorNode extends SensorNode {
+  /// Default implementation.
   FlowSensorNode({
     required super.id,
     super.position,
@@ -121,6 +124,7 @@ class FlowSensorNode extends SensorNode {
 /// P&ID standard implementation for a pressure indicator node, indicated
 /// by the tag "PI".
 class PressureIndicator extends SensorNode {
+  /// Default implementation.
   PressureIndicator({
     required super.id,
     super.position,
@@ -132,6 +136,7 @@ class PressureIndicator extends SensorNode {
 /// P&ID standard implementation for a level indicator node, indicated
 /// by the tag "LI".
 class LevelIndicator extends SensorNode {
+  /// Default implementation.
   LevelIndicator({
     required super.id,
     super.position,

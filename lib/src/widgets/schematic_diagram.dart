@@ -2,31 +2,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/schematic_diagrams.dart';
 
-class _SchematicDiagramTransformationNotifier extends ValueNotifier<Matrix4> {
-  _SchematicDiagramTransformationNotifier() : super(Matrix4.identity());
-
-  double _scale = 1.0;
-  double _tx = 0.0;
-  double _ty = 0.0;
-
-  double get scale => _scale;
-  double get tx => _tx;
-  double get ty => _ty;
-
-  void update({required double scale, required double tx, required double ty}) {
-    _scale = scale;
-    _tx = tx;
-    _ty = ty;
-
-    value = Matrix4.identity()
-      ..translateByDouble(_tx, _ty, 0, 1)
-      ..scaleByDouble(_scale, _scale, 1, 1);
-  }
-}
-
+/// The main schematic diagram widget.
+///
+/// This requires the [SchematicDiagramModel] to be provided.
 class SchematicDiagram extends StatefulWidget {
+  /// Default implementation.
   const SchematicDiagram({required this.model, super.key});
 
+  /// The model representation of the diagram, used to determine
+  /// everything about the diagram widget.
   final SchematicDiagramModel model;
 
   @override
@@ -44,8 +28,8 @@ class _SchematicDiagramState extends State<SchematicDiagram> {
     if (!widget.model.canZoom) return;
 
     final currentScale = _matrix.scale;
-    double newX = _matrix.tx;
-    double newY = _matrix.ty;
+    var newX = _matrix.tx;
+    var newY = _matrix.ty;
 
     final location = event.localPosition;
     final canZoomIn = currentScale != widget.model.maxZoom;
@@ -57,13 +41,13 @@ class _SchematicDiagramState extends State<SchematicDiagram> {
       return;
     }
 
-    double newScale = isZoomingIn
+    var newScale = isZoomingIn
         ? currentScale + widget.model.scrollZoomStep
         : currentScale - widget.model.scrollZoomStep;
 
     newScale = newScale.clamp(widget.model.minZoom, widget.model.maxZoom);
 
-    final double ratio = (newScale / currentScale) - 1.0;
+    final ratio = (newScale / currentScale) - 1.0;
 
     newX -= (location.dx - newX) * ratio;
     newY -= (location.dy - newY) * ratio;
@@ -82,9 +66,9 @@ class _SchematicDiagramState extends State<SchematicDiagram> {
     final previousScale = _matrix.scale;
     final focalPoint = details.localFocalPoint;
 
-    double newScale = _matrix.scale;
-    double newX = _matrix.tx;
-    double newY = _matrix.ty;
+    var newScale = _matrix.scale;
+    var newX = _matrix.tx;
+    var newY = _matrix.ty;
 
     if (widget.model.canPan) {
       newX += details.focalPointDelta.dx;
@@ -164,5 +148,27 @@ class _SchematicDiagramState extends State<SchematicDiagram> {
         ),
       ),
     );
+  }
+}
+
+class _SchematicDiagramTransformationNotifier extends ValueNotifier<Matrix4> {
+  _SchematicDiagramTransformationNotifier() : super(Matrix4.identity());
+
+  double _scale = 1;
+  double _tx = 0;
+  double _ty = 0;
+
+  double get scale => _scale;
+  double get tx => _tx;
+  double get ty => _ty;
+
+  void update({required double scale, required double tx, required double ty}) {
+    _scale = scale;
+    _tx = tx;
+    _ty = ty;
+
+    value = Matrix4.identity()
+      ..translateByDouble(_tx, _ty, 0, 1)
+      ..scaleByDouble(_scale, _scale, 1, 1);
   }
 }
