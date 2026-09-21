@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:schematic_diagrams/src/core/parts/node_theme.dart';
 import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
@@ -38,11 +40,14 @@ class NodeWidget extends StatelessWidget {
           listenable: node as Listenable,
           builder: (context, _) => Transform.translate(
             offset: node.position.asOffset,
-            child: RepaintBoundary(
-              child: renderer.buildContent(
-                node,
-                defaultNodeTheme,
-                defaultTextTheme,
+            child: Transform.rotate(
+              angle: (node.rotation * pi) / 180,
+              child: RepaintBoundary(
+                child: renderer.buildContent(
+                  node,
+                  defaultNodeTheme,
+                  defaultTextTheme,
+                ),
               ),
             ),
           ),

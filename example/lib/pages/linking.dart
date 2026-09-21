@@ -16,7 +16,7 @@ class _LinkingPageState extends State<LinkingPage> {
   final nodes = [
     VoltageSensorNode(id: 'v1', position: Position(300, 300)),
     FlowSensorNode(id: 'f1', position: Position(100, 100)),
-    GateValve(id: 'g1', position: Position(500, 100)),
+    GateValve(id: 'g1', position: Position(500, 100), rotation: 90),
   ];
 
   final links = [
@@ -28,6 +28,15 @@ class _LinkingPageState extends State<LinkingPage> {
       toPortId: 'top',
       inFrom: LinkDirection.up,
       outTo: LinkDirection.down,
+    ),
+    Link(
+      id: 'example-2',
+      fromNodeId: 'f1',
+      toNodeId: 'g1',
+      fromPortId: 'right',
+      toPortId: 'bottom',
+      inFrom: LinkDirection.left,
+      outTo: LinkDirection.right,
     ),
   ];
 

@@ -15,6 +15,7 @@ class GateValve extends Node
   GateValve({
     required super.id,
     super.position,
+    super.rotation,
     super.size = const Size(28, 32),
   }) : super(renderer: GateValveRenderer()) {
     final halfWidth = size.width / 2;
