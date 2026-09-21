@@ -42,6 +42,19 @@ abstract class Node {
   /// Get the currently active theme for this node.
   NodeTheme get activeThemeOverride => transientTheme ?? themeOverride;
 
+  /// Targeted theme overrides for individual parts of the node.
+  final Map<int, NodeTheme?> _partThemeOverrides = {};
+
+  /// Get a part theme override for part [index].
+  NodeTheme? getPartThemeOverride(int index) {
+    return _partThemeOverrides[index];
+  }
+
+  /// Set a part [theme] override for part [index].
+  void setPartThemeOverride(int index, NodeTheme? theme) {
+    _partThemeOverrides[index] = theme;
+  }
+
   /// Get the maximum X position of this node.
   double get maxX => position.x + size.width;
 

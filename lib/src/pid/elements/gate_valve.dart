@@ -1,17 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/pid/renderers/gate_valve_renderer.dart';
 
 class GateValve extends Node
-    with
-        ChangeNotifier,
-        Updatable,
-        Valuable<double>,
-        TextBlockable,
-        Linkable,
-        StateToColorMappable<double> {
+    with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
   GateValve({
     required super.id,
     super.position,
@@ -27,6 +21,16 @@ class GateValve extends Node
 
   @override
   void update() {
-    // TODO: implement update
+    if (value == null) return;
+
+    if (value! > 500) {
+      setPartThemeOverride(0, const NodeTheme(fill: Colors.orange));
+      setPartThemeOverride(1, const NodeTheme(fill: Colors.green));
+    } else {
+      setPartThemeOverride(0, const NodeTheme(fill: Colors.purple));
+      setPartThemeOverride(1, const NodeTheme(fill: Colors.brown));
+    }
+
+    notifyListeners();
   }
 }

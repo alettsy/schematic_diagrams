@@ -13,7 +13,7 @@ class LinkingPage extends StatefulWidget {
 }
 
 class _LinkingPageState extends State<LinkingPage> {
-  final nodes = [
+  final nodes = <Node>[
     VoltageSensorNode(id: 'v1', position: Position(300, 300)),
     FlowSensorNode(id: 'f1', position: Position(100, 100)),
     GateValve(id: 'g1', position: Position(500, 100), rotation: 90),
@@ -46,10 +46,12 @@ class _LinkingPageState extends State<LinkingPage> {
   void initState() {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 5), (_) {
-      final randomNum1 = Random().nextDouble() * 1000;
-      final randomNum2 = Random().nextDouble() * 1000;
-      nodes.first.value = randomNum1;
-      nodes.last.value = randomNum2;
+      for (final node in nodes) {
+        if (node is! Valuable) continue;
+
+        final random = (Random().nextDouble() * 1000).roundToDouble();
+        node.value = random;
+      }
     });
   }
 

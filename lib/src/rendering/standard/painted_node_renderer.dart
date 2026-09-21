@@ -9,7 +9,7 @@ import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
 /// Base renderer for nodes that uses [CustomPaint] to draw them.
 abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
   /// Default implementation.
-  const PaintedNodeRenderer({
+  PaintedNodeRenderer({
     this.textRenderer = const StandardPaintedTextRenderer(),
   });
 
@@ -25,9 +25,12 @@ abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
   );
 
   /// Get the fill paint based on [node] and [defaultNodeTheme].
-  Paint getFill(T node, NodeTheme defaultNodeTheme) {
+  Paint getFill(T node, NodeTheme defaultNodeTheme, {int partIndex = 0}) {
+    final partTheme = node.getPartThemeOverride(partIndex);
+
     return Paint()
       ..color =
+          partTheme?.fill ??
           node.activeThemeOverride.fill ??
           defaultNodeTheme.fill ??
           Colors.transparent
@@ -35,14 +38,18 @@ abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
   }
 
   /// Get the stroke paint based on [node] and [defaultNodeTheme].
-  Paint getStroke(T node, NodeTheme defaultNodeTheme) {
+  Paint getStroke(T node, NodeTheme defaultNodeTheme, {int partIndex = 0}) {
+    final partTheme = node.getPartThemeOverride(partIndex);
+
     return Paint()
       ..color =
+          partTheme?.stroke ??
           node.activeThemeOverride.stroke ??
           defaultNodeTheme.stroke ??
           Colors.transparent
       ..style = PaintingStyle.stroke
       ..strokeWidth =
+          partTheme?.strokeWidth ??
           node.activeThemeOverride.strokeWidth ??
           defaultNodeTheme.strokeWidth ??
           0;

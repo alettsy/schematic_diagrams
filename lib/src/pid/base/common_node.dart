@@ -5,13 +5,7 @@ import 'package:schematic_diagrams/src/core/parts/text_block.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 
 abstract class CommonNode extends Node
-    with
-        ChangeNotifier,
-        Updatable,
-        Valuable<double>,
-        TextBlockable,
-        Linkable,
-        StateToColorMappable<double> {
+    with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
   CommonNode({
     required super.id,
     required super.renderer,

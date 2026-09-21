@@ -13,9 +13,6 @@ class GateValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
     NodeTheme defaultNodeTheme,
     TextBlockTheme defaultTextBlockTheme,
   ) {
-    final fillPaint = getFill(node, defaultNodeTheme);
-    final outlinePaint = getStroke(node, defaultNodeTheme);
-
     final centerX = node.size.width / 2;
     final centerY = node.size.height / 2;
 
@@ -26,8 +23,8 @@ class GateValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
       ..close();
 
     canvas
-      ..drawPath(topPath, fillPaint)
-      ..drawPath(topPath, outlinePaint);
+      ..drawPath(topPath, getFill(node, defaultNodeTheme, partIndex: 0))
+      ..drawPath(topPath, getStroke(node, defaultNodeTheme, partIndex: 0));
 
     final bottomPath = Path()
       ..moveTo(centerX, centerY)
@@ -36,7 +33,7 @@ class GateValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
       ..close();
 
     canvas
-      ..drawPath(bottomPath, fillPaint)
-      ..drawPath(bottomPath, outlinePaint);
+      ..drawPath(bottomPath, getFill(node, defaultNodeTheme, partIndex: 1))
+      ..drawPath(bottomPath, getStroke(node, defaultNodeTheme, partIndex: 1));
   }
 }
