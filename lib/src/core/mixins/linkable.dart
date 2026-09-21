@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'package:flutter/gestures.dart';
 import 'package:schematic_diagrams/src/core/parts/port.dart';
 import 'package:schematic_diagrams/src/core/parts/position.dart';
 import 'package:schematic_diagrams/src/models/node.dart';
@@ -13,9 +16,21 @@ mixin Linkable on Node {
   /// Get the port placement offset from the node position.
   Position? getPortOffset(String portId) {
     for (final port in ports) {
-      if (port.id == portId) {
-        return port.position + position;
-      }
+      if (port.id != portId) continue;
+
+      final center = Offset(size.width / 2, size.height / 2);
+      final local = port.position.asOffset - center;
+      final angle = (rotation * math.pi) / 180;
+
+      final rotated = Offset(
+        local.dx * math.cos(angle) - local.dy * math.sin(angle),
+        local.dx * math.sin(angle) + local.dy * math.cos(angle),
+      );
+
+      return Position(
+        position.x + center.dx + rotated.dx,
+        position.y + center.dy + rotated.dy,
+      );
     }
 
     return null;
