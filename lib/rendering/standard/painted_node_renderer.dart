@@ -24,6 +24,30 @@ abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
     TextBlockTheme defaultTextBlockTheme,
   );
 
+  /// Get the fill paint based on [node] and [defaultNodeTheme].
+  Paint getFill(T node, NodeTheme defaultNodeTheme) {
+    return Paint()
+      ..color =
+          node.activeThemeOverride.fill ??
+          defaultNodeTheme.fill ??
+          Colors.transparent
+      ..style = PaintingStyle.fill;
+  }
+
+  /// Get the stroke paint based on [node] and [defaultNodeTheme].
+  Paint getStroke(T node, NodeTheme defaultNodeTheme) {
+    return Paint()
+      ..color =
+          node.activeThemeOverride.stroke ??
+          defaultNodeTheme.stroke ??
+          Colors.transparent
+      ..style = PaintingStyle.stroke
+      ..strokeWidth =
+          node.activeThemeOverride.strokeWidth ??
+          defaultNodeTheme.strokeWidth ??
+          0;
+  }
+
   @override
   Widget buildContent(
     T node,

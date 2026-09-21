@@ -21,23 +21,8 @@ class CircularPaintedNodeRenderer<T extends Node>
     final center = Offset(node.size.width / 2, node.size.height / 2);
     final radius = node.size.width / 2;
 
-    final fillPaint = Paint()
-      ..color =
-          node.activeThemeOverride.fill ??
-          defaultNodeTheme.fill ??
-          Colors.transparent
-      ..style = PaintingStyle.fill;
-
-    final outlinePaint = Paint()
-      ..color =
-          node.activeThemeOverride.stroke ??
-          defaultNodeTheme.stroke ??
-          Colors.transparent
-      ..style = PaintingStyle.stroke
-      ..strokeWidth =
-          node.activeThemeOverride.strokeWidth ??
-          defaultNodeTheme.strokeWidth ??
-          0;
+    final fillPaint = getFill(node, defaultNodeTheme);
+    final outlinePaint = getStroke(node, defaultNodeTheme);
 
     canvas
       ..drawCircle(center, radius, fillPaint)
