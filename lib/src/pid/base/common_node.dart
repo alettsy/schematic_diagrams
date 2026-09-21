@@ -11,6 +11,7 @@ abstract class CommonNode extends Node
     required super.renderer,
     super.position,
     super.size,
+    super.rotation,
     this.title,
     this.showValue = true,
   }) {
@@ -40,4 +41,9 @@ abstract class CommonNode extends Node
 
   /// Whether or not to show the numerical value next to the sensor.
   final bool showValue;
+
+  @override
+  void update() {
+    notifyListeners();
+  }
 }

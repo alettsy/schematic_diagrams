@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/models/models.dart';
+import 'package:schematic_diagrams/src/pid/base/common_node.dart';
 import 'package:schematic_diagrams/src/pid/renderers/gate_valve_renderer.dart';
 
-class GateValve extends Node
-    with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
+class GateValve extends CommonNode {
   GateValve({
     required super.id,
     super.position,
@@ -31,6 +29,6 @@ class GateValve extends Node
       setPartThemeOverride(1, const NodeTheme(fill: Colors.brown));
     }
 
-    notifyListeners();
+    super.update();
   }
 }

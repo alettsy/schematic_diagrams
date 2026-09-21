@@ -17,6 +17,7 @@ class _LinkingPageState extends State<LinkingPage> {
     VoltageSensorNode(id: 'v1', position: Position(300, 300)),
     FlowSensorNode(id: 'f1', position: Position(100, 100)),
     GateValve(id: 'g1', position: Position(500, 100), rotation: 90),
+    ThreeWayValve(id: 'twv1', position: Position(500, 150), rotation: 0),
   ];
 
   final links = [

@@ -59,7 +59,7 @@ abstract class SensorNode extends CommonNode {
       transientTheme = themeOverride.copyWith(fill: Colors.red);
     }
 
-    notifyListeners();
+    super.update();
   }
 }
 
