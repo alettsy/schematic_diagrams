@@ -1,4 +1,4 @@
-export 'core/mixins/mixins.dart';
-export 'core/parts/parts.dart';
-export 'models/models.dart';
-export 'widgets/schematic_diagram.dart';
+export 'src/core/mixins/mixins.dart';
+export 'src/core/parts/parts.dart';
+export 'src/models/models.dart';
+export 'src/widgets/schematic_diagram.dart';
