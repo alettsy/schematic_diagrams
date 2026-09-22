@@ -53,7 +53,7 @@ class _ParallelPageState extends State<ParallelPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Parallel Adjustments'),
+        title: Text('Coincidence Adjustments'),
         actions: [
           IconButton(
             icon: Icon(Icons.arrow_back),
