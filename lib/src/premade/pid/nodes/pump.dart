@@ -5,8 +5,14 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/pump_pid_renderer.d
 /// Standard P&ID pump.
 class Pump extends CommonNode {
   /// Default implementation.
-  Pump({required super.id, super.position, super.rotation, super.size})
-    : super(renderer: PumpRenderer()) {
+  Pump({
+    required super.id,
+    super.position,
+    super.rotation,
+    super.size,
+    super.title,
+    super.showValue,
+  }) : super(renderer: PumpRenderer()) {
     final halfHeight = size.height / 2;
     final halfWidth = size.width / 2;
 

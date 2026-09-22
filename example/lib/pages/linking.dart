@@ -17,7 +17,7 @@ class _LinkingPageState extends State<LinkingPage> {
     GateValve(id: 'g1', position: Position(50, 75)),
     GateValve(id: 'g2', position: Position(90, 75)),
     GateValve(id: 'g3', position: Position(50, 150)),
-    GateValve(id: 'g4', position: Position(90, 150)),
+    GateValve(id: 'g4', position: Position(90, 150), ),
     SvgDataNode(
       id: 'svg',
       viewBox: '15.13 36.14 4.93 5.5',

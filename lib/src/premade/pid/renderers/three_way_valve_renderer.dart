@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
-import 'package:schematic_diagrams/src/rendering/standard/painted_node_renderer.dart';
+import 'package:schematic_diagrams/src/premade/pid/base/base_renderer.dart';
 
 /// Renderer for the standard P&ID three-way valve.
-class ThreeWayValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
+class ThreeWayValveRenderer<T extends Node> extends BaseRenderer<T> {
   /// Default implementation.
   ThreeWayValveRenderer({super.textRenderer});
 
@@ -47,5 +47,7 @@ class ThreeWayValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
     canvas
       ..drawPath(rightPath, getFill(node, defaultNodeTheme, partIndex: 2))
       ..drawPath(rightPath, getStroke(node, defaultNodeTheme, partIndex: 2));
+
+      super.paint(canvas, node, defaultNodeTheme, defaultTextBlockTheme);
   }
 }

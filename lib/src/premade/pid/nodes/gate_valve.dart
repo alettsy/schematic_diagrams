@@ -10,6 +10,8 @@ class GateValve extends CommonNode {
     required super.id,
     super.position,
     super.rotation,
+    super.title,
+    super.showValue = false,
     super.size = const Size(24, 32),
   }) : super(renderer: GateValveRenderer()) {
     final halfWidth = size.width / 2;

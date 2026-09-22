@@ -50,12 +50,6 @@ abstract class SensorNode extends CommonNode {
   void update() {
     if (value == null) return;
 
-    for (var i = 0; i < textBlocks.length; i++) {
-      if (textBlocks[i].id == 'value') {
-        textBlocks[i] = textBlocks[i].copyWith(text: value.toString());
-      }
-    }
-
     if (value! > threshold) {
       transientTheme = themeOverride.copyWith(fill: Colors.green);
     } else {

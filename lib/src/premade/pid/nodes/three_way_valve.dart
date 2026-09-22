@@ -10,6 +10,8 @@ class ThreeWayValve extends CommonNode {
     required super.id,
     super.position,
     super.rotation,
+    super.title,
+    super.showValue,
     super.size = const Size(30, 34),
   }) : super(renderer: ThreeWayValveRenderer()) {
     final thirdWidth = size.width / 3;

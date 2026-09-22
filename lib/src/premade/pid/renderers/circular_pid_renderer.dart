@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/node.dart';
-import 'package:schematic_diagrams/src/rendering/rendering.dart';
+import 'package:schematic_diagrams/src/premade/pid/base/base_renderer.dart';
 
 /// Circular renderer for the indicator/sensor nodes, such as
 /// the voltage indicator.
-class CircularPaintedNodeRenderer<T extends Node>
-    extends PaintedNodeRenderer<T> {
+class CircularPaintedNodeRenderer<T extends Node> extends BaseRenderer<T> {
   /// Default implementation.
   CircularPaintedNodeRenderer({super.textRenderer});
 
@@ -28,10 +26,6 @@ class CircularPaintedNodeRenderer<T extends Node>
       ..drawCircle(center, radius, fillPaint)
       ..drawCircle(center, radius, outlinePaint);
 
-    if (node is TextBlockable) {
-      for (final textBlock in (node as TextBlockable).textBlocks) {
-        textRenderer?.paint(canvas, textBlock, defaultTextBlockTheme);
-      }
-    }
+    super.paint(canvas, node, defaultNodeTheme, defaultTextBlockTheme);
   }
 }
