@@ -3,6 +3,8 @@ export 'linking/link_path_strategy.dart';
 export 'linking/link_renderer.dart';
 export 'linking/section_manager.dart';
 export 'node_renderer.dart';
+export 'standard/image_renderer.dart';
 export 'standard/painted_node_renderer.dart';
 export 'standard/standard_painted_text_renderer.dart';
+export 'standard/svg_data_renderer.dart';
 export 'text_renderer.dart';

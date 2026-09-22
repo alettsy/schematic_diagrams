@@ -4,8 +4,11 @@ import 'package:schematic_diagrams/src/core/parts/position.dart';
 import 'package:schematic_diagrams/src/core/parts/text_block.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 
+/// Base common P&ID node, used for the creation of other P&ID nodes, such as
+/// the pump and gate valve.
 abstract class CommonNode extends Node
     with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
+  /// Default implementation.
   CommonNode({
     required super.id,
     required super.renderer,

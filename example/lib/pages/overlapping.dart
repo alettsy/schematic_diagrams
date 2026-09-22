@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/schematic_diagrams.dart';
-import 'package:schematic_diagrams/pid.dart';
+import 'package:schematic_diagrams/premade.dart';
 
 class OverlappingPage extends StatefulWidget {
   const OverlappingPage({super.key});

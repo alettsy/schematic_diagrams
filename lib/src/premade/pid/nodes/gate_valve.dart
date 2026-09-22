@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/pid/base/common_node.dart';
-import 'package:schematic_diagrams/src/pid/renderers/gate_valve_renderer.dart';
+import 'package:schematic_diagrams/src/premade/pid/base/common_node.dart';
+import 'package:schematic_diagrams/src/premade/pid/renderers/gate_valve_renderer.dart';
 
 class GateValve extends CommonNode {
   GateValve({
     required super.id,
     super.position,
     super.rotation,
-    super.size = const Size(28, 32),
+    super.size = const Size(24, 32),
   }) : super(renderer: GateValveRenderer()) {
     final halfWidth = size.width / 2;
     ports = [
@@ -21,12 +21,12 @@ class GateValve extends CommonNode {
   void update() {
     if (value == null) return;
 
-    if (value! > 500) {
-      setPartThemeOverride(0, const NodeTheme(fill: Colors.orange));
+    if (value! > 0) {
+      setPartThemeOverride(0, const NodeTheme(fill: Colors.green));
       setPartThemeOverride(1, const NodeTheme(fill: Colors.green));
     } else {
-      setPartThemeOverride(0, const NodeTheme(fill: Colors.purple));
-      setPartThemeOverride(1, const NodeTheme(fill: Colors.brown));
+      setPartThemeOverride(0, null);
+      setPartThemeOverride(1, null);
     }
 
     super.update();

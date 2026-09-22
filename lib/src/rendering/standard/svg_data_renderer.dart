@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:schematic_diagrams/src/core/helpers/color_helper.dart';
+import 'package:schematic_diagrams/src/core/parts/node_theme.dart';
+import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
+import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
+
+class SvgDataNodeRenderer extends NodeRenderer {
+  SvgDataNodeRenderer({required this.svgData, this.viewBox = '0 0 100 100'});
+
+  final String viewBox;
+  final List<String> svgData;
+
+  @override
+  Widget buildContent(
+    Node node,
+    NodeTheme defaultNodeTheme,
+    TextBlockTheme defaultTextBlockTheme,
+  ) {
+    return SizedBox(
+      height: node.size.height,
+      width: node.size.width,
+      child: SvgPicture.string(
+        _generateSvg(node, defaultNodeTheme),
+        height: node.size.height,
+        width: node.size.width,
+        fit: BoxFit.fill,
+      ),
+    );
+  }
+
+  String _generateSvg(Node node, NodeTheme defaultNodeTheme) {
+    return '<svg viewBox="$viewBox">${_generateSvgData(node, defaultNodeTheme)}</svg>';
+  }
+
+  String _generateSvgData(Node node, NodeTheme defaultNodeTheme) {
+    final result = StringBuffer();
+
+    for (var i = 0; i < svgData.length; i++) {
+      final partTheme = node.getPartThemeOverride(i);
+
+      final fill =
+          partTheme?.fill ??
+          node.activeThemeOverride.fill ??
+          defaultNodeTheme.fill ??
+          Colors.transparent;
+
+      final stroke =
+          partTheme?.stroke ??
+          node.activeThemeOverride.stroke ??
+          defaultNodeTheme.stroke ??
+          Colors.transparent;
+
+      final strokeWidth =
+          partTheme?.strokeWidth ??
+          node.activeThemeOverride.strokeWidth ??
+          defaultNodeTheme.strokeWidth ??
+          1;
+
+      result.write(
+        '<path stroke="${stroke.hex}" fill="${fill.hex}" stroke-width="$strokeWidth" d="${svgData[i]}" />',
+      );
+    }
+
+    return result.toString();
+  }
+}

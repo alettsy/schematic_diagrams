@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
-import 'package:schematic_diagrams/src/pid/base/common_node.dart';
-import 'package:schematic_diagrams/src/pid/renderers/circular_pid_renderer.dart';
+import 'package:schematic_diagrams/src/premade/pid/base/common_node.dart';
+import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_renderer.dart';
 
 /// Base indicator/sensor node, used for the creation of simple circular
 /// P&ID elements, such as a voltage indicator.
@@ -14,8 +14,8 @@ abstract class SensorNode extends CommonNode {
     super.showValue = true,
     super.position,
     this.threshold = 0,
-    Size size = const Size(32, 32),
-  }) : super(renderer: CircularPaintedNodeRenderer<SensorNode>(), size: size) {
+    super.size
+  }) : super(renderer: CircularPaintedNodeRenderer<SensorNode>()) {
     textBlocks.add(
       TextBlock(
         id: 'prefix',
@@ -26,11 +26,14 @@ abstract class SensorNode extends CommonNode {
       ),
     );
 
+    final halfHeight = size.height / 2;
+    final halfWidth = size.width / 2;
+
     ports = [
-      const Port(id: 'top', position: Position(16, 0)),
-      const Port(id: 'bottom', position: Position(16, 32)),
-      const Port(id: 'left', position: Position(0, 16)),
-      const Port(id: 'right', position: Position(32, 16)),
+      Port(id: 'top', position: Position(halfWidth, 0)),
+      Port(id: 'bottom', position: Position(halfWidth, size.height)),
+      Port(id: 'left', position: Position(0, halfHeight)),
+      Port(id: 'right', position: Position(size.width, halfHeight)),
     ];
   }
 
@@ -56,7 +59,7 @@ abstract class SensorNode extends CommonNode {
     if (value! > threshold) {
       transientTheme = themeOverride.copyWith(fill: Colors.green);
     } else {
-      transientTheme = themeOverride.copyWith(fill: Colors.red);
+      transientTheme = themeOverride;
     }
 
     super.update();

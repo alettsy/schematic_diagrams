@@ -14,14 +14,14 @@ class SchematicDiagramModel implements NodeResolver {
     this.links = const [],
     this.schematicTheme = const SchematicTheme(),
     this.defaultNodeTheme = const NodeTheme(
-      fill: Colors.blue,
+      fill: Colors.transparent,
       stroke: Colors.black,
-      strokeWidth: 2,
+      strokeWidth: 1.5,
     ),
     this.defaultTextBlockTheme = const TextBlockTheme(),
     this.defaultLinkTheme = const LinkTheme(
       stroke: Colors.black,
-      strokeWidth: 2,
+      strokeWidth: 1.4,
     ),
     this.maxZoom = 2.0,
     this.minZoom = 0.5,

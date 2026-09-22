@@ -12,7 +12,7 @@ abstract class Node {
     required this.id,
     required this.renderer,
     this.position = const Position(0, 0),
-    this.size = const Size(64, 64),
+    this.size = const Size(32, 32),
     this.themeOverride = const NodeTheme(),
     this.rotation = 0,
   });

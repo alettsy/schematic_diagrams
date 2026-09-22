@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/pid.dart';
+import 'package:schematic_diagrams/premade.dart';
 import 'package:schematic_diagrams/schematic_diagrams.dart';
 
 class LinkingPage extends StatefulWidget {
@@ -14,30 +14,45 @@ class LinkingPage extends StatefulWidget {
 
 class _LinkingPageState extends State<LinkingPage> {
   final nodes = <Node>[
-    VoltageSensorNode(id: 'v1', position: Position(300, 300)),
-    FlowSensorNode(id: 'f1', position: Position(100, 100)),
-    GateValve(id: 'g1', position: Position(500, 100), rotation: 90),
-    ThreeWayValve(id: 'twv1', position: Position(500, 150), rotation: 0),
+    GateValve(id: 'g1', position: Position(50, 75)),
+    GateValve(id: 'g2', position: Position(90, 75)),
+    GateValve(id: 'g3', position: Position(50, 150)),
+    GateValve(id: 'g4', position: Position(90, 150)),
+    SvgDataNode(
+      id: 'svg',
+      viewBox: '15.13 36.14 4.93 5.5',
+      data: [
+        'm 20,41 -2,-1 -2,-1 2,-1 2,-1 0,2 z m -4.8,0 2,-1, 2,-1, -2,-1, -2,-1, 0,2 z m 0.0,-4.8 0.0,5.4 4.8,0.0 0.0,-5.4 z',
+      ],
+      position: Position(500, 200),
+      themeOverride: NodeTheme(fill: Colors.transparent, strokeWidth: 0.5),
+    ),
+    ImageNode(
+      id: 'image',
+      image: AssetImage('assets/demo_image.png'),
+      position: Position(200, 200),
+      size: Size(100, 100),
+    ),
   ];
 
   final links = [
     Link(
-      id: 'example',
-      fromNodeId: 'f1',
-      toNodeId: 'v1',
+      id: 'valves-1',
+      fromNodeId: 'g1',
+      toNodeId: 'g3',
       fromPortId: 'bottom',
       toPortId: 'top',
       inFrom: LinkDirection.up,
       outTo: LinkDirection.down,
     ),
     Link(
-      id: 'example-2',
-      fromNodeId: 'f1',
-      toNodeId: 'g1',
-      fromPortId: 'right',
-      toPortId: 'bottom',
-      inFrom: LinkDirection.left,
-      outTo: LinkDirection.right,
+      id: 'valves-2',
+      fromNodeId: 'g2',
+      toNodeId: 'g4',
+      fromPortId: 'bottom',
+      toPortId: 'top',
+      inFrom: LinkDirection.up,
+      outTo: LinkDirection.down,
     ),
   ];
 
