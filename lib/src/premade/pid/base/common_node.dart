@@ -15,6 +15,7 @@ abstract class CommonNode extends Node
     super.position,
     super.size,
     super.rotation,
+    super.themeOverride,
     this.title,
     this.showValue = true,
   }) {

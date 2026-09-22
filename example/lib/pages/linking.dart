@@ -14,10 +14,20 @@ class LinkingPage extends StatefulWidget {
 
 class _LinkingPageState extends State<LinkingPage> {
   final nodes = <Node>[
+    LabelNode(id: 'label', label: 'Some label', position: Position(400, 400)),
+    IoNode(
+      id: 'io-1',
+      label: 'Entry',
+      position: Position(300, 30),
+      themeOverride: NodeTheme(fill: Colors.black),
+    ),
+    FlowSensorNode(id: 'flow-1', position: Position(500, 75)),
+    ConnectorPoint(id: 'point-1', position: Position(400, 150)),
+    FlowSensorNode(id: 'flow-2', position: Position(300, 75)),
     GateValve(id: 'g1', position: Position(50, 75)),
     GateValve(id: 'g2', position: Position(90, 75)),
     GateValve(id: 'g3', position: Position(50, 150)),
-    GateValve(id: 'g4', position: Position(90, 150), ),
+    GateValve(id: 'g4', position: Position(90, 150)),
     SvgDataNode(
       id: 'svg',
       viewBox: '15.13 36.14 4.93 5.5',
@@ -53,6 +63,24 @@ class _LinkingPageState extends State<LinkingPage> {
       toPortId: 'top',
       inFrom: LinkDirection.up,
       outTo: LinkDirection.down,
+    ),
+    Link(
+      id: 'flow-1',
+      fromNodeId: 'flow-1',
+      toNodeId: 'point-1',
+      fromPortId: 'left',
+      toPortId: 'point',
+      outTo: LinkDirection.left,
+      inFrom: LinkDirection.up,
+    ),
+    Link(
+      id: 'flow-2',
+      fromNodeId: 'point-1',
+      toNodeId: 'flow-2',
+      fromPortId: 'point',
+      toPortId: 'bottom',
+      outTo: LinkDirection.left,
+      inFrom: LinkDirection.down,
     ),
   ];
 

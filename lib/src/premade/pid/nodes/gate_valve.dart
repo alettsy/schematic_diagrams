@@ -13,6 +13,7 @@ class GateValve extends CommonNode {
     super.title,
     super.showValue = false,
     super.size = const Size(24, 32),
+    super.themeOverride,
   }) : super(renderer: GateValveRenderer()) {
     final halfWidth = size.width / 2;
     ports = [

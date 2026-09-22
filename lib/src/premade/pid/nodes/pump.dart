@@ -12,6 +12,7 @@ class Pump extends CommonNode {
     super.size,
     super.title,
     super.showValue,
+    super.themeOverride,
   }) : super(renderer: PumpRenderer()) {
     final halfHeight = size.height / 2;
     final halfWidth = size.width / 2;
