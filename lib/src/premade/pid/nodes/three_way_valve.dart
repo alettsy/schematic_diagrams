@@ -3,7 +3,9 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/premade/pid/base/common_node.dart';
 import 'package:schematic_diagrams/src/premade/pid/renderers/three_way_valve_renderer.dart';
 
+/// Standard P&ID three-way valve.
 class ThreeWayValve extends CommonNode {
+  /// Default implementation
   ThreeWayValve({
     required super.id,
     super.position,

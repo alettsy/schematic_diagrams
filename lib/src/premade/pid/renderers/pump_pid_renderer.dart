@@ -5,7 +5,9 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/node.dart';
 import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_renderer.dart';
 
+/// Renderer for the standard P&ID pump.
 class PumpRenderer<T extends Node> extends CircularPaintedNodeRenderer<T> {
+  /// Default implementation.
   PumpRenderer({super.textRenderer});
 
   @override

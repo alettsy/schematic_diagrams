@@ -3,11 +3,19 @@ import 'package:schematic_diagrams/src/internal/models/lines/line.dart';
 import 'package:schematic_diagrams/src/internal/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/rendering/linking/section_area.dart';
 
+/// Standard section area, which contains all [lines] that go through it
+/// from [from] to [to].
 class StandardSectionArea implements SectionArea {
+  /// Default implementation.
   StandardSectionArea({required this.from, required this.to});
 
+  /// Where the section area starts [from].
   final Position from;
+
+  /// Where the section area spans [to].
   final Position to;
+
+  /// All lines contained in this section area.
   final List<StraightLine> lines = [];
 
   @override
@@ -122,15 +130,4 @@ class StandardSectionArea implements SectionArea {
 
     return overlappingLines;
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! StandardSectionArea) return false;
-
-    return from == other.from && to == other.to;
-  }
-
-  @override
-  int get hashCode => Object.hash(from, to);
 }

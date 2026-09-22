@@ -3,7 +3,9 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/premade/pid/base/common_node.dart';
 import 'package:schematic_diagrams/src/premade/pid/renderers/gate_valve_renderer.dart';
 
+/// Standard P&ID two-port gate valve.
 class GateValve extends CommonNode {
+  /// Default implementation.
   GateValve({
     required super.id,
     super.position,

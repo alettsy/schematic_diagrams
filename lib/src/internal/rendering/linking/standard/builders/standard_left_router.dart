@@ -1,13 +1,15 @@
 import 'dart:math';
 
+import 'package:schematic_diagrams/src/internal/constants.dart';
+import 'package:schematic_diagrams/src/internal/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/internal/models/link_details.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/mixins/left_to_bottom.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/mixins/left_to_right.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/mixins/left_to_top.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_path.dart';
-import 'package:schematic_diagrams/src/internal/models/lines/straight_line.dart';
 
+/// Standard link router for links starting from the left direction.
 class StandardLeftRouter extends StandardLinkRouter
     with LeftToTop, LeftToRight, LeftToBottom {
   @override
@@ -31,18 +33,18 @@ class StandardLeftRouter extends StandardLinkRouter
 
     final isAboveFrom = linkDetails.toNode.isAbove(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
     final isBelowFrom = linkDetails.toNode.isBelow(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
 
     if (isAboveFrom || isBelowFrom) {
       linkPath = _handleAboveOrBelow(linkPath, linkDetails);
     } else if (linkDetails.toNode.isLeftOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     )) {
       linkPath = _handleLeft(linkPath, linkDetails);
     } else {
@@ -67,8 +69,8 @@ class StandardLeftRouter extends StandardLinkRouter
     );
 
     linkPath
-      ..addLineTo(minX - minDistanceFromNodes, linkDetails.fromPortPosition.y)
-      ..addLineTo(minX - minDistanceFromNodes, linkDetails.toPortPosition.y);
+      ..addLineTo(minX - standardMinSeparation, linkDetails.fromPortPosition.y)
+      ..addLineTo(minX - standardMinSeparation, linkDetails.toPortPosition.y);
 
     return linkPath;
   }
@@ -83,13 +85,13 @@ class StandardLeftRouter extends StandardLinkRouter
 
     linkPath
       ..addLineTo(midX, linkDetails.fromPortPosition.y)
-      ..addLineTo(midX, toMaxY + minDistanceFromNodes)
+      ..addLineTo(midX, toMaxY + standardMinSeparation)
       ..addLineTo(
-        linkDetails.toNode.position.x - minDistanceFromNodes,
-        toMaxY + minDistanceFromNodes,
+        linkDetails.toNode.position.x - standardMinSeparation,
+        toMaxY + standardMinSeparation,
       )
       ..addLineTo(
-        linkDetails.toNode.position.x - minDistanceFromNodes,
+        linkDetails.toNode.position.x - standardMinSeparation,
         linkDetails.toPortPosition.y,
       );
 
@@ -106,14 +108,14 @@ class StandardLeftRouter extends StandardLinkRouter
 
     linkPath
       ..addLineTo(
-        linkDetails.fromPortPosition.x - minDistanceFromNodes,
+        linkDetails.fromPortPosition.x - standardMinSeparation,
         linkDetails.fromPortPosition.y,
       )
       ..addLineTo(
-        linkDetails.fromPortPosition.x - minDistanceFromNodes,
-        fromMaxY + minDistanceFromNodes,
+        linkDetails.fromPortPosition.x - standardMinSeparation,
+        fromMaxY + standardMinSeparation,
       )
-      ..addLineTo(midX, fromMaxY + minDistanceFromNodes)
+      ..addLineTo(midX, fromMaxY + standardMinSeparation)
       ..addLineTo(midX, linkDetails.toPortPosition.y);
 
     return linkPath;

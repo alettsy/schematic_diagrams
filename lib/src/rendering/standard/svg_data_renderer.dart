@@ -6,10 +6,17 @@ import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
 import 'package:schematic_diagrams/src/models/node.dart';
 import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
+/// Renders an SVG image node by taking the [viewBox] and [svgData] parts,
+/// dynamically inserting them based on their part themes, and returning
+/// the result as an [SvgPicture].
 class SvgDataNodeRenderer extends NodeRenderer {
+  /// Default implementation.
   SvgDataNodeRenderer({required this.svgData, this.viewBox = '0 0 100 100'});
 
+  /// Standard SVG viewbox.
   final String viewBox;
+
+  /// The SVG data parts.
   final List<String> svgData;
 
   @override

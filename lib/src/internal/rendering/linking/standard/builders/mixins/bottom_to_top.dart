@@ -1,10 +1,14 @@
 import 'dart:math';
 
+import 'package:schematic_diagrams/src/internal/constants.dart';
 import 'package:schematic_diagrams/src/internal/models/link_details.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_path.dart';
 
+/// Helper for linking ports from bottom (down) direction to top (up) direction.
 mixin BottomToTop on StandardLinkRouter {
+  /// Helper for linking ports from bottom (down) direction to top (up)
+  /// direction.
   StandardLinkPath bottomToTop(LinkDetails linkDetails) {
     var linkPath = StandardLinkPath(start: linkDetails.fromPortPosition);
 
@@ -19,11 +23,11 @@ mixin BottomToTop on StandardLinkRouter {
 
     final isLeftOfFrom = linkDetails.toNode.isLeftOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
     final isRightOfFrom = linkDetails.toNode.isRightOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
     final isBelow =
         linkDetails.toPortPosition.y > linkDetails.fromPortPosition.y;
@@ -64,7 +68,7 @@ mixin BottomToTop on StandardLinkRouter {
   ) {
     final isLeftOfFrom = linkDetails.toNode.isLeftOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
 
     final toMaxX = linkDetails.toNode.maxX;
@@ -78,13 +82,13 @@ mixin BottomToTop on StandardLinkRouter {
     linkPath
       ..addLineTo(
         linkDetails.fromPortPosition.x,
-        linkDetails.fromPortPosition.y + minDistanceFromNodes,
+        linkDetails.fromPortPosition.y + standardMinSeparation,
       )
-      ..addLineTo(midX, linkDetails.fromPortPosition.y + minDistanceFromNodes)
-      ..addLineTo(midX, linkDetails.toNode.position.y - minDistanceFromNodes)
+      ..addLineTo(midX, linkDetails.fromPortPosition.y + standardMinSeparation)
+      ..addLineTo(midX, linkDetails.toNode.position.y - standardMinSeparation)
       ..addLineTo(
         linkDetails.toPortPosition.x,
-        linkDetails.toNode.position.y - minDistanceFromNodes,
+        linkDetails.toNode.position.y - standardMinSeparation,
       );
 
     return linkPath;
@@ -102,19 +106,19 @@ mixin BottomToTop on StandardLinkRouter {
     linkPath
       ..addLineTo(
         linkDetails.fromPortPosition.x,
-        linkDetails.fromPortPosition.y + minDistanceFromNodes,
+        linkDetails.fromPortPosition.y + standardMinSeparation,
       )
       ..addLineTo(
-        drawOutX - minDistanceFromNodes,
-        linkDetails.fromPortPosition.y + minDistanceFromNodes,
+        drawOutX - standardMinSeparation,
+        linkDetails.fromPortPosition.y + standardMinSeparation,
       )
       ..addLineTo(
-        drawOutX - minDistanceFromNodes,
-        linkDetails.toNode.position.y - minDistanceFromNodes,
+        drawOutX - standardMinSeparation,
+        linkDetails.toNode.position.y - standardMinSeparation,
       )
       ..addLineTo(
         linkDetails.toPortPosition.x,
-        linkDetails.toNode.position.y - minDistanceFromNodes,
+        linkDetails.toNode.position.y - standardMinSeparation,
       );
 
     return linkPath;

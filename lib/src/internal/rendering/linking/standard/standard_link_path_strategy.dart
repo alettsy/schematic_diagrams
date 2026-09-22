@@ -9,18 +9,32 @@ import 'package:schematic_diagrams/src/models/link.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart';
 
+/// Standard link path strategy, which computes the link lines using the 
+/// standard router, adjusting lines to avoid coincidence, and adding
+/// visible jumps for intersecting lines.
 class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
+  /// Default implementation.
   StandardLinkPathStrategy({
     required super.sectionManager,
-    this.gap = 8,
-    this.overlapHeight = 10,
+    this.jumpDistance = 8,
+    this.jumpHeight = 10,
     this.linkShiftSize = 8,
     this.maxShiftAttempts = 10,
   });
 
-  final double gap;
-  final double overlapHeight;
+  /// How far the jump of the intersecting line should go over the other
+  /// line.
+  final double jumpDistance;
+
+  /// How big the jump of the intersecting line is.
+  final double jumpHeight;
+
+  /// How much a coinciding line should be shifted to separate 
+  /// it from the other line.
   final double linkShiftSize;
+
+  /// The maximum number of times a line can be shifted to avoid
+  /// coincidence.
   final int maxShiftAttempts;
 
   @override
@@ -48,26 +62,13 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
         fromNode: fromNode,
         toNode: toNode,
       ),
-    );
-
-    initialPath.forEach(sectionManager.addLine);
+    )..forEach(sectionManager.addLine);
 
     final adjustedForParallelOverlap = _repositionLinesToAvoidOverlap(
       initialPath,
     );
 
-    final withOverlaps = _injectOverlapLines(adjustedForParallelOverlap);
-
-    // print(withOverlaps.length);
-
-    // if (withOverlaps.last.to != toPortOffset) {
-    //   withOverlaps.add(
-    //     StraightLine(from: withOverlaps.last.to, to: toPortOffset),
-    //   );
-    //   sectionManager.addLine(withOverlaps.last);
-    // }
-
-    return withOverlaps;
+    return _injectOverlapLines(adjustedForParallelOverlap);
   }
 
   List<StraightLine> _computeLinkPath(LinkDetails linkDetails) {
@@ -208,7 +209,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
     List<Position> intersectionPoints,
   ) {
     var localIntersections = intersectionPoints;
-    final appliedOverlap = line.leftToRight ? -gap : gap;
+    final appliedOverlap = line.leftToRight ? -jumpDistance : jumpDistance;
 
     if (!line.leftToRight) {
       localIntersections = localIntersections.reversed.toList();
@@ -220,7 +221,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
       final overlap = JumpLine(
         from: endOfLine,
         to: endOfOverlap,
-        overlapHeight: overlapHeight,
+        overlapHeight: jumpHeight,
       );
 
       final jumpsTooFar = line.leftToRight
@@ -250,7 +251,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
     List<Position> intersectionPoints,
   ) {
     var localIntersections = intersectionPoints;
-    final appliedOverlap = line.topToBottom ? -gap : gap;
+    final appliedOverlap = line.topToBottom ? -jumpDistance : jumpDistance;
 
     if (!line.topToBottom) {
       localIntersections = localIntersections.reversed.toList();
@@ -262,7 +263,7 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
       final overlap = JumpLine(
         from: endOfLine,
         to: endOfOverlap,
-        overlapHeight: overlapHeight,
+        overlapHeight: jumpHeight,
       );
 
       final jumpsTooFar = line.topToBottom

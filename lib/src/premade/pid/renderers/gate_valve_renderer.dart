@@ -3,7 +3,9 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/rendering/standard/painted_node_renderer.dart';
 
+/// Renderer for the standard P&ID two-port gate valve.
 class GateValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
+  /// Default implementation.
   GateValveRenderer({super.textRenderer});
 
   @override

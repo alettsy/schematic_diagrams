@@ -1,8 +1,11 @@
+import 'package:schematic_diagrams/src/internal/constants.dart';
 import 'package:schematic_diagrams/src/internal/models/link_details.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_path.dart';
 
+/// Helper for linking ports from left direction to right direction.
 mixin LeftToRight on StandardLinkRouter {
+  /// Helper for linking ports from left direction to right direction.
   StandardLinkPath leftToRight(LinkDetails linkDetails) {
     var linkPath = StandardLinkPath(start: linkDetails.fromPortPosition);
 
@@ -27,7 +30,7 @@ mixin LeftToRight on StandardLinkRouter {
       linkPath = _handleLeft(linkPath, linkDetails);
     } else {
       linkPath.addLineTo(
-        linkDetails.fromPortPosition.x - minDistanceFromNodes,
+        linkDetails.fromPortPosition.x - standardMinSeparation,
         linkDetails.fromPortPosition.y,
       );
 

@@ -6,7 +6,10 @@ import 'package:schematic_diagrams/src/models/link.dart';
 import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
 import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 
+/// Standard link renderer, which draws straight lines and jumps at
+/// intersecting lines.
 class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
+  /// Default implementation.
   StandardLinkRenderer({required SectionManager sectionManager})
     : super(
         pathStrategy: StandardLinkPathStrategy(sectionManager: sectionManager),
@@ -31,8 +34,7 @@ class StandardLinkRenderer<T extends Link> extends LinkRenderer<T> {
     final lines = pathStrategy.compute(link, nodeResolver);
     if (lines.isEmpty) return;
 
-    final path = Path();
-    path.moveTo(lines.first.from.x, lines.first.from.y);
+    final path = Path()..moveTo(lines.first.from.x, lines.first.from.y);
 
     for (final line in lines) {
       if (line is JumpLine) {

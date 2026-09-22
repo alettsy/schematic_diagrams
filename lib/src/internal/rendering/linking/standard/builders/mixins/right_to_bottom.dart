@@ -1,8 +1,11 @@
+import 'package:schematic_diagrams/src/internal/constants.dart';
 import 'package:schematic_diagrams/src/internal/models/link_details.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_path.dart';
 
+/// Helper for linking ports from right direction to bottom (down) direction.
 mixin RightToBottom on StandardLinkRouter {
+  /// Helper for linking ports from right direction to bottom (down) direction.
   StandardLinkPath rightToBottom(LinkDetails linkDetails) {
     var linkPath = StandardLinkPath(start: linkDetails.fromPortPosition);
 
@@ -41,8 +44,8 @@ mixin RightToBottom on StandardLinkRouter {
 
     linkPath
       ..addLineTo(midX, linkDetails.fromPortPosition.y)
-      ..addLineTo(midX, toMaxY + minDistanceFromNodes)
-      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + minDistanceFromNodes);
+      ..addLineTo(midX, toMaxY + standardMinSeparation)
+      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + standardMinSeparation);
 
     return linkPath;
   }
@@ -56,10 +59,10 @@ mixin RightToBottom on StandardLinkRouter {
 
     linkPath
       ..addLineTo(
-        linkDetails.fromPortPosition.x + minDistanceFromNodes,
+        linkDetails.fromPortPosition.x + standardMinSeparation,
         linkDetails.fromPortPosition.y,
       )
-      ..addLineTo(linkDetails.fromPortPosition.x + minDistanceFromNodes, midY)
+      ..addLineTo(linkDetails.fromPortPosition.x + standardMinSeparation, midY)
       ..addLineTo(linkDetails.toPortPosition.x, midY);
 
     return linkPath;
@@ -73,14 +76,14 @@ mixin RightToBottom on StandardLinkRouter {
 
     linkPath
       ..addLineTo(
-        linkDetails.fromPortPosition.x + minDistanceFromNodes,
+        linkDetails.fromPortPosition.x + standardMinSeparation,
         linkDetails.fromPortPosition.y,
       )
       ..addLineTo(
-        linkDetails.fromPortPosition.x + minDistanceFromNodes,
-        toMaxY + minDistanceFromNodes,
+        linkDetails.fromPortPosition.x + standardMinSeparation,
+        toMaxY + standardMinSeparation,
       )
-      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + minDistanceFromNodes);
+      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + standardMinSeparation);
 
     return linkPath;
   }

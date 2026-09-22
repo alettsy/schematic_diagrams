@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:schematic_diagrams/src/internal/constants.dart';
 import 'package:schematic_diagrams/src/internal/models/lines/straight_line.dart';
 import 'package:schematic_diagrams/src/internal/models/link_details.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/mixins/bottom_to_top.dart';
@@ -8,6 +9,7 @@ import 'package:schematic_diagrams/src/internal/rendering/linking/standard/build
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/builders/standard_link_router.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_path.dart';
 
+/// Standard link router for links starting from the bottom (down) direction.
 class StandardBottomRouter extends StandardLinkRouter
     with BottomToTop, LeftToBottom, RightToBottom {
   @override
@@ -31,18 +33,18 @@ class StandardBottomRouter extends StandardLinkRouter
 
     final isLeftOfFrom = linkDetails.toNode.isLeftOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
     final isRightOfFrom = linkDetails.toNode.isRightOf(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     );
 
     if (isLeftOfFrom || isRightOfFrom) {
       linkPath = _handleLeftOrRight(linkPath, linkDetails);
     } else if (linkDetails.toNode.isBelow(
       linkDetails.fromNode,
-      offset: minDistanceFromNodes,
+      offset: standardMinSeparation,
     )) {
       linkPath = _handleBelow(linkPath, linkDetails);
     } else {
@@ -66,12 +68,12 @@ class StandardBottomRouter extends StandardLinkRouter
 
     linkPath
       ..addLineTo(linkDetails.fromPortPosition.x, midY)
-      ..addLineTo(linkDetails.fromNode.position.x - minDistanceFromNodes, midY)
+      ..addLineTo(linkDetails.fromNode.position.x - standardMinSeparation, midY)
       ..addLineTo(
-        linkDetails.fromNode.position.x - minDistanceFromNodes,
-        toMaxY + minDistanceFromNodes,
+        linkDetails.fromNode.position.x - standardMinSeparation,
+        toMaxY + standardMinSeparation,
       )
-      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + minDistanceFromNodes);
+      ..addLineTo(linkDetails.toPortPosition.x, toMaxY + standardMinSeparation);
 
     return linkPath;
   }
@@ -81,8 +83,8 @@ class StandardBottomRouter extends StandardLinkRouter
     LinkDetails linkDetails,
   ) {
     final drawOutY = max(
-      linkDetails.toNode.maxY + minDistanceFromNodes,
-      linkDetails.fromNode.maxY + minDistanceFromNodes,
+      linkDetails.toNode.maxY + standardMinSeparation,
+      linkDetails.fromNode.maxY + standardMinSeparation,
     );
 
     linkPath
@@ -102,13 +104,13 @@ class StandardBottomRouter extends StandardLinkRouter
     linkPath
       ..addLineTo(
         linkDetails.fromPortPosition.x,
-        linkDetails.fromPortPosition.y + minDistanceFromNodes,
+        linkDetails.fromPortPosition.y + standardMinSeparation,
       )
       ..addLineTo(
-        linkDetails.fromNode.position.x - minDistanceFromNodes,
-        linkDetails.fromPortPosition.y + minDistanceFromNodes,
+        linkDetails.fromNode.position.x - standardMinSeparation,
+        linkDetails.fromPortPosition.y + standardMinSeparation,
       )
-      ..addLineTo(linkDetails.fromNode.position.x - minDistanceFromNodes, midY)
+      ..addLineTo(linkDetails.fromNode.position.x - standardMinSeparation, midY)
       ..addLineTo(linkDetails.toPortPosition.x, midY);
 
     return linkPath;

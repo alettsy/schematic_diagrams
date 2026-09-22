@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+/// Helper to convert a [Color] into hexadecimal format.
 extension HexColor on Color {
+  /// Helper to convert a [Color] into hexadecimal format.
   String get hex {
     final rRadix = (r * 255)
         .clamp(0, 255)

@@ -5,11 +5,16 @@ import 'package:schematic_diagrams/src/internal/rendering/linking/standard/stand
 import 'package:schematic_diagrams/src/rendering/linking/section_area.dart';
 import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 
+/// Manages the link lines in the diagram based on the areas
+/// in which they intersect.
 class StandardSectionManager implements SectionManager {
+  /// Default implementation.
   StandardSectionManager({this.sectionSize = 100.0});
 
+  /// The square size of each section.
   final double sectionSize;
 
+  /// All sections in the diagram.
   List<StandardSectionArea> sections = [];
 
   @override
@@ -89,15 +94,17 @@ class StandardSectionManager implements SectionManager {
     }
   }
 
+  /// Get the section that spans [from] to [to], or create one
+  /// if it does not exist.
   StandardSectionArea getOrAddSection(Position from, Position to) {
-    try {
-      final found = sections.firstWhere((s) => s.from == from && s.to == to);
-      return found;
-    } on StateError {
-      final newSection = StandardSectionArea(from: from, to: to);
-      sections.add(newSection);
-      return newSection;
-    }
+    return sections.firstWhere(
+      (s) => s.from == from && s.to == to,
+      orElse: () {
+        final newSection = StandardSectionArea(from: from, to: to);
+        sections.add(newSection);
+        return newSection;
+      },
+    );
   }
 
   List<StandardSectionArea> _getSectionAreasForHorizontalLine(

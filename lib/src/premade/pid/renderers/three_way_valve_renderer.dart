@@ -3,7 +3,9 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/rendering/standard/painted_node_renderer.dart';
 
+/// Renderer for the standard P&ID three-way valve.
 class ThreeWayValveRenderer<T extends Node> extends PaintedNodeRenderer<T> {
+  /// Default implementation.
   ThreeWayValveRenderer({super.textRenderer});
 
   @override
