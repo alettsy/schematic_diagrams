@@ -45,25 +45,9 @@ class SvgDataNodeRenderer extends NodeRenderer {
     final result = StringBuffer();
 
     for (var i = 0; i < svgData.length; i++) {
-      final partTheme = node.getPartThemeOverride(i);
-
-      final fill =
-          partTheme?.fill ??
-          node.activeThemeOverride.fill ??
-          defaultNodeTheme.fill ??
-          Colors.transparent;
-
-      final stroke =
-          partTheme?.stroke ??
-          node.activeThemeOverride.stroke ??
-          defaultNodeTheme.stroke ??
-          Colors.transparent;
-
-      final strokeWidth =
-          partTheme?.strokeWidth ??
-          node.activeThemeOverride.strokeWidth ??
-          defaultNodeTheme.strokeWidth ??
-          1;
+      final fill = getFillColor(node, defaultNodeTheme, partIndex: i);
+      final stroke = getStrokeColor(node, defaultNodeTheme, partIndex: i);
+      final strokeWidth = getStrokeWidth(node, defaultNodeTheme, partIndex: i);
 
       result.write(
         '<path stroke="${stroke.hex}" fill="${fill.hex}" stroke-width="$strokeWidth" d="${svgData[i]}" />',

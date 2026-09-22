@@ -30,4 +30,42 @@ abstract class NodeRenderer<T extends Node> {
       defaultTextTheme: defaultTextTheme,
     );
   }
+
+  /// Get the fill color based on [node] and [defaultNodeTheme].
+  Color getFillColor(T node, NodeTheme defaultNodeTheme, {int partIndex = 0}) {
+    final partTheme = node.getPartThemeOverride(partIndex);
+
+    return partTheme?.fill ??
+        node.activeThemeOverride.fill ??
+        defaultNodeTheme.fill ??
+        Colors.transparent;
+  }
+
+  /// Get the stroke color based on [node] and [defaultNodeTheme].
+  Color getStrokeColor(
+    T node,
+    NodeTheme defaultNodeTheme, {
+    int partIndex = 0,
+  }) {
+    final partTheme = node.getPartThemeOverride(partIndex);
+
+    return partTheme?.stroke ??
+        node.activeThemeOverride.stroke ??
+        defaultNodeTheme.stroke ??
+        Colors.transparent;
+  }
+
+  /// Get the stroke width based on [node] and [defaultNodeTheme].
+  double getStrokeWidth(
+    T node,
+    NodeTheme defaultNodeTheme, {
+    int partIndex = 0,
+  }) {
+    final partTheme = node.getPartThemeOverride(partIndex);
+
+    return partTheme?.strokeWidth ??
+        node.activeThemeOverride.strokeWidth ??
+        defaultNodeTheme.strokeWidth ??
+        0;
+  }
 }
