@@ -24,7 +24,7 @@ class _LinkingPageState extends State<LinkingPage> {
     FlowSensorNode(id: 'flow-1', position: Position(500, 75)),
     ConnectorPoint(id: 'point-1', position: Position(400, 150)),
     FlowSensorNode(id: 'flow-2', position: Position(300, 75)),
-    GateValve(id: 'g1', position: Position(50, 75)),
+    GateValve(id: 'g1', position: Position(50, 75), title: 'Example'),
     GateValve(id: 'g2', position: Position(90, 75)),
     GateValve(id: 'g3', position: Position(50, 150)),
     GateValve(id: 'g4', position: Position(90, 150)),

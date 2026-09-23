@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/models/node.dart';
 
 /// Renderer for all text-related parts of the diagram.
 abstract class PaintedTextRenderer {
@@ -11,6 +12,7 @@ abstract class PaintedTextRenderer {
   void paint(
     Canvas canvas,
     TextBlock textBlock,
+    Node parentNode,
     TextBlockTheme defaultTextBlockTheme,
   );
 }

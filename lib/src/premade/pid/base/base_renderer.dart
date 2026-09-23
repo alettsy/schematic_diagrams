@@ -18,7 +18,7 @@ class BaseRenderer<T extends Node> extends PaintedNodeRenderer<T> {
   ) {
     if (node is TextBlockable) {
       for (final textBlock in (node as TextBlockable).textBlocks) {
-        textRenderer?.paint(canvas, textBlock, defaultTextBlockTheme);
+        textRenderer?.paint(canvas, textBlock, node, defaultTextBlockTheme);
       }
     }
   }

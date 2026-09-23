@@ -24,7 +24,7 @@ abstract class CommonNode extends Node
         TextBlock(
           id: 'title',
           text: title!,
-          position: Position(size.width + 5, size.height * 0),
+          position: Position(size.width + 5, size.height * 0.5),
         ),
       );
     }

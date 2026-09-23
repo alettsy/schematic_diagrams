@@ -10,6 +10,7 @@ class TextBlock implements IdBased {
     required this.id,
     required this.text,
     this.position = const Position(0, 0),
+    this.rotation = 0,
     this.drawWidth = 100,
     this.themeOverride = const TextBlockTheme(),
     this.textAlign = TextAlign.start,
@@ -25,6 +26,9 @@ class TextBlock implements IdBased {
   /// The position of this text block, relative to the parent node.
   final Position position;
 
+  /// Rotation in degrees.
+  final double rotation;
+
   /// How much horizontal space it should take up.
   final double drawWidth;
 
@@ -39,6 +43,7 @@ class TextBlock implements IdBased {
     String? id,
     String? text,
     Position? position,
+    double? rotation,
     double? drawWidth,
     TextBlockTheme? themeOverride,
     TextAlign? textAlign,
@@ -47,6 +52,7 @@ class TextBlock implements IdBased {
       id: id ?? this.id,
       text: text ?? this.text,
       position: position ?? this.position,
+      rotation: rotation ?? this.rotation,
       drawWidth: drawWidth ?? this.drawWidth,
       themeOverride: themeOverride ?? this.themeOverride,
       textAlign: textAlign ?? this.textAlign,
