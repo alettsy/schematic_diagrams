@@ -5,6 +5,7 @@ set shell := ["powershell.exe", "-c"]
 set shell := ["bash", "-c"]
 
 alias bc := before_commit
+alias rd := run_desktop
 
 before_commit: check check_format
 
@@ -16,3 +17,6 @@ check_format:
     dart format lib --output none --set-exit-if-changed
     dart format test --output none --set-exit-if-changed
     @echo "Code formatted correctly"
+
+run_desktop:
+    cd example && flutter run -d {{ os() }}
