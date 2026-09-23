@@ -1,10 +1,10 @@
-import 'package:schematic_diagrams/src/premade/pid/base/sensor_node.dart';
+import 'package:schematic_diagrams/src/premade/pid/base/indicator_node.dart';
 
 /// P&ID standard implementation for a voltage indicator node, indicated
 /// by the tag "VI".
-class VoltageSensorNode extends SensorNode {
+class VoltageIndicatorNode extends IndicatorNode {
   /// Default implementation.
-  VoltageSensorNode({
+  VoltageIndicatorNode({
     required super.id,
     super.position,
     super.title,
@@ -14,9 +14,9 @@ class VoltageSensorNode extends SensorNode {
 
 /// P&ID standard implementation for a flow indicator node, indicated
 /// by the tag "FI".
-class FlowSensorNode extends SensorNode {
+class FlowIndicatorNode extends IndicatorNode {
   /// Default implementation.
-  FlowSensorNode({
+  FlowIndicatorNode({
     required super.id,
     super.position,
     super.title,
@@ -26,7 +26,7 @@ class FlowSensorNode extends SensorNode {
 
 /// P&ID standard implementation for a pressure indicator node, indicated
 /// by the tag "PI".
-class PressureIndicator extends SensorNode {
+class PressureIndicator extends IndicatorNode {
   /// Default implementation.
   PressureIndicator({
     required super.id,
@@ -38,7 +38,7 @@ class PressureIndicator extends SensorNode {
 
 /// P&ID standard implementation for a level indicator node, indicated
 /// by the tag "LI".
-class LevelIndicator extends SensorNode {
+class LevelIndicator extends IndicatorNode {
   /// Default implementation.
   LevelIndicator({
     required super.id,

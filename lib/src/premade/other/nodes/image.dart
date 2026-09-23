@@ -1,5 +1,6 @@
 import 'package:flutter/painting.dart';
 import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/rendering/standard/image_renderer.dart';
 
@@ -12,5 +13,8 @@ class ImageNode extends Node with Linkable {
     super.position,
     super.rotation,
     super.size,
-  }) : super(renderer: ImageNodeRenderer(image: image));
+    List<Port>? ports,
+  }) : super(renderer: ImageNodeRenderer(image: image)) {
+    this.ports = (ports ?? []).protected;
+  }
 }

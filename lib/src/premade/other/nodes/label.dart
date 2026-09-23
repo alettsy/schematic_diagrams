@@ -11,6 +11,7 @@ class LabelNode extends Node with TextBlockable {
     required this.label,
     super.position,
     super.rotation,
+    double drawWidth = 100,
     TextBlockTheme textBlockThemeOverride = const TextBlockTheme(),
   }) : super(renderer: BaseRenderer()) {
     textBlocks.add(
@@ -18,6 +19,7 @@ class LabelNode extends Node with TextBlockable {
         id: 'label',
         text: label,
         themeOverride: textBlockThemeOverride,
+        drawWidth: drawWidth,
       ),
     );
   }

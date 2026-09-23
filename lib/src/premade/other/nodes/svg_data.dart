@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 import 'package:schematic_diagrams/src/rendering/standard/svg_data_renderer.dart';
 
@@ -16,9 +17,14 @@ class SvgDataNode extends Node
     super.rotation,
     super.size,
     super.themeOverride,
+    List<Port>? ports,
+    List<TextBlock>? textBlocks,
   }) : super(
          renderer: SvgDataNodeRenderer(svgData: data, viewBox: viewBox),
-       );
+       ) {
+    this.ports = (ports ?? []).protected;
+    this.textBlocks = (textBlocks ?? []).protected;
+  }
 
   @override
   void update() {}

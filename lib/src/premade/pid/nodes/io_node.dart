@@ -20,7 +20,7 @@ class IoNode extends Node with TextBlockable, Linkable {
         TextBlock(
           id: 'label',
           text: label!,
-          position: Position(size.width + 5, size.height * 0),
+          position: Position(size.width + 5, size.height * 0.5),
         ),
       );
     }

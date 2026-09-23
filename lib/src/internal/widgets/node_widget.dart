@@ -57,8 +57,15 @@ class NodeWidget extends StatelessWidget {
     return Positioned(
       left: node.position.x,
       top: node.position.y,
-      child: RepaintBoundary(
-        child: renderer.buildContent(node, defaultNodeTheme, defaultTextTheme),
+      child: Transform.rotate(
+        angle: node.rotation.radians,
+        child: RepaintBoundary(
+          child: renderer.buildContent(
+            node,
+            defaultNodeTheme,
+            defaultTextTheme,
+          ),
+        ),
       ),
     );
   }

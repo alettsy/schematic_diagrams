@@ -5,9 +5,9 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_render
 
 /// Base indicator/sensor node, used for the creation of simple circular
 /// P&ID elements, such as a voltage indicator.
-abstract class SensorNode extends CommonNode {
+abstract class IndicatorNode extends CommonNode {
   /// Default implementation.
-  SensorNode({
+  IndicatorNode({
     required this.prefix,
     required super.id,
     super.title,
@@ -15,7 +15,7 @@ abstract class SensorNode extends CommonNode {
     super.position,
     this.threshold = 0,
     super.size,
-  }) : super(renderer: CircularPaintedNodeRenderer<SensorNode>()) {
+  }) : super(renderer: CircularPaintedNodeRenderer<IndicatorNode>()) {
     textBlocks.add(
       TextBlock(
         id: 'prefix',

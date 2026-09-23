@@ -63,7 +63,7 @@ class ProtectedList<T extends IdBased> extends ListBase<T> {
 extension ToProtected<T extends IdBased> on List<T> {
   /// Helper function to convert a standard list to a protected one without
   /// needing to directly call ProtectedList().
-  ProtectedList<T> protected(List<T> list) {
-    return ProtectedList(list);
+  ProtectedList<T> get protected {
+    return ProtectedList(this);
   }
 }

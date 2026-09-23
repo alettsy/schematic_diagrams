@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
-import 'package:schematic_diagrams/src/core/parts/text_block.dart';
+import 'package:schematic_diagrams/src/core/core.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
 
 /// Base common P&ID node, used for the creation of other P&ID nodes, such as
@@ -19,12 +17,16 @@ abstract class CommonNode extends Node
     this.title,
     this.showValue = true,
   }) {
+    final titleY = showValue ? size.height * 0.25 : size.height * 0.5;
+    final valueY = title != null ? size.height * 0.75 : size.height * 0.5;
+
     if (title != null) {
       textBlocks.add(
         TextBlock(
           id: 'title',
           text: title!,
-          position: Position(size.width + 5, size.height * 0.5),
+          position: Position(size.width + 7, titleY),
+          themeOverride: const TextBlockTheme(fontWeight: FontWeight.bold),
         ),
       );
     }
@@ -34,7 +36,7 @@ abstract class CommonNode extends Node
         TextBlock(
           id: 'value',
           text: '0',
-          position: Position(size.width + 5, size.height * 0.5),
+          position: Position(size.width + 7, valueY),
         ),
       );
     }
