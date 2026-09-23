@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:schematic_diagrams/schematic_diagrams.dart';
 import 'package:schematic_diagrams/src/core/helpers/angle_helper.dart';
-import 'package:schematic_diagrams/src/core/parts/node_theme.dart';
-import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
-import 'package:schematic_diagrams/src/models/node.dart';
-import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
 /// Widget representation of a node.
 class NodeWidget extends StatelessWidget {
@@ -41,11 +38,21 @@ class NodeWidget extends StatelessWidget {
             offset: node.position.asOffset,
             child: Transform.rotate(
               angle: node.rotation.radians,
-              child: RepaintBoundary(
-                child: renderer.buildContent(
-                  node,
-                  defaultNodeTheme,
-                  defaultTextTheme,
+              child: InkWell(
+                mouseCursor: node is Tappable
+                    ? SystemMouseCursors.click
+                    : SystemMouseCursors.basic,
+                onTap: () {
+                  if (node is Tappable) {
+                    (node as Tappable).onTap();
+                  }
+                },
+                child: RepaintBoundary(
+                  child: renderer.buildContent(
+                    node,
+                    defaultNodeTheme,
+                    defaultTextTheme,
+                  ),
                 ),
               ),
             ),
@@ -59,11 +66,21 @@ class NodeWidget extends StatelessWidget {
       top: node.position.y,
       child: Transform.rotate(
         angle: node.rotation.radians,
-        child: RepaintBoundary(
-          child: renderer.buildContent(
-            node,
-            defaultNodeTheme,
-            defaultTextTheme,
+        child: InkWell(
+          mouseCursor: node is Tappable
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
+          onTap: () {
+            if (node is Tappable) {
+              (node as Tappable).onTap();
+            }
+          },
+          child: RepaintBoundary(
+            child: renderer.buildContent(
+              node,
+              defaultNodeTheme,
+              defaultTextTheme,
+            ),
           ),
         ),
       ),

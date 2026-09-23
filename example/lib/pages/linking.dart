@@ -14,6 +14,11 @@ class LinkingPage extends StatefulWidget {
 
 class _LinkingPageState extends State<LinkingPage> {
   final nodes = <Node>[
+    ToggleNode(
+      id: 'toggle',
+      title: 'Press to toggle on/off',
+      position: Position(300, 50),
+    ),
     LabelNode(
       id: 'title',
       label: 'Demo diagram!',
@@ -253,7 +258,7 @@ class _LinkingPageState extends State<LinkingPage> {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 5), (_) {
       for (final node in nodes) {
-        if (node is! Valuable) continue;
+        if (node is! Valuable<double>) continue;
 
         final random = (Random().nextDouble() * 1000).roundToDouble();
         node.value = random;
