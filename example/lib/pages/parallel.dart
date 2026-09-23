@@ -11,12 +11,12 @@ class ParallelPage extends StatefulWidget {
 
 class _ParallelPageState extends State<ParallelPage> {
   final nodes = [
-    VoltageSensorNode(id: 'v1', position: Position(300, 300)),
-    FlowSensorNode(id: 'f1', position: Position(100, 100)),
-    FlowSensorNode(id: 'f2', position: Position(250, 150)),
-    FlowSensorNode(id: 'f3', position: Position(350, 250)),
-    FlowSensorNode(id: 'f4', position: Position(50, 75)),
-    FlowSensorNode(id: 'f5', position: Position(150, 250)),
+    VoltageIndicatorNode(id: 'v1', position: Position(300, 300)),
+    FlowIndicatorNode(id: 'f1', position: Position(100, 100)),
+    FlowIndicatorNode(id: 'f2', position: Position(250, 150)),
+    FlowIndicatorNode(id: 'f3', position: Position(350, 250)),
+    FlowIndicatorNode(id: 'f4', position: Position(50, 75)),
+    FlowIndicatorNode(id: 'f5', position: Position(150, 250)),
   ];
 
   final links = [

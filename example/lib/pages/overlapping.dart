@@ -11,10 +11,10 @@ class OverlappingPage extends StatefulWidget {
 
 class _LinkingPageState extends State<OverlappingPage> {
   final nodes = [
-    VoltageSensorNode(id: 'v1', position: Position(300, 300)),
-    FlowSensorNode(id: 'f1', position: Position(100, 100)),
-    FlowSensorNode(id: 'f2', position: Position(50, 150)),
-    FlowSensorNode(id: 'f3', position: Position(350, 150)),
+    VoltageIndicatorNode(id: 'v1', position: Position(300, 300)),
+    FlowIndicatorNode(id: 'f1', position: Position(100, 100)),
+    FlowIndicatorNode(id: 'f2', position: Position(50, 150)),
+    FlowIndicatorNode(id: 'f3', position: Position(350, 150)),
   ];
 
   final links = [
