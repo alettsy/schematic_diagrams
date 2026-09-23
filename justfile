@@ -6,8 +6,9 @@ set shell := ["bash", "-c"]
 
 alias bc := before_commit
 alias rd := run_desktop
+alias t := test
 
-before_commit: check check_format
+before_commit: check check_format test
 
 check:
     dart analyze --fatal-infos
@@ -20,3 +21,11 @@ check_format:
 
 run_desktop:
     cd example && flutter run -d {{ os() }}
+
+test:
+    flutter test
+
+test_coverage:
+    flutter test --coverage
+    @echo ""
+    @echo "View results with https://lcov-viewer.netlify.app/"

@@ -26,8 +26,8 @@ class _ParallelPageState extends State<ParallelPage> {
       toNodeId: 'v1',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'needs-adjustment-1',
@@ -44,8 +44,8 @@ class _ParallelPageState extends State<ParallelPage> {
       toNodeId: 'f5',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
   ];
 

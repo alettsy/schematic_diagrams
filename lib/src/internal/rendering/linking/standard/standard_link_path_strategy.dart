@@ -77,9 +77,9 @@ class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
         return StandardLeftRouter().getLines(linkDetails);
       case LinkDirection.right:
         return StandardRightRouter().getLines(linkDetails);
-      case LinkDirection.up:
+      case LinkDirection.top:
         return StandardTopRouter().getLines(linkDetails);
-      case LinkDirection.down:
+      case LinkDirection.bottom:
         return StandardBottomRouter().getLines(linkDetails);
     }
   }

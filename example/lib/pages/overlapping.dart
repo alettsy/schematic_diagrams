@@ -24,8 +24,8 @@ class _LinkingPageState extends State<OverlappingPage> {
       toNodeId: 'v1',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'example2',

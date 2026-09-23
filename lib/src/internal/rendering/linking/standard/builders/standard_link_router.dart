@@ -25,9 +25,9 @@ abstract class StandardLinkRouter {
         return toLeft(linkDetails);
       case LinkDirection.right:
         return toRight(linkDetails);
-      case LinkDirection.up:
+      case LinkDirection.top:
         return toTop(linkDetails);
-      case LinkDirection.down:
+      case LinkDirection.bottom:
         return toBottom(linkDetails);
     }
   }

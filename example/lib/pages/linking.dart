@@ -127,8 +127,8 @@ class _LinkingPageState extends State<LinkingPage> {
       toNodeId: 'g1',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'entry-valve-2',
@@ -136,8 +136,8 @@ class _LinkingPageState extends State<LinkingPage> {
       toNodeId: 'g2',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'valves-1',
@@ -145,8 +145,8 @@ class _LinkingPageState extends State<LinkingPage> {
       toNodeId: 'g3',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'valves-2',
@@ -154,8 +154,8 @@ class _LinkingPageState extends State<LinkingPage> {
       toNodeId: 'g4',
       fromPortId: 'bottom',
       toPortId: 'top',
-      inFrom: LinkDirection.up,
-      outTo: LinkDirection.down,
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'valves-flow-1',
@@ -164,7 +164,7 @@ class _LinkingPageState extends State<LinkingPage> {
       fromPortId: 'bottom',
       toPortId: 'left',
       inFrom: LinkDirection.left,
-      outTo: LinkDirection.down,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'valves-flow-2',
@@ -173,7 +173,7 @@ class _LinkingPageState extends State<LinkingPage> {
       fromPortId: 'bottom',
       toPortId: 'right',
       inFrom: LinkDirection.right,
-      outTo: LinkDirection.down,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'flow-volt',
@@ -182,7 +182,7 @@ class _LinkingPageState extends State<LinkingPage> {
       fromPortId: 'bottom',
       toPortId: 'left',
       inFrom: LinkDirection.left,
-      outTo: LinkDirection.down,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'flow-press',
@@ -191,7 +191,7 @@ class _LinkingPageState extends State<LinkingPage> {
       fromPortId: 'bottom',
       toPortId: 'left',
       inFrom: LinkDirection.left,
-      outTo: LinkDirection.down,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'flow-level',
@@ -200,7 +200,7 @@ class _LinkingPageState extends State<LinkingPage> {
       fromPortId: 'bottom',
       toPortId: 'left',
       inFrom: LinkDirection.left,
-      outTo: LinkDirection.down,
+      outTo: LinkDirection.bottom,
     ),
     Link(
       id: 'volt-out',

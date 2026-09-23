@@ -3,4 +3,4 @@
 
 /// The directions which links are allowed to leave origin
 /// node ports from and enter destination node ports to.
-enum LinkDirection { left, right, up, down }
+enum LinkDirection { left, right, top, bottom }
