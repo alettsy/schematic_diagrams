@@ -16,11 +16,11 @@ class ThreeWayValve extends CommonNode {
     super.size = const Size(30, 34),
   }) : super(renderer: ThreeWayValveRenderer()) {
     final thirdWidth = size.width / 3;
-    ports = [
+    ports = ProtectedList([
       Port(id: 'top', position: Position(thirdWidth, 0)),
       Port(id: 'bottom', position: Position(thirdWidth, size.height)),
       Port(id: 'right', position: Position(size.width, size.height / 2)),
-    ];
+    ]);
   }
 
   @override

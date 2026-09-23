@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:schematic_diagrams/src/core/parts/position.dart';
 import 'package:schematic_diagrams/src/core/parts/text_block_theme.dart';
+import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 
 /// A block of text that a node can render as part of itself.
-class TextBlock {
+class TextBlock implements IdBased {
   /// Default implementation.
   TextBlock({
+    required this.id,
     required this.text,
-    this.id,
     this.position = const Position(0, 0),
     this.drawWidth = 100,
     this.themeOverride = const TextBlockTheme(),
@@ -15,7 +16,8 @@ class TextBlock {
   });
 
   /// The unique [id] of this text block.
-  final String? id;
+  @override
+  final String id;
 
   /// The textual content.
   final String text;

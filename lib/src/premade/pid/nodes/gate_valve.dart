@@ -16,10 +16,10 @@ class GateValve extends CommonNode {
     super.themeOverride,
   }) : super(renderer: GateValveRenderer()) {
     final halfWidth = size.width / 2;
-    ports = [
+    ports = ProtectedList([
       Port(id: 'top', position: Position(halfWidth, 0)),
       Port(id: 'bottom', position: Position(halfWidth, size.height)),
-    ];
+    ]);
   }
 
   @override

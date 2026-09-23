@@ -11,6 +11,6 @@ class ConnectorPoint extends Node with Linkable {
   /// Default implementation.
   ConnectorPoint({required super.id, super.position})
     : super(renderer: DesignlessRenderer(), size: const Size(1, 1)) {
-    ports = [const Port(id: 'point')];
+    ports = ProtectedList([const Port(id: 'point')]);
   }
 }

@@ -1,8 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart';
-import 'package:schematic_diagrams/src/core/parts/port.dart';
-import 'package:schematic_diagrams/src/core/parts/position.dart';
+import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/node.dart';
 
 /// Allows nodes to be linked together via "ports".
@@ -11,7 +10,7 @@ import 'package:schematic_diagrams/src/models/node.dart';
 /// and specified draw direction.
 mixin Linkable on Node {
   /// Available ports for linking on this node.
-  List<Port> ports = [];
+  ProtectedList<Port> ports = ProtectedList<Port>();
 
   /// Get the port placement offset from the node position.
   Position? getPortOffset(String portId) {

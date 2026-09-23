@@ -29,12 +29,12 @@ abstract class SensorNode extends CommonNode {
     final halfHeight = size.height / 2;
     final halfWidth = size.width / 2;
 
-    ports = [
+    ports = ProtectedList([
       Port(id: 'top', position: Position(halfWidth, 0)),
       Port(id: 'bottom', position: Position(halfWidth, size.height)),
       Port(id: 'left', position: Position(0, halfHeight)),
       Port(id: 'right', position: Position(size.width, halfHeight)),
-    ];
+    ]);
   }
 
   /// Tag displayed in the center of the circle.

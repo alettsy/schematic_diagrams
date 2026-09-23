@@ -25,10 +25,10 @@ class IoNode extends Node with TextBlockable, Linkable {
       );
     }
 
-    ports = [
+    ports = ProtectedList([
       Port(id: 'top', position: Position(size.width / 2, 0)),
       Port(id: 'bottom', position: Position(size.width / 2, size.height)),
-    ];
+    ]);
   }
 
   /// The optional label for this IO node.
