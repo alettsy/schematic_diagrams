@@ -1,7 +1,7 @@
 name: schematic_diagrams
-description: "Modular schematic diagrams package for making detailed schematics that are interactable and updatable"
+description: "Modular, reactive, and interactive schematic diagrams package"
 version: 0.0.1
-homepage:
+homepage: https://github.com/alettsy/schematic_diagrams
 
 environment:
   sdk: ^3.11.4
@@ -19,3 +19,11 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+
+platforms:
+  windows:
+  linux:
+  macos:
+  android:
+  ios:
+  web:
