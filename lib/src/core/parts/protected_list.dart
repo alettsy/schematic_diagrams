@@ -39,6 +39,18 @@ class ProtectedList<T extends IdBased> extends ListBase<T> {
     _list[index] = value;
   }
 
+  /// Remove an item by its ID.
+  bool removeById(String id) {
+    final index = _list.indexWhere((e) => e.id == id);
+
+    if (index == -1) return false;
+
+    _usedIds.remove(id);
+    _list.removeAt(index);
+
+    return true;
+  }
+
   @override
   int get length => _list.length;
 
@@ -55,6 +67,36 @@ class ProtectedList<T extends IdBased> extends ListBase<T> {
 
     _usedIds.add(element.id);
     _list.add(element);
+  }
+
+  @override
+  bool remove(Object? element) {
+    throw UnsupportedError('Not supported');
+  }
+
+  @override
+  T removeAt(int index) {
+    throw UnsupportedError('Not supported');
+  }
+
+  @override
+  T removeLast() {
+    throw UnsupportedError('Not supported');
+  }
+
+  @override
+  void removeWhere(bool Function(T element) test) {
+    throw UnsupportedError('Not supported');
+  }
+
+  @override
+  void removeRange(int start, int end) {
+    throw UnsupportedError('Not supported');
+  }
+
+  @override
+  void addAll(Iterable<T> iterable) {
+    throw UnsupportedError('Not supported');
   }
 }
 
