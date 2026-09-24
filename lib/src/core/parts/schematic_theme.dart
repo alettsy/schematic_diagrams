@@ -22,4 +22,19 @@ class SchematicTheme {
 
   /// The outline border radius.
   final BorderRadiusGeometry? borderRadius;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SchematicTheme) return false;
+
+    return backgroundColor == other.backgroundColor &&
+        borderColor == other.borderColor &&
+        borderWidth == other.borderWidth &&
+        borderRadius == other.borderRadius;
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(backgroundColor, borderColor, borderWidth, borderRadius);
 }

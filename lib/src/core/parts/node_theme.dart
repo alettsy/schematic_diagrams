@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 /// How the node should look when painted on the screen.
 ///
-/// Allows for setting a [fill] color, [stroke] color, and 
+/// Allows for setting a [fill] color, [stroke] color, and
 /// [strokeWidth].
 @immutable
 class NodeTheme {
@@ -26,4 +26,17 @@ class NodeTheme {
       strokeWidth: strokeWidth ?? this.strokeWidth,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NodeTheme) return false;
+
+    return fill == other.fill &&
+        stroke == other.stroke &&
+        strokeWidth == other.strokeWidth;
+  }
+
+  @override
+  int get hashCode => Object.hash(fill, stroke, strokeWidth);
 }

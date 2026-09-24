@@ -37,4 +37,18 @@ class TextBlockTheme {
       fontWeight: fontWeight ?? this.fontWeight,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! TextBlockTheme) return false;
+
+    return color == other.color &&
+        fontSize == other.fontSize &&
+        fontFamily == other.fontFamily &&
+        fontWeight == other.fontWeight;
+  }
+
+  @override
+  int get hashCode => Object.hash(color, fontSize, fontFamily, fontWeight);
 }

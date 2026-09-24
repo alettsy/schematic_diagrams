@@ -14,4 +14,15 @@ class Port implements IdBased {
 
   /// The position of the port, relative to its parent node.
   final Position position;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! Port) return false;
+
+    return id == other.id && position == other.position;
+  }
+
+  @override
+  int get hashCode => Object.hash(id, position);
 }

@@ -21,4 +21,15 @@ class LinkTheme {
       strokeWidth: strokeWidth ?? this.strokeWidth,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! LinkTheme) return false;
+
+    return strokeWidth == other.strokeWidth && stroke == other.stroke;
+  }
+
+  @override
+  int get hashCode => Object.hash(stroke, strokeWidth);
 }
