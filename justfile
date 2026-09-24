@@ -7,6 +7,7 @@ set shell := ["bash", "-c"]
 alias bc := before_commit
 alias rd := run_desktop
 alias t := test
+alias tc := test_coverage
 
 before_commit: check check_format test
 
