@@ -40,7 +40,6 @@ class TextBlock implements IdBased {
 
   /// Copy this text block with new properties.
   TextBlock copyWith({
-    String? id,
     String? text,
     Position? position,
     double? rotation,
@@ -49,7 +48,7 @@ class TextBlock implements IdBased {
     TextAlign? textAlign,
   }) {
     return TextBlock(
-      id: id ?? this.id,
+      id: id,
       text: text ?? this.text,
       position: position ?? this.position,
       rotation: rotation ?? this.rotation,
