@@ -1,4 +1,6 @@
-<img width="600" src="assets/logo.png" />
+<div align="center">
+    <img width="600" src="assets/logo.png" />
+</div>
 
 _A Flutter package for making modular, reactive schematic diagrams easily._
 
