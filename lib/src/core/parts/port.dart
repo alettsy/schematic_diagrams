@@ -5,7 +5,8 @@ import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 /// A place on a node where links can be connected to.
 @immutable
 class Port implements IdBased {
-  /// Default implementation.
+  /// Create a new [Port] with a unique [id] placed at the 
+  /// node-relative [position].
   const Port({required this.id, this.position = const Position(0, 0)});
 
   /// The unique [id] of the port.

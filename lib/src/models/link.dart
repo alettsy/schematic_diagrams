@@ -2,12 +2,26 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 
 /// A link between the port of one node to the port of
 /// another node, based on the node IDs and port IDs.
-/// 
+///
 /// Linking direction is specified at the start and end ports,
 /// using [outTo] (link direction when leaving start port) and [inFrom]
-/// (link direction when entering end port). 
+/// (link direction when entering end port).
 class Link {
-  /// Default implementation.
+  /// Creates a [Link] with a unique [id] between the two ports of 
+  /// two nodes.
+  ///
+  /// ## Example:
+  /// ```Dart
+  /// Link(
+  ///   id: 'connect-g1-to-g2',
+  ///   fromNodeId: 'g1',
+  ///   toNodeId: 'g2',
+  ///   fromPortId: 'bottom',
+  ///   toPortId: 'top',
+  ///   inFrom: LinkDirection.top,
+  ///   outTo: LinkDirection.bottom,
+  /// ),
+  /// ```
   Link({
     required this.id,
     required this.fromNodeId,
@@ -28,7 +42,7 @@ class Link {
   /// The ID of the node ewhich hasthe end port.
   final String toNodeId;
 
-  /// The ID of the port in the start node. 
+  /// The ID of the port in the start node.
   final String fromPortId;
 
   /// The ID of the port in the end node.

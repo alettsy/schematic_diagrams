@@ -5,7 +5,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_render
 /// Toggleable node with a boolean state.
 class ToggleNode extends Node
     with ChangeNotifier, Updatable, Valuable<bool>, Tappable, TextBlockable {
-  /// Default implementation.
+  /// Create a togglable node at [position] with a unique [id].
   ToggleNode({required super.id, super.position, String? title})
     : super(renderer: CircularPaintedNodeRenderer()) {
     if (title != null) {

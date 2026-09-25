@@ -5,7 +5,8 @@ import 'package:flutter/widgets.dart';
 /// Allows for setting a [stroke] color and [strokeWidth].
 @immutable
 class LinkTheme {
-  /// Default implementation.
+  /// Create a new [LinkTheme] with an optional [stroke] [Color]
+  /// and [strokeWidth].
   const LinkTheme({this.stroke, this.strokeWidth});
 
   /// The color the link should be.

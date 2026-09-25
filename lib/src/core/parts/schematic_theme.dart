@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 /// How the diagram should look when rendered to the screen.
 @immutable
 class SchematicTheme {
-  /// Default implementation.
+  /// Create a new [SchematicTheme] with an optional [backgroundColor],
+  /// [borderColor], [borderWidth], and [borderRadius].
   const SchematicTheme({
     this.backgroundColor = Colors.grey,
     this.borderColor = Colors.black,

@@ -8,7 +8,29 @@ import 'package:schematic_diagrams/src/rendering/linking/link_manager.dart';
 
 /// The model of the schematic diagram.
 class SchematicDiagramModel implements NodeResolver {
-  /// Default implementation.
+  /// Creates a [SchematicDiagramModel] with a required list of
+  /// [nodes].
+  ///
+  /// ## Example:
+  /// ```Dart
+  /// SchematicDiagramModel(
+  ///   nodes: [
+  ///     GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
+  ///     GateValve(id: 'g2', position: Position(50, 200), title: 'Gate 2'),
+  ///   ],
+  ///   links: [
+  ///     Link(
+  ///       id: 'connect-g1-to-g2',
+  ///       fromNodeId: 'g1',
+  ///       toNodeId: 'g2',
+  ///       fromPortId: 'bottom',
+  ///       toPortId: 'top',
+  ///       inFrom: LinkDirection.top,
+  ///       outTo: LinkDirection.bottom,
+  ///     ),
+  ///   ]
+  /// );
+  /// ```
   SchematicDiagramModel({
     required this.nodes,
     this.links = const [],

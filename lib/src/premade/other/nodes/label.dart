@@ -1,11 +1,11 @@
 import 'package:schematic_diagrams/src/core/mixins/mixins.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
-import 'package:schematic_diagrams/src/premade/pid/base/base_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/rendering.dart';
 
 /// Simple text label node.
 class LabelNode extends Node with TextBlockable {
-  /// Default implementation.
+  /// Create a [label] at [position] with a unique [id].
   LabelNode({
     required super.id,
     required this.label,
@@ -13,7 +13,7 @@ class LabelNode extends Node with TextBlockable {
     super.rotation,
     double drawWidth = 100,
     TextBlockTheme textBlockThemeOverride = const TextBlockTheme(),
-  }) : super(renderer: BaseRenderer()) {
+  }) : super(renderer: StandardPaintedBaseRenderer()) {
     textBlocks.add(
       TextBlock(
         id: 'label',

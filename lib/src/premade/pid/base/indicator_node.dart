@@ -6,7 +6,9 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_render
 /// Base indicator/sensor node, used for the creation of simple circular
 /// P&ID elements, such as a voltage indicator.
 abstract class IndicatorNode extends CommonNode {
-  /// Default implementation.
+  /// Create an [IndicatorNode] with a unique [id] and center title [prefix].
+  /// 
+  /// Used as a base for all indicators, such as the VoltageIndicator node.
   IndicatorNode({
     required this.prefix,
     required super.id,

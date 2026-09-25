@@ -4,7 +4,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/pump_pid_renderer.d
 
 /// Standard P&ID pump.
 class Pump extends CommonNode {
-  /// Default implementation.
+  /// Create a [Pump] node with a unique [id].
   Pump({
     required super.id,
     super.position,

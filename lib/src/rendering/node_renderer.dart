@@ -6,9 +6,6 @@ import 'package:schematic_diagrams/src/models/node.dart';
 
 /// Base renderer for how to render nodes.
 abstract class NodeRenderer<T extends Node> {
-  /// Default implementation.
-  NodeRenderer();
-
   /// Build the content inside the node, such as via [CustomPaint].
   Widget buildContent(
     T node,

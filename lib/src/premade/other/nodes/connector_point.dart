@@ -8,7 +8,9 @@ import 'package:schematic_diagrams/src/rendering/standard/designless_renderer.da
 /// Invisible point to allow for manual adjustments to link
 /// routing.
 class ConnectorPoint extends Node with Linkable {
-  /// Default implementation.
+  /// Create an invisible point at [position] with a unique [id].
+  /// 
+  /// Used primarily for manual linking adjustments.
   ConnectorPoint({required super.id, super.position})
     : super(renderer: DesignlessRenderer(), size: const Size(1, 1)) {
     ports = ProtectedList([const Port(id: 'point')]);

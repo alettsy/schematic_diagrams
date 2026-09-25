@@ -7,7 +7,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_render
 
 /// Renderer for the standard P&ID pump.
 class PumpRenderer<T extends Node> extends CircularPaintedNodeRenderer<T> {
-  /// Default implementation.
+  /// Create a [PumpRenderer], which draws the pump node.
   PumpRenderer({super.textRenderer});
 
   @override

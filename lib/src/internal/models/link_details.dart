@@ -4,7 +4,8 @@ import 'package:schematic_diagrams/src/models/node.dart';
 /// Internally used link details which provides all required references
 /// to calculate the route for the link.
 class LinkDetails {
-  /// Default implementation
+  /// Creates a [LinkDetails] populated with ready-to-use link
+  /// information for renderering.
   LinkDetails({
     required this.outTo,
     required this.inFrom,

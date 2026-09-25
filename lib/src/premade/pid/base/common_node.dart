@@ -6,7 +6,10 @@ import 'package:schematic_diagrams/src/models/models.dart';
 /// the pump and gate valve.
 abstract class CommonNode extends Node
     with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
-  /// Default implementation.
+  /// Create a [CommonNode] with a unique [id] and [renderer].
+  /// 
+  /// Used as a base for commonly seen P&ID nodes, such as the indicators 
+  /// and pumps.
   CommonNode({
     required super.id,
     required super.renderer,

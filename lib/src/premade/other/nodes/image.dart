@@ -6,7 +6,7 @@ import 'package:schematic_diagrams/src/rendering/standard/image_renderer.dart';
 
 /// Static image node, that accepts an [AssetImage].
 class ImageNode extends Node with Linkable {
-  /// Default implementation.
+  /// Create a static [image] at [position] with a unique [id].
   ImageNode({
     required super.id,
     required AssetImage image,

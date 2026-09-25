@@ -8,7 +8,8 @@ import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart
 
 /// Base renderer for how a link should look on the diagram.
 abstract class LinkRenderer<T extends Link> {
-  /// Default implementation.
+  /// Create a [LinkRenderer] that draws the lines computed from
+  /// the [pathStrategy].
   const LinkRenderer({required this.pathStrategy});
 
   /// Strategy for getting the route lines of the link.

@@ -4,7 +4,7 @@ import 'package:schematic_diagrams/src/models/node.dart';
 
 /// Renderer for all text-related parts of the diagram.
 abstract class PaintedTextRenderer {
-  /// Default implementation.
+  /// Create a paint-based text renderer.
   const PaintedTextRenderer();
 
   /// Paint the [textBlock] to the [canvas] with the theme

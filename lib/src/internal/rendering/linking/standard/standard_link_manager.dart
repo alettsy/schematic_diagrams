@@ -9,7 +9,8 @@ import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 /// to efficiently manage link awareness, and that use the standard link
 /// [renderer] to draw themselves.
 class StandardLinkManager<T extends Link> implements LinkManager {
-  /// Default implementation.
+  /// Creates a [StandardLinkManager] which uses the [StandardSectionManager]
+  /// and [StandardLinkRenderer] for link drawing.
   StandardLinkManager() {
     sectionManager = StandardSectionManager();
     renderer = StandardLinkRenderer<T>(sectionManager: sectionManager);

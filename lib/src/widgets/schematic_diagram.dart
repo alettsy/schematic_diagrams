@@ -6,7 +6,7 @@ import 'package:schematic_diagrams/src/models/schematic_diagram_model.dart';
 ///
 /// This requires the [SchematicDiagramModel] to be provided.
 class SchematicDiagram extends StatefulWidget {
-  /// Default implementation.
+  /// Create a [SchematicDiagram] using the schematic diagram [model].
   const SchematicDiagram({required this.model, super.key});
 
   /// The model representation of the diagram, used to determine

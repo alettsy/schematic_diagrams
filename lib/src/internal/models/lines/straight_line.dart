@@ -8,7 +8,9 @@ import 'package:schematic_diagrams/src/internal/models/lines/line.dart';
 ///
 /// Used in the standard link router.
 class StraightLine extends Line {
-  /// Default implementation.
+  /// [StraightLine] that spans [from] to [to].
+  /// 
+  /// Can only be horizontal or vertical.
   StraightLine({required super.from, required super.to, super.id});
 
   /// Whether or not this line is moving horizontally.

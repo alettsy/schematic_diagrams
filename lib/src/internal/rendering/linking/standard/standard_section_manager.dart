@@ -8,7 +8,8 @@ import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 /// Manages the link lines in the diagram based on the areas
 /// in which they intersect.
 class StandardSectionManager implements SectionManager {
-  /// Default implementation.
+  /// Create a [StandardSectionManager] to track all [sections] of size
+  /// [sectionSize].
   StandardSectionManager({this.sectionSize = 100.0});
 
   /// The square size of each section.

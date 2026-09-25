@@ -6,7 +6,8 @@ import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
 
 /// Standard text painter implementation.
 class StandardPaintedTextRenderer extends PaintedTextRenderer {
-  /// Default implementation.
+  /// Create a [StandardPaintedTextRenderer], which renders the text
+  /// using paint.
   const StandardPaintedTextRenderer();
 
   @override

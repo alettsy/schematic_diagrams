@@ -6,7 +6,8 @@ import 'package:flutter/widgets.dart';
 /// [strokeWidth].
 @immutable
 class NodeTheme {
-  /// Default implementation.
+  /// Create a new [NodeTheme] with an optional [fill] [Color],
+  /// [stroke] [Color], and [strokeWidth].
   const NodeTheme({this.fill, this.stroke, this.strokeWidth});
 
   /// The color the node body should be.

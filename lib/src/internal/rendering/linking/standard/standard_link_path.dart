@@ -3,7 +3,8 @@ import 'package:schematic_diagrams/src/internal/models/lines/straight_line.dart'
 
 /// Standard link path, which is a series of straight lines.
 class StandardLinkPath {
-  /// Default implementation.
+  /// Creates a [StandardLinkPath] that begins at [start] and tracks
+  /// the [StraightLine]s that it is composed of.
   StandardLinkPath({required this.start});
 
   /// Where the path starts.

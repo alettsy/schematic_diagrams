@@ -6,7 +6,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/io_renderer.dart';
 
 /// Triangular P&ID IO node, with an optional label.
 class IoNode extends Node with TextBlockable, Linkable {
-  /// Default implementation.
+  /// Create an input-output triangle node with a unique [id].
   IoNode({
     required super.id,
     super.position,

@@ -4,7 +4,11 @@ import 'package:schematic_diagrams/src/core/helpers/angle_helper.dart';
 
 /// Widget representation of a node.
 class NodeWidget extends StatelessWidget {
-  /// Default implementation.
+  /// Create a [NodeWidget] that will use [renderer] to draw the [node].
+  /// 
+  /// The [defaultNodeTheme] will be applied if the node has no theme override.
+  /// Similarly, the [defaultTextTheme] will be applied to all text blocks if
+  /// the have no theme override either.
   const NodeWidget({
     required this.node,
     required this.renderer,

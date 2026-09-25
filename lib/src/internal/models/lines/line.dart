@@ -3,7 +3,7 @@ import 'package:uuid/v4.dart';
 
 /// Base line used for link routing.
 abstract class Line {
-  /// Default implementation.
+  /// [Line] that spans [from] to [to].
   Line({required this.from, required this.to, String? id})
     : id = id ?? const UuidV4().generate();
 

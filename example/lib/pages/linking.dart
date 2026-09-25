@@ -66,12 +66,12 @@ class _LinkingPageState extends State<LinkingPage> {
     GateValve(id: 'g2', position: Position(100, 75)),
     GateValve(id: 'g3', position: Position(50, 150)),
     GateValve(id: 'g4', position: Position(100, 150)),
-    FlowIndicatorNode(
+    FlowIndicator(
       id: 'flow-1',
       position: Position(72, 250),
       title: 'Flow 1',
     ),
-    VoltageIndicatorNode(
+    VoltageIndicator(
       id: 'volt-1',
       position: Position(100, 300),
       title: 'Voltage 1',

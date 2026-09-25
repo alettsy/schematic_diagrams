@@ -7,7 +7,24 @@ import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 ///
 /// How it looks is determined by the [renderer].
 abstract class Node {
-  /// Default implementation.
+  /// Creates a new [Node] with a unique [id], and a [renderer]
+  /// to determine how to draw it.
+  ///
+  /// ## Example:
+  /// ```Dart
+  /// final node1 = GateValve(
+  ///   id: 'g1',
+  ///   position: Position(50, 75),
+  ///   title: 'Gate 1'
+  /// );
+  ///
+  /// final node2 = ImageNode(
+  ///   id: 'image',
+  ///   image: AssetImage('assets/demo_image.png'),
+  ///   position: Position(500, 150),
+  ///   size: Size(100, 100),
+  /// );
+  /// ```
   Node({
     required this.id,
     required this.renderer,

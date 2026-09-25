@@ -8,7 +8,8 @@ import 'package:schematic_diagrams/src/rendering/standard/svg_data_renderer.dart
 /// of Strings.
 class SvgDataNode extends Node
     with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
-  /// Default implementation.
+  /// Create an updatable SVG image at [position] with a unique [id], using
+  /// the SVG path [data] and its associated [viewBox].
   SvgDataNode({
     required super.id,
     required List<String> data,

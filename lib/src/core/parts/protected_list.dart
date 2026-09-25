@@ -4,8 +4,12 @@ import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 
 /// List that is protected by the IDs of the elements, so now duplicates
 /// can slip through the cracks.
+/// 
+/// Ensures that each item has a unique ID.
 class ProtectedList<T extends IdBased> extends ListBase<T> {
-  /// Protected default implementation.
+  /// Create a [ProtectedList] with optional [initialValues].
+  /// 
+  /// All values must have unique IDs.
   ProtectedList([List<T>? initialValues]) {
     if (initialValues == null) return;
 

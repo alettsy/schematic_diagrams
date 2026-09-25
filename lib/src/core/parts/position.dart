@@ -4,7 +4,9 @@ import 'package:schematic_diagrams/src/internal/constants.dart';
 /// Representation of a Cartesian coordinate.
 @immutable
 class Position {
-  /// Default implementation.
+  /// Two dimensional position reperesented as [x] and [y].
+  ///
+  /// Can be converted to an [Offset] using `.asOffset`.
   const Position(this.x, this.y);
 
   /// The horizontal [x] position.

@@ -5,7 +5,8 @@ import 'package:schematic_diagrams/src/rendering/linking/section_manager.dart';
 
 /// The routing strategy for the links.
 abstract class LinkPathStrategy<T extends Link> {
-  /// Default implementation.
+  /// Create a [LinkPathStrategy] to compute the link route, and that 
+  /// uses a [sectionManager] to efficiently track all lines in sections.
   const LinkPathStrategy({required this.sectionManager});
 
   /// The manager for tracking where this link goes by partitioning,

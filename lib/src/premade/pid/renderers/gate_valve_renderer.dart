@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/models/models.dart';
-import 'package:schematic_diagrams/src/premade/pid/base/base_renderer.dart';
+import 'package:schematic_diagrams/src/rendering/rendering.dart';
 
 /// Renderer for the standard P&ID two-port gate valve.
-class GateValveRenderer<T extends Node> extends BaseRenderer<T> {
-  /// Default implementation.
+class GateValveRenderer<T extends Node> extends StandardPaintedBaseRenderer<T> {
+  /// Create a [GateValveRenderer], which draws the two-port gate valve.
   GateValveRenderer({super.textRenderer});
 
   @override

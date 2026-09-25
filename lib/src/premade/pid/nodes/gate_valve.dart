@@ -5,7 +5,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/gate_valve_renderer
 
 /// Standard P&ID two-port gate valve.
 class GateValve extends CommonNode {
-  /// Default implementation.
+  /// Create a [GateValve] qith a unique [id].
   GateValve({
     required super.id,
     super.position,

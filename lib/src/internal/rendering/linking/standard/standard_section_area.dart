@@ -6,7 +6,8 @@ import 'package:schematic_diagrams/src/rendering/linking/section_area.dart';
 /// Standard section area, which contains all [lines] that go through it
 /// from [from] to [to].
 class StandardSectionArea implements SectionArea {
-  /// Default implementation.
+  /// Create a section of the diagram, spanning [from] to [to], which
+  /// tracks all [StraightLine]s that pass through it.
   StandardSectionArea({required this.from, required this.to});
 
   /// Where the section area starts [from].

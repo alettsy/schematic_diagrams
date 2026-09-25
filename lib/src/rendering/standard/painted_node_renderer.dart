@@ -8,7 +8,7 @@ import 'package:schematic_diagrams/src/rendering/text_renderer.dart';
 
 /// Base renderer for nodes that uses [CustomPaint] to draw them.
 abstract class PaintedNodeRenderer<T extends Node> extends NodeRenderer<T> {
-  /// Default implementation.
+  /// Create a renderer that renders based on the provided `paint()` logic.
   PaintedNodeRenderer({
     this.textRenderer = const StandardPaintedTextRenderer(),
   });

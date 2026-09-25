@@ -5,7 +5,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/three_way_valve_ren
 
 /// Standard P&ID three-way valve.
 class ThreeWayValve extends CommonNode {
-  /// Default implementation
+  /// Create a [ThreeWayValve] node with a unique [id].
   ThreeWayValve({
     required super.id,
     super.position,

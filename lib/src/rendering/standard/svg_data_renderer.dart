@@ -10,7 +10,10 @@ import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 /// dynamically inserting them based on their part themes, and returning
 /// the result as an [SvgPicture].
 class SvgDataNodeRenderer extends NodeRenderer {
-  /// Default implementation.
+  /// Create an [SvgDataNodeRenderer], which renders the SVG using the 
+  /// provided [svgData] and [viewBox].
+  /// 
+  /// This node uses `flutter_svg`.
   SvgDataNodeRenderer({required this.svgData, this.viewBox = '0 0 100 100'});
 
   /// Standard SVG viewbox.

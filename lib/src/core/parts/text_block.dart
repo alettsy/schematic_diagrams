@@ -5,7 +5,9 @@ import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 
 /// A block of text that a node can render as part of itself.
 class TextBlock implements IdBased {
-  /// Default implementation.
+  /// Create a [TextBlock] with a unique [id], and [text] content.
+  /// 
+  /// [position] is relative to the parent node.
   TextBlock({
     required this.id,
     required this.text,

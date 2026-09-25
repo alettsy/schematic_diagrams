@@ -6,7 +6,7 @@ import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
 /// Renders a designless node.
 class DesignlessRenderer extends NodeRenderer {
-  /// Default implementation.
+  /// Create a renderer that returns no design.
   DesignlessRenderer();
 
   @override

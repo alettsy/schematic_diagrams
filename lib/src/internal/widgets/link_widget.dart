@@ -6,7 +6,10 @@ import 'package:schematic_diagrams/src/rendering/linking/link_renderer.dart';
 
 /// Widget representation of a link.
 class LinkWidget extends StatelessWidget {
-  /// Default implementation.
+  /// Create a [LinkWidget] that will use [renderer] to draw the [link], between
+  /// the nodes obtained from [nodeResolver].
+  /// 
+  /// The [defaultLinkTheme] will be applied if the link has no theme override.
   const LinkWidget({
     required this.link,
     required this.renderer,

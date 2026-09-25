@@ -13,7 +13,8 @@ import 'package:schematic_diagrams/src/rendering/linking/link_path_strategy.dart
 /// standard router, adjusting lines to avoid coincidence, and adding
 /// visible jumps for intersecting lines.
 class StandardLinkPathStrategy<T extends Link> extends LinkPathStrategy<T> {
-  /// Default implementation.
+  /// Creates a [StandardLinkPathStrategy] which calculates the [StraightLine]
+  /// and [JumpLine] paths that make it up.
   StandardLinkPathStrategy({
     required super.sectionManager,
     this.jumpDistance = 8,

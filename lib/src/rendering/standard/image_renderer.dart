@@ -7,7 +7,7 @@ import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 /// Renders an image node by taking the [image] and fitting it
 /// inside the node's width and height.
 class ImageNodeRenderer extends NodeRenderer {
-  /// Default implementation.
+  /// Create a renderer that renders an [image].
   ImageNodeRenderer({required this.image});
 
   /// The [AssetImage] representation of the [image].
