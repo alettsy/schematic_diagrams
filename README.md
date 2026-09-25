@@ -42,7 +42,7 @@ For a working example, check: [example](example/lib/main.dart)
 A diagram consists of the **widget** and the **model**. To create an empty diagram, you can do:
 
 ```Dart
-return SchematidDiagram(
+return SchematicDiagram(
   model: SchematicDiagramModel(nodes: [], links: [])
 );
 ```
@@ -50,7 +50,7 @@ return SchematidDiagram(
 To theme your diagram, you can override the `schematicTheme` property of the model:
 
 ```Dart
-return SchematidDiagram(
+return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [],
     links: [],
@@ -77,7 +77,7 @@ Nodes and links both get passed into the **model**.
 For example, to add a `GateValve` node to the diagram:
 
 ```Dart
-return SchematidDiagram(
+return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
@@ -94,7 +94,7 @@ The `GateValve` has ports at the top, right, bottom, and left of it and they are
 For example:
 
 ```Dart
-return SchematidDiagram(
+return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
