@@ -1,10 +1,12 @@
 <div align="center">
-    <img width="600" src="assets/logo.png" />
+    <img width="250" src="assets/logo.png" />
 </div>
 
-_A Flutter package for making modular, reactive schematic diagrams easily._
+_A Flutter package for making modular, reactive, interactive schematic diagrams easily._
 
 <hr />
+
+<img width="400" src="assets/example.png">
 
 Quick links:
 
@@ -13,6 +15,7 @@ Quick links:
 - [Screenshots](#screenshots)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
+- [Limitations](#limitations)
 
 ## Features
 
@@ -34,14 +37,24 @@ This sections covers:
 - [Using nodes and links](#using-nodes-and-links)
 - [Creating your own nodes](#creating-your-own-nodes)
 - [Added functionality with mixins](#added-functionality-with-mixins)
+- [Mutability and reactivity](#mutability-and-reactivity)
 
 For a working example, check: [example](example/lib/main.dart)
 
 ### Making a diagram
 
+There are two imports you need to be aware of:
+
+1. The main import, which includes the diagram, node model, link model, themes, mixins, interfaces, etc (
+   1. `import 'package:schematic_diagrams/schematic_diagrams.dart'`
+2. And the premade nodes import, which includes premade nodes, such as the P&ID nodes
+   1. `import 'package:schematic_diagrams/premade.dart'`
+
 A diagram consists of the **widget** and the **model**. To create an empty diagram, you can do:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
 return SchematicDiagram(
   model: SchematicDiagramModel(nodes: [], links: [])
 );
@@ -50,6 +63,8 @@ return SchematicDiagram(
 To theme your diagram, you can override the `schematicTheme` property of the model:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
 return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [],
@@ -77,6 +92,9 @@ Nodes and links both get passed into the **model**.
 For example, to add a `GateValve` node to the diagram:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+import 'package:schematic_diagrams/premade.dart';
+
 return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
@@ -94,6 +112,9 @@ The `GateValve` has ports at the top, right, bottom, and left of it and they are
 For example:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+import 'package:schematic_diagrams/premade.dart';
+
 return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
@@ -126,6 +147,8 @@ You can see how the built-in nodes are made in [lib/src/premade](lib/src/premade
 To make your own basic node, you can override the `Node` class:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
 class CustomNode extends Node {
   CustomNode({required super.id, required super.renderer});
 }
@@ -143,6 +166,8 @@ You can also use the ones in [lib/src/premade/pid/renderers](lib/src/premade/pid
 For example, to make a simple, custom painted triangle renderer:
 
 ```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
 class CustomNode extends Node {
   CustomNode({required super.id}) : super(renderer: CustomRenderer());
 }
@@ -184,7 +209,9 @@ You can extend your nodes with [mixins](lib/src/core/mixins) to add extra functi
 To make our `CustomNode` from before `Linkable` and `Valuable`, you can do the following:
 
 ```Dart
-class CustomNode extends Node with Updatable, Linkable, Valuable<double> {
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
+class CustomNode extends Node with ChangeNotifier, Updatable, Linkable, Valuable<double> {
   CustomNode({required super.id}) : super(renderer: CustomRenderer()) {
     ports = [Port(id: 'port1', position: Position(0, 0))].protected;
   }
@@ -196,9 +223,19 @@ class CustomNode extends Node with Updatable, Linkable, Valuable<double> {
 }
 ```
 
+### Mutability and reactivity
+
+A node that is `Updatable` should also have a `ChangeNotifier`. The `update()` function provided by the former should call `notifyListeners()`.
+
+The `update()` function can include whatever you want to do to the node before it is refreshed (e.g. by calling `notifyListeners()`), such as by changing the theme, rotation, size, etc.
+
+By default, a `Valuable` node will call `.update()` internally when the value changes.
+
+You can extend this logic as much as you want so you can call `.update()` from wherever you need the node to refresh, under whatever condition.
+
 ## Screenshots
 
-![Example Diagram Screenshot](<>)
+![Example Diagram Screenshot](assets/example.png)
 
 You can see more examples in the [example](example/lib/main.dart) project.
 
@@ -218,3 +255,14 @@ Features and changes I hope to work on soon:
 All contributions are welcome!
 
 See [CONTRIBUTING](CONTRIBUTING.md) for how.
+
+## Limitations
+
+Check the [roadmap](#roadmap) for planned features.
+
+Some current limitations:
+
+- Links are not updatable
+- Small set of premade P&ID nodes
+- Only the standard straight-line link router
+- No importing/exporting built-in
