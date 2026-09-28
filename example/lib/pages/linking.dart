@@ -14,6 +14,7 @@ class LinkingPage extends StatefulWidget {
 
 class _LinkingPageState extends State<LinkingPage> {
   final nodes = <Node>[
+    Pump(id: 'pump-1', position: Position(200, 210)),
     ToggleNode(
       id: 'toggle',
       title: 'Press to toggle on/off',
@@ -59,18 +60,15 @@ class _LinkingPageState extends State<LinkingPage> {
       id: 'io-5',
       label: 'OUT C',
       position: Position(420, 400),
-      themeOverride: NodeTheme(fill: Colors.pink),
+      themeOverride: NodeTheme(fill: Colors.cyanAccent),
       rotation: 270,
     ),
     GateValve(id: 'g1', position: Position(50, 75)),
     GateValve(id: 'g2', position: Position(100, 75)),
     GateValve(id: 'g3', position: Position(50, 150)),
     GateValve(id: 'g4', position: Position(100, 150)),
-    FlowIndicator(
-      id: 'flow-1',
-      position: Position(72, 250),
-      title: 'Flow 1',
-    ),
+    GateValve(id: 'g5', position: Position(350, 240), rotation: 90),
+    FlowIndicator(id: 'flow-1', position: Position(72, 250), title: 'Flow 1'),
     VoltageIndicator(
       id: 'volt-1',
       position: Position(100, 300),
@@ -94,12 +92,12 @@ class _LinkingPageState extends State<LinkingPage> {
       ],
       position: Position(250, 367),
       size: Size(48, 48),
-      themeOverride: NodeTheme(fill: Colors.transparent, strokeWidth: 0.5),
+      themeOverride: NodeTheme(fill: Colors.transparent, strokeWidth: 0.25),
       ports: [
         Port(id: 'tl', position: Position(2, 2)),
-        Port(id: 'tr', position: Position(46, 2)),
+        Port(id: 'tr', position: Position(52, 2)),
         Port(id: 'bl', position: Position(2, 46)),
-        Port(id: 'br', position: Position(46, 46)),
+        Port(id: 'br', position: Position(52, 46)),
       ],
     ),
     LabelNode(
@@ -118,6 +116,7 @@ class _LinkingPageState extends State<LinkingPage> {
       position: Position(500, 150),
       size: Size(100, 100),
     ),
+    ConnectorPoint(id: 'invis-1', position: Position(300, 250)),
   ];
 
   final links = [
@@ -248,6 +247,42 @@ class _LinkingPageState extends State<LinkingPage> {
       inFrom: LinkDirection.right,
       outTo: LinkDirection.left,
       themeOverride: LinkTheme(stroke: Colors.yellow),
+    ),
+    Link(
+      id: 'flow-pump',
+      fromNodeId: 'flow-1',
+      toNodeId: 'pump-1',
+      fromPortId: 'top',
+      toPortId: 'top',
+      inFrom: LinkDirection.top,
+      outTo: LinkDirection.top,
+    ),
+    Link(
+      id: 'pump-invis',
+      fromNodeId: 'pump-1',
+      toNodeId: 'invis-1',
+      fromPortId: 'bottom',
+      toPortId: 'point',
+      inFrom: LinkDirection.left,
+      outTo: LinkDirection.bottom,
+    ),
+    Link(
+      id: 'invis-valve',
+      fromNodeId: 'invis-1',
+      toNodeId: 'g5',
+      fromPortId: 'point',
+      toPortId: 'bottom',
+      inFrom: LinkDirection.left,
+      outTo: LinkDirection.bottom,
+    ),
+    Link(
+      id: 'valve-out',
+      fromNodeId: 'g5',
+      toNodeId: 'io-4',
+      fromPortId: 'top',
+      toPortId: 'bottom',
+      inFrom: LinkDirection.left,
+      outTo: LinkDirection.right,
     ),
   ];
 
