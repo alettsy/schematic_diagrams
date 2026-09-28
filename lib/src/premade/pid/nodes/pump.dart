@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/premade/pid/base/common_node.dart';
 import 'package:schematic_diagrams/src/premade/pid/renderers/pump_pid_renderer.dart';
@@ -23,5 +24,18 @@ class Pump extends CommonNode {
       Port(id: 'left', position: Position(0, halfHeight)),
       Port(id: 'right', position: Position(size.width, halfHeight)),
     ]);
+  }
+
+  @override
+  void update() {
+    if (value == null) return;
+
+    if (value! > 0) {
+      transientTheme = themeOverride.copyWith(fill: Colors.green);
+    } else {
+      transientTheme = themeOverride;
+    }
+
+    super.update();
   }
 }

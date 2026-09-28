@@ -6,7 +6,7 @@ class TextBlockTheme {
   /// Create a new [TextBlockTheme] with an optional [color],
   /// [fontSize], [fontWeight], and [fontFamily].
   const TextBlockTheme({
-    this.color = Colors.black,
+    this.color = Colors.white,
     this.fontSize = 12,
     this.fontWeight = FontWeight.normal,
     this.fontFamily,

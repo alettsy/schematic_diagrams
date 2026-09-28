@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:schematic_diagrams/src/internal/models/node_resolver.dart';
 import 'package:schematic_diagrams/src/internal/rendering/linking/standard/standard_link_manager.dart';
@@ -35,16 +34,9 @@ class SchematicDiagramModel implements NodeResolver {
     required this.nodes,
     this.links = const [],
     this.schematicTheme = const SchematicTheme(),
-    this.defaultNodeTheme = const NodeTheme(
-      fill: Colors.transparent,
-      stroke: Colors.black,
-      strokeWidth: 1.5,
-    ),
+    this.defaultNodeTheme = const NodeTheme(),
     this.defaultTextBlockTheme = const TextBlockTheme(),
-    this.defaultLinkTheme = const LinkTheme(
-      stroke: Colors.black,
-      strokeWidth: 1.4,
-    ),
+    this.defaultLinkTheme = const LinkTheme(),
     this.maxZoom = 2.0,
     this.minZoom = 0.5,
     this.scrollZoomStep = 0.1,

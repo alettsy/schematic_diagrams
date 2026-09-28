@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 /// How the node should look when painted on the screen.
 ///
@@ -8,7 +8,11 @@ import 'package:flutter/widgets.dart';
 class NodeTheme {
   /// Create a new [NodeTheme] with an optional [fill] [Color],
   /// [stroke] [Color], and [strokeWidth].
-  const NodeTheme({this.fill, this.stroke, this.strokeWidth});
+  const NodeTheme({
+    this.fill = Colors.transparent,
+    this.stroke = Colors.white,
+    this.strokeWidth = 0.25,
+  });
 
   /// The color the node body should be.
   final Color? fill;

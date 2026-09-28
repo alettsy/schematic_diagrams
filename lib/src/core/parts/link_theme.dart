@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 /// How the link should look when painted on the screen.
 ///
@@ -7,7 +7,10 @@ import 'package:flutter/widgets.dart';
 class LinkTheme {
   /// Create a new [LinkTheme] with an optional [stroke] [Color]
   /// and [strokeWidth].
-  const LinkTheme({this.stroke, this.strokeWidth});
+  const LinkTheme({
+    this.stroke = const Color.fromARGB(255, 171, 175, 177),
+    this.strokeWidth = 1.25,
+  });
 
   /// The color the link should be.
   final Color? stroke;

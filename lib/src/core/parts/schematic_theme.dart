@@ -6,7 +6,7 @@ class SchematicTheme {
   /// Create a new [SchematicTheme] with an optional [backgroundColor],
   /// [borderColor], [borderWidth], and [borderRadius].
   const SchematicTheme({
-    this.backgroundColor = Colors.grey,
+    this.backgroundColor = const Color(0x00232323),
     this.borderColor = Colors.black,
     this.borderWidth = 2,
     this.borderRadius,
