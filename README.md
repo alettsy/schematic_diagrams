@@ -230,6 +230,13 @@ class CustomNode extends Node with ChangeNotifier, Updatable, Linkable, Valuable
 }
 ```
 
+> [!NOTE]
+> Ports and TextBlocks are _protected_, which means they require unique IDs to work properly.
+> Because of this, the `ProtectedList<T>` has been provided to make this behaviour consistent.
+>
+> When making ports and text blocks, you can instantiate it like `ProtectedList<T>([...])`, or
+> you can call `[...].protected` on a normal list.
+
 ### Mutability and reactivity
 
 A node that is `Updatable` should also have a `ChangeNotifier`. The `update()` function provided by the former should call `notifyListeners()`.
