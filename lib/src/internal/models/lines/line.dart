@@ -2,10 +2,12 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 import 'package:uuid/v4.dart';
 
 /// Base line used for link routing.
-abstract class Line {
+class Line {
   /// [Line] that spans [from] to [to].
-  Line({required this.from, required this.to, String? id})
-    : id = id ?? const UuidV4().generate();
+  Line({required this.from, required this.to}) : id = const UuidV4().generate();
+
+  /// Set [from] and [to] of line with provided [id]. Internal use only.
+  Line.internal({required this.from, required this.to, required this.id});
 
   /// The unique ID for this line.
   final String id;

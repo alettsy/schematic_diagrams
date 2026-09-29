@@ -9,9 +9,15 @@ import 'package:schematic_diagrams/src/internal/models/lines/line.dart';
 /// Used in the standard link router.
 class StraightLine extends Line {
   /// [StraightLine] that spans [from] to [to].
-  /// 
+  ///
   /// Can only be horizontal or vertical.
-  StraightLine({required super.from, required super.to, super.id});
+  StraightLine({required super.from, required super.to});
+
+  StraightLine._internal({
+    required super.from,
+    required super.to,
+    required super.id,
+  }) : super.internal();
 
   /// Whether or not this line is moving horizontally.
   bool get horizontal => (from.y - to.y).abs() <= tolerance;
@@ -105,11 +111,15 @@ class StraightLine extends Line {
 
   /// Flip this line, so the from and to are switched.
   StraightLine flip() {
-    return StraightLine(from: to, to: from, id: id);
+    return StraightLine._internal(to: from, from: to, id: id);
   }
 
   /// Copy this line with new properties.
   StraightLine copyWith({Position? to, Position? from}) {
-    return StraightLine(to: to ?? this.to, from: from ?? this.from, id: id);
+    return StraightLine._internal(
+      to: to ?? this.to,
+      from: from ?? this.from,
+      id: id,
+    );
   }
 }
