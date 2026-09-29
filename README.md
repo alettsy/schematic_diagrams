@@ -249,11 +249,11 @@ void update() {
   if (value == null) return;
 
   if (value! > 0) {
-    // set top to orange and bottom to purple
+    // set top of gate valve to orange and bottom  of gate valve to purple
     setPartThemeOverride(0, const NodeTheme(fill: Colors.orange));
     setPartThemeOverride(1, const NodeTheme(fill: Colors.purple));
   } else {
-    // clear all colors
+    // clear all colors (goes back to default node theme)
     setPartThemeOverride(0, null);
     setPartThemeOverride(1, null);
   }
@@ -271,23 +271,21 @@ void update() {
   // if the value is null, it hasn't been set yet, so skip
   if (value == null) return;
 
-  final titleIndex = textBlocks.indexWhere((t) => t.id == 'title');
-
   if (value! > 0) {
     // update the whole theme of the node at once
-    transientTheme = themeOverride.copyWith(
+    setTheme(const NodeTheme(
       fill: Colors.brown,
       strokeWidth: 3,
-    );
+    ));
 
     // update title text to "Active"
-    textBlocks[titleIndex] = textBlocks[titleIndex].copyWith(text: 'Active');
+    setTextById('title', 'Active');
   } else {
     // reset the theme to default
-    transientTheme = themeOverride;
+    resetTheme();
 
     // update title text to "Inactive"
-    textBlocks[titleIndex] = textBlocks[titleIndex].copyWith(text: 'Inactive');
+    setTextById('title', 'Inactive');
   }
 
   // notify the node has changed

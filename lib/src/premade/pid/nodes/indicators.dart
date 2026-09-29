@@ -39,7 +39,7 @@ class PressureIndicator extends IndicatorNode {
 /// P&ID standard implementation for a level indicator node, indicated
 /// by the tag "LI".
 class LevelIndicator extends IndicatorNode {
-  /// Create a [LevelIndicatorNode] qith a unique [id].
+  /// Create a [LevelIndicator] qith a unique [id].
   LevelIndicator({
     required super.id,
     super.position,

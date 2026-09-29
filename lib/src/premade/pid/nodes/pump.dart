@@ -31,9 +31,9 @@ class Pump extends CommonNode {
     if (value == null) return;
 
     if (value! > 0) {
-      transientTheme = themeOverride.copyWith(fill: Colors.green);
+      setTheme(const NodeTheme(fill: Colors.green));
     } else {
-      transientTheme = themeOverride;
+      resetTheme();
     }
 
     super.update();

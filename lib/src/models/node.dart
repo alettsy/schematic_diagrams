@@ -67,11 +67,6 @@ abstract class Node {
     return _partThemeOverrides[index];
   }
 
-  /// Set a part [theme] override for part [index].
-  void setPartThemeOverride(int index, NodeTheme? theme) {
-    _partThemeOverrides[index] = theme;
-  }
-
   /// Get the maximum X position of this node.
   double get maxX => position.x + size.width;
 
@@ -110,5 +105,24 @@ abstract class Node {
   /// least the [offset].
   bool isRightOf(Node other, {double offset = 0.0}) {
     return other.maxX + offset < position.x;
+  }
+
+  /// Update the transient theme based on [theme].
+  void setTheme(NodeTheme theme) {
+    transientTheme = themeOverride.copyWith(
+      fill: theme.fill,
+      stroke: theme.stroke,
+      strokeWidth: theme.strokeWidth,
+    );
+  }
+
+  /// Clear/reset the theme back to [themeOverride].
+  void resetTheme() {
+    transientTheme = themeOverride;
+  }
+
+  /// Set a part [theme] override for part [index].
+  void setPartThemeOverride(int index, NodeTheme? theme) {
+    _partThemeOverrides[index] = theme;
   }
 }

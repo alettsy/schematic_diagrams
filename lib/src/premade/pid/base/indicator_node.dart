@@ -52,10 +52,10 @@ abstract class IndicatorNode extends CommonNode {
   void update() {
     if (value == null) return;
 
-    if (value! > threshold) {
-      transientTheme = themeOverride.copyWith(fill: Colors.green);
+    if (value! > 0) {
+      setTheme(const NodeTheme(fill: Colors.green));
     } else {
-      transientTheme = themeOverride;
+      resetTheme();
     }
 
     super.update();

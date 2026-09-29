@@ -7,8 +7,8 @@ import 'package:schematic_diagrams/src/models/models.dart';
 abstract class CommonNode extends Node
     with ChangeNotifier, Updatable, Valuable<double>, TextBlockable, Linkable {
   /// Create a [CommonNode] with a unique [id] and [renderer].
-  /// 
-  /// Used as a base for commonly seen P&ID nodes, such as the indicators 
+  ///
+  /// Used as a base for commonly seen P&ID nodes, such as the indicators
   /// and pumps.
   CommonNode({
     required super.id,
@@ -53,12 +53,7 @@ abstract class CommonNode extends Node
 
   @override
   void update() {
-    for (var i = 0; i < textBlocks.length; i++) {
-      if (textBlocks[i].id == 'value') {
-        textBlocks[i] = textBlocks[i].copyWith(text: value.toString());
-      }
-    }
-
+    setTextById('value', value.toString());
     notifyListeners();
   }
 }
