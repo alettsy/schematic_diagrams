@@ -45,7 +45,7 @@ For a working example, check: [example](example/lib/main.dart)
 
 There are two imports you need to be aware of:
 
-1. The main import, which includes the diagram, node model, link model, themes, mixins, interfaces, etc (
+1. The main import, which includes the diagram, node model, link model, themes, mixins, interfaces, etc
    1. `import 'package:schematic_diagrams/schematic_diagrams.dart'`
 2. And the premade nodes import, which includes premade nodes, such as the P&ID nodes
    1. `import 'package:schematic_diagrams/premade.dart'`
@@ -79,7 +79,7 @@ return SchematicDiagram(
 );
 ```
 
-To override the default `node`, `link`, and `textBlock` themes, you can override their respective properties in the model:
+To set the default `node`, `link`, and `textBlock` themes, you can override their respective properties in the model:
 
 - `defaultNodeTheme`
 - `defaultLinkTheme`
@@ -107,7 +107,7 @@ return SchematicDiagram(
 
 To link two nodes together, they need to both be `Linkable` and have at least one `Port`. The built-in nodes have appropriately placed default ports.
 
-The `GateValve` has ports at the top, right, bottom, and left of it and they are named as such.
+The `GateValve` has ports at the `top`, `right`, `bottom`, and `left` of it and they are named as such.
 
 For example:
 
@@ -139,6 +139,13 @@ return SchematicDiagram(
 When linking, you must provide the directions for the link to enter and exit the to/from ports. You can enter whichever you like, but in this case bottom to top makes the most visual sense.
 
 If a link is provided where one or more nodes or ports cannot be found, it will be _ignored_.
+
+> [!NOTE]  
+> Links can be drawn out to/in from any direction, by specifying the `outTo` and `inFrom` properties.
+>
+> The example link above means: draw the link downwards from the `from` port, and at the end, draw it in from above the `to` port.
+>
+> If you are confused with the `inFrom` and `outTo` properties, think of it like so: "draw from port A _outTo_ the bottom of it, and draw into port B _inFrom_ the top of it"
 
 ### Creating your own nodes
 
@@ -227,11 +234,66 @@ class CustomNode extends Node with ChangeNotifier, Updatable, Linkable, Valuable
 
 A node that is `Updatable` should also have a `ChangeNotifier`. The `update()` function provided by the former should call `notifyListeners()`.
 
-The `update()` function can include whatever you want to do to the node before it is refreshed (e.g. by calling `notifyListeners()`), such as by changing the theme, rotation, size, etc.
+The `update()` function can include whatever you want to do to the node before it is refreshed (e.g. by calling `notifyListeners()`), such as by changing the theme, text blocks, ports, etc.
 
 By default, a `Valuable` node will call `.update()` internally when the value changes.
 
 You can extend this logic as much as you want so you can call `.update()` from wherever you need the node to refresh, under whatever condition.
+
+An example to update the individual parts of the gate valve based on the value would look like:
+
+```Dart
+@override
+void update() {
+  // if the value is null, it hasn't been set yet, so skip
+  if (value == null) return;
+
+  if (value! > 0) {
+    // set top to orange and bottom to purple
+    setPartThemeOverride(0, const NodeTheme(fill: Colors.orange));
+    setPartThemeOverride(1, const NodeTheme(fill: Colors.purple));
+  } else {
+    // clear all colors
+    setPartThemeOverride(0, null);
+    setPartThemeOverride(1, null);
+  }
+
+  // notify the node has changed
+  notifyListeners();
+}
+```
+
+Here is another example
+
+```Dart
+@override
+void update() {
+  // if the value is null, it hasn't been set yet, so skip
+  if (value == null) return;
+
+  final titleIndex = textBlocks.indexWhere((t) => t.id == 'title');
+
+  if (value! > 0) {
+    // update the whole theme of the node at once
+    transientTheme = themeOverride.copyWith(
+      fill: Colors.brown,
+      strokeWidth: 3,
+    );
+
+    // update title text to "Active"
+    textBlocks[titleIndex] = textBlocks[titleIndex].copyWith(text: 'Active');
+  } else {
+    // reset the theme to default
+    transientTheme = themeOverride;
+
+    // update title text to "Inactive"
+    textBlocks[titleIndex] = textBlocks[titleIndex].copyWith(text: 'Inactive');
+  }
+
+  // notify the node has changed
+  notifyListeners();
+}
+```
 
 ## Screenshots
 
