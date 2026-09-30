@@ -56,9 +56,16 @@ A diagram consists of the **widget** and the **model**. To create an empty diagr
 import 'package:schematic_diagrams/schematic_diagrams.dart';
 
 return SchematicDiagram(
-  model: SchematicDiagramModel(nodes: [], links: [])
+  model: SchematicDiagramModel(nodes: [].protected)
 );
 ```
+
+> [!NOTE]
+> Nodes, Links, Ports, and TextBlocks are _protected_, which means they require unique IDs to work properly.
+> Because of this, the `ProtectedList<T>` has been provided to make this behaviour consistent.
+>
+> When making ports and text blocks, you can instantiate it like `ProtectedList<T>([...])`, or
+> you can call `[...].protected` on a normal list.
 
 To theme your diagram, you can override the `schematicTheme` property of the model:
 
@@ -67,8 +74,8 @@ import 'package:schematic_diagrams/schematic_diagrams.dart';
 
 return SchematicDiagram(
   model: SchematicDiagramModel(
-    nodes: [],
-    links: [],
+    nodes: [].protected,
+    links: [].protected,
     schematicTheme: SchematicTheme(
       backgroundColor: Colors.purple,
       borderColor: Colors.orange,
@@ -99,8 +106,7 @@ return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
-    ],
-    links: []
+      ].protected,
   )
 );
 ```
@@ -120,7 +126,7 @@ return SchematicDiagram(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
       GateValve(id: 'g2', position: Position(50, 200), title: 'Gate 2'),
-    ],
+      ].protected,
     links: [
       Link(
         id: 'connect-g1-to-g2',
@@ -131,7 +137,7 @@ return SchematicDiagram(
         inFrom: LinkDirection.top,
         outTo: LinkDirection.bottom,
       ),
-    ]
+    ].protected
   )
 );
 ```
@@ -229,13 +235,6 @@ class CustomNode extends Node with ChangeNotifier, Updatable, Linkable, Valuable
   }
 }
 ```
-
-> [!NOTE]
-> Ports and TextBlocks are _protected_, which means they require unique IDs to work properly.
-> Because of this, the `ProtectedList<T>` has been provided to make this behaviour consistent.
->
-> When making ports and text blocks, you can instantiate it like `ProtectedList<T>([...])`, or
-> you can call `[...].protected` on a normal list.
 
 ### Mutability and reactivity
 

@@ -37,7 +37,10 @@ void testStandardLink(StandardLinkTest testCase) {
     inFrom: testCase.inFrom,
   );
 
-  final model = SchematicDiagramModel(nodes: [fromNode, toNode], links: [link]);
+  final model = SchematicDiagramModel(
+    nodes: [fromNode, toNode].protected,
+    links: [link].protected,
+  );
 
   final strategy = StandardLinkPathStrategy(
     sectionManager: StandardSectionManager(),

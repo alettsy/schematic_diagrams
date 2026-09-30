@@ -15,7 +15,7 @@ class _LinkingPageState extends State<OverlappingPage> {
     FlowIndicator(id: 'f1', position: Position(100, 100)),
     FlowIndicator(id: 'f2', position: Position(50, 150)),
     FlowIndicator(id: 'f3', position: Position(350, 150)),
-  ];
+  ].protected;
 
   final links = [
     Link(
@@ -36,7 +36,7 @@ class _LinkingPageState extends State<OverlappingPage> {
       inFrom: LinkDirection.left,
       outTo: LinkDirection.right,
     ),
-  ];
+  ].protected;
 
   @override
   Widget build(BuildContext context) {

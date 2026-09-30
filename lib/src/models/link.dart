@@ -1,4 +1,5 @@
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 
 /// A link between the port of one node to the port of
 /// another node, based on the node IDs and port IDs.
@@ -6,7 +7,7 @@ import 'package:schematic_diagrams/src/core/parts/parts.dart';
 /// Linking direction is specified at the start and end ports,
 /// using [outTo] (link direction when leaving start port) and [inFrom]
 /// (link direction when entering end port).
-class Link {
+class Link implements IdBased {
   /// Creates a [Link] with a unique [id] between the two ports of 
   /// two nodes.
   ///
@@ -34,7 +35,8 @@ class Link {
   });
 
   /// The unique ID of this link.
-  final String id;
+  @override
+    final String id;
 
   /// The ID of the node which has the start port.
   final String fromNodeId;

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:schematic_diagrams/src/core/parts/parts.dart';
+import 'package:schematic_diagrams/src/internal/base/id_based.dart';
 import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 
 /// Base node that specifies the required properties for any node
 /// to exist in the diagram.
 ///
 /// How it looks is determined by the [renderer].
-abstract class Node {
+abstract class Node  implements IdBased {
   /// Creates a new [Node] with a unique [id], and a [renderer]
   /// to determine how to draw it.
   ///
@@ -35,7 +36,8 @@ abstract class Node {
   });
 
   /// The unique ID for this node.
-  final String id;
+  @override
+    final String id;
 
   /// How the node will look when renderer to the screen.
   final NodeRenderer renderer;

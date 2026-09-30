@@ -43,8 +43,8 @@ void main() {
     );
 
     final model = SchematicDiagramModel(
-      nodes: [node1, node2, node3, node4],
-      links: [horizontalLink, verticalLink],
+      nodes: [node1, node2, node3, node4].protected,
+      links: [horizontalLink, verticalLink].protected,
     );
 
     final strategy = StandardLinkPathStrategy(
@@ -91,8 +91,8 @@ void main() {
     );
 
     final model = SchematicDiagramModel(
-      nodes: [node1, node2, node3, node4],
-      links: [horizontalLink, verticalLink],
+      nodes: [node1, node2, node3, node4].protected,
+      links: [horizontalLink, verticalLink].protected,
     );
 
     final strategy = StandardLinkPathStrategy(

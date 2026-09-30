@@ -17,7 +17,7 @@ class _ParallelPageState extends State<ParallelPage> {
     FlowIndicator(id: 'f3', position: Position(350, 250)),
     FlowIndicator(id: 'f4', position: Position(50, 75)),
     FlowIndicator(id: 'f5', position: Position(150, 250)),
-  ];
+  ].protected;
 
   final links = [
     Link(
@@ -47,7 +47,7 @@ class _ParallelPageState extends State<ParallelPage> {
       inFrom: LinkDirection.top,
       outTo: LinkDirection.bottom,
     ),
-  ];
+  ].protected;
 
   @override
   Widget build(BuildContext context) {

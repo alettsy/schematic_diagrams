@@ -117,7 +117,7 @@ class _LinkingPageState extends State<LinkingPage> {
       size: Size(100, 100),
     ),
     ConnectorPoint(id: 'invis-1', position: Position(300, 250)),
-  ];
+  ].protected;
 
   final links = [
     Link(
@@ -284,7 +284,7 @@ class _LinkingPageState extends State<LinkingPage> {
       inFrom: LinkDirection.left,
       outTo: LinkDirection.right,
     ),
-  ];
+  ].protected;
 
   Timer? timer;
 

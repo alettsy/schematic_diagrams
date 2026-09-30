@@ -32,7 +32,7 @@ class SchematicDiagramModel implements NodeResolver {
   /// ```
   SchematicDiagramModel({
     required this.nodes,
-    this.links = const [],
+    ProtectedList<Link>? links,
     this.schematicTheme = const SchematicTheme(),
     this.defaultNodeTheme = const NodeTheme(),
     this.defaultTextBlockTheme = const TextBlockTheme(),
@@ -45,27 +45,14 @@ class SchematicDiagramModel implements NodeResolver {
     this.canPan = true,
     this.canZoom = true,
     LinkManager? linkManager,
-  }) : linkManager = linkManager ?? StandardLinkManager() {
-    for (final node in nodes) {
-      if (_nodeIdRegistry.contains(node.id)) {
-        throw Exception('Duplicate node ID "${node.id}"');
-      }
-      _nodeIdRegistry.add(node.id);
-    }
-
-    for (final link in links) {
-      if (_linkIdRegistry.contains(link.id)) {
-        throw Exception('Duplicate node ID "${link.id}"');
-      }
-      _linkIdRegistry.add(link.id);
-    }
-  }
+  }) : links = links ?? ProtectedList<Link>(),
+       linkManager = linkManager ?? StandardLinkManager();
 
   /// The nodes in the diagram.
-  final List<Node> nodes;
+  final ProtectedList<Node> nodes;
 
   /// The links between nodes in the diagram.
-  final List<Link> links;
+  final ProtectedList<Link> links;
 
   /// How the links are drawn and handled.
   final LinkManager linkManager;
@@ -102,9 +89,6 @@ class SchematicDiagramModel implements NodeResolver {
 
   /// Whether or not panning is allowed.
   final bool canPan;
-
-  final _nodeIdRegistry = <String>{};
-  final _linkIdRegistry = <String>{};
 
   @override
   Node? getNode(String nodeId) {
