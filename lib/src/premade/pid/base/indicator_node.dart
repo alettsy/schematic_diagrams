@@ -7,7 +7,7 @@ import 'package:schematic_diagrams/src/premade/pid/renderers/circular_pid_render
 /// P&ID elements, such as a voltage indicator.
 abstract class IndicatorNode extends CommonNode {
   /// Create an [IndicatorNode] with a unique [id] and center title [prefix].
-  /// 
+  ///
   /// Used as a base for all indicators, such as the VoltageIndicator node.
   IndicatorNode({
     required this.prefix,
@@ -22,7 +22,7 @@ abstract class IndicatorNode extends CommonNode {
       TextBlock(
         id: 'prefix',
         text: prefix,
-        position: Position(0, size.height * 0.25),
+        position: Position(0, size.height * 0.4),
         drawWidth: size.width,
         textAlign: TextAlign.center,
       ),
