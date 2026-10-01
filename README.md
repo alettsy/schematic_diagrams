@@ -4,6 +4,21 @@
 
 _A Flutter package for making modular, reactive, interactive schematic diagrams easily._
 
+<div align="center">
+    <a href="https://pub.dev/packages/schematic_diagrams">
+      <img src="https://img.shields.io/pub/v/schematic_diagrams" alt="pub version">
+    </a>    
+    <a href="https://github.com/alettsy/schematic_diagrams/issues">
+      <img src="https://img.shields.io/github/issues/alettsy/schematic_diagrams" alt="open issues">
+    </a>
+</div>
+
+<div align="center">
+    <a href="https://ko-fi.com/W7C027ZZTS">
+        <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi" />
+    </a>
+</div>
+
 <hr />
 
 <img width="400" src="assets/example.png">

@@ -4,6 +4,8 @@ version: 0.0.1
 homepage: https://github.com/alettsy/schematic_diagrams
 repository: https://github.com/alettsy/schematic_diagrams
 issue_tracker: https://github.com/alettsy/schematic_diagrams/issues
+funding:
+  - https://ko-fi.com/W7C027ZZTS
 
 environment:
   sdk: ^3.11.4
