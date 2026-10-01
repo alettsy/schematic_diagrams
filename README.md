@@ -2,7 +2,11 @@
     <img width="250" src="assets/logo.png" />
 </div>
 
-_A Flutter package for making modular, reactive, interactive schematic diagrams easily._
+<div align="center">
+    <i>A Flutter package for making modular, reactive, interactive schematic diagrams easily.</i>
+</div>
+
+<br />
 
 <div align="center">
     <a href="https://pub.dev/packages/schematic_diagrams">
