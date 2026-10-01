@@ -16,7 +16,7 @@ class SchematicDiagramModel implements NodeResolver {
   ///   nodes: [
   ///     GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
   ///     GateValve(id: 'g2', position: Position(50, 200), title: 'Gate 2'),
-  ///   ],
+  ///   ].protected,
   ///   links: [
   ///     Link(
   ///       id: 'connect-g1-to-g2',
@@ -27,7 +27,7 @@ class SchematicDiagramModel implements NodeResolver {
   ///       inFrom: LinkDirection.top,
   ///       outTo: LinkDirection.bottom,
   ///     ),
-  ///   ]
+  ///   ].protected
   /// );
   /// ```
   SchematicDiagramModel({
