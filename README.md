@@ -106,7 +106,7 @@ return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
-      ].protected,
+    ].protected,
   )
 );
 ```
@@ -126,7 +126,7 @@ return SchematicDiagram(
     nodes: [
       GateValve(id: 'g1', position: Position(50, 75), title: 'Gate 1'),
       GateValve(id: 'g2', position: Position(50, 200), title: 'Gate 2'),
-      ].protected,
+    ].protected,
     links: [
       Link(
         id: 'connect-g1-to-g2',
@@ -226,7 +226,9 @@ import 'package:schematic_diagrams/schematic_diagrams.dart';
 
 class CustomNode extends Node with ChangeNotifier, Updatable, Linkable, Valuable<double> {
   CustomNode({required super.id}) : super(renderer: CustomRenderer()) {
-    ports = [Port(id: 'port1', position: Position(0, 0))].protected;
+    ports = [
+      Port(id: 'port1', position: Position(0, 0))
+    ].protected;
   }
 
   @override

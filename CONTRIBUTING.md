@@ -2,7 +2,7 @@
 
 Thank you for considering contributing to my project! Below are some useful tips and information on how to make a proper contribution.
 
-Here is an overview of what this file contais:
+Here is an overview of what this file contains:
 
 - [Tools](#tools)
 - [Commiting](#commiting)
