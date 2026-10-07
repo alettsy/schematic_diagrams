@@ -41,8 +41,6 @@ Quick links:
 
 ## Features
 
-The current release version is: **0.0.1**.
-
 You should be able to:
 
 - Create a themed diagram
