@@ -56,6 +56,7 @@ You should be able to:
 This sections covers:
 
 - [Making a diagram](#making-a-diagram)
+- [Themes](#themes)
 - [Using nodes and links](#using-nodes-and-links)
 - [Creating your own nodes](#creating-your-own-nodes)
 - [Added functionality with mixins](#added-functionality-with-mixins)
@@ -89,6 +90,8 @@ return SchematicDiagram(
 > When making ports and text blocks, you can instantiate it like `ProtectedList<T>([...])`, or
 > you can call `[...].protected` on a normal list.
 
+### Themes
+
 To theme your diagram, you can override the `schematicTheme` property of the model:
 
 ```Dart
@@ -98,7 +101,7 @@ return SchematicDiagram(
   model: SchematicDiagramModel(
     nodes: [].protected,
     links: [].protected,
-    schematicTheme: SchematicTheme(
+    schematicTheme: const SchematicTheme(
       backgroundColor: Colors.purple,
       borderColor: Colors.orange,
       borderRadius: BorderRadius.circular(10),
@@ -113,6 +116,36 @@ To set the default `node`, `link`, and `textBlock` themes, you can override thei
 - `defaultNodeTheme`
 - `defaultLinkTheme`
 - `defaultTextBlockTheme`
+
+```Dart
+import 'package:schematic_diagrams/schematic_diagrams.dart';
+
+return SchematicDiagram(
+  model: SchematicDiagramModel(
+    nodes: [].protected,
+    links: [].protected,
+    defaultNodeTheme: const NodeTheme(fill: Colors.orange),
+    defaultLinkTheme: const LinkTheme(strokeWidth: 2),
+    defaultTextBlockTheme: const TextBlockTheme(fontSize: 24, color: Colors.purple),
+    schematicTheme: const SchematicTheme(
+      backgroundColor: Colors.purple,
+      borderColor: Colors.orange,
+      borderRadius: BorderRadius.circular(10),
+      borderWidth: 10
+    )
+  )
+);
+```
+
+When it comes to themes, there are three layers:
+
+1. Default/override
+2. Transient
+3. Parts
+
+The default will be used whenever there is no active transient or part theme. Transient theme is a full theme override at the widget-level; you can update this at any time to alter the look of your node by called `setTheme(theme)`, and revert back to the default by calling `resetTheme()`.
+
+Part themes are a little more complicated. These are renderer-based, and are only supported in some premade nodes (but you can add them to your custom renderers as well). They are essentially transient themes that target specific, individual parts of a design. So `setPartThemeOverride(1, theme)` will be used by the renderer wherever `getPartThemeOverride(1)` is called. You can see this being used by the premade `GateValve` node.
 
 ### Using nodes and links
 
