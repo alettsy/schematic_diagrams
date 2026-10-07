@@ -28,5 +28,6 @@ test:
 
 test_coverage:
     flutter test --coverage
-    @echo ""
-    @echo "View results with https://lcov-viewer.netlify.app/"
+    lcov -r coverage/lcov.info "lib/src/premade/**.dart" -o coverage/lcov.info --ignore-errors empty
+    genhtml coverage/lcov.info -o coverage/html
+    @echo "Coverage generation complete"

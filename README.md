@@ -14,6 +14,9 @@
     </a>    
     <a href="https://github.com/alettsy/schematic_diagrams/issues">
       <img src="https://img.shields.io/github/issues/alettsy/schematic_diagrams" alt="open issues">
+    </a>    
+    <a href="https://github.com/alettsy/schematic_diagrams/">
+      <img src="https://img.shields.io/badge/coverage-75.7%25-orange" alt="coverage">
     </a>
 </div>
 

@@ -48,6 +48,16 @@ void main() {
     );
   });
 
+  test('Re-assigning with new ID is acceptable', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    list[1] = _Item(id: 'C', value: 34);
+    expect(list[1].id, 'C');
+    expect(list[1].value, 34);
+  });
+
   test('Removing non-existent item returns false', () {
     final list = ProtectedList<_Item>()..add(_Item(id: 'A', value: 22));
 
@@ -68,6 +78,104 @@ void main() {
       isNot(throwsA(isA<ArgumentError>())),
     );
     expect(list.length, 2);
+  });
+
+  test('removeAt removes at index if found', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    expect(list.removeAt(1).id, 'B');
+    expect(list.length, 1);
+  });
+
+  test('removeAt throws error if index not found', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    expect(() => list.removeAt(10), throwsA(isA<ArgumentError>()));
+    expect(list.length, 2);
+  });
+
+  test('remove removes if object is found', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    expect(list.remove(_Item(id: 'A', value: 22)), isTrue);
+    expect(list.length, 1);
+  });
+
+  test('remove returns false if object is not found', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    expect(list.remove(_Item(id: 'C', value: 22)), isFalse);
+    expect(list.length, 2);
+  });
+
+  test('removeLast removes last item', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66));
+
+    expect(list.removeLast().id, 'B');
+    expect(list.length, 1);
+  });
+
+  test('removeLast throws error if list is empty', () {
+    final list = ProtectedList<_Item>();
+    expect(list.removeLast, throwsA(isA<ArgumentError>()));
+  });
+
+  test('removeWhere removes items that match', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66))
+      ..removeWhere((i) => i.value > 50);
+
+    expect(list.length, 1);
+    expect(list.first.id, 'A');
+  });
+
+  test('removeWhere does nothing if no items match', () {
+    final list = ProtectedList<_Item>()
+      ..add(_Item(id: 'A', value: 22))
+      ..add(_Item(id: 'B', value: 66))
+      ..removeWhere((i) => i.value > 100);
+
+    expect(list.length, 2);
+  });
+
+  test('addAll throws error if one ID is already used', () {
+    final list = ProtectedList<_Item>()..add(_Item(id: 'A', value: 22));
+
+    final toAdd = [_Item(id: 'A', value: 66), _Item(id: 'B', value: 77)];
+
+    expect(list.length, 1);
+
+    expect(() => list.addAll(toAdd), throwsA(isA<ArgumentError>()));
+
+    expect(list.length, 1);
+  });
+
+  test('addAll adds items if no matching IDs are found', () {
+    final list = ProtectedList<_Item>()..add(_Item(id: 'A', value: 22));
+
+    final toAdd = [_Item(id: 'B', value: 66), _Item(id: 'C', value: 77)];
+
+    expect(list.length, 1);
+
+    list.addAll(toAdd);
+
+    expect(list.length, 3);
+  });
+
+  test('removeRange is not supported', () {
+    final list = ProtectedList<_Item>()..add(_Item(id: 'A', value: 22));
+    expect(() => list.removeRange(1, 4), throwsA(isA<UnsupportedError>()));
   });
 }
 
