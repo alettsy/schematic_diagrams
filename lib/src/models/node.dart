@@ -7,7 +7,7 @@ import 'package:schematic_diagrams/src/rendering/node_renderer.dart';
 /// to exist in the diagram.
 ///
 /// How it looks is determined by the [renderer].
-abstract class Node  implements IdBased {
+abstract class Node implements IdBased {
   /// Creates a new [Node] with a unique [id], and a [renderer]
   /// to determine how to draw it.
   ///
@@ -37,7 +37,7 @@ abstract class Node  implements IdBased {
 
   /// The unique ID for this node.
   @override
-    final String id;
+  final String id;
 
   /// How the node will look when renderer to the screen.
   final NodeRenderer renderer;
